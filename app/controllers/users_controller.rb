@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+include ActiveStorage::Blob::Analyzable
 
     def index
+   byebug
         users = User.all
         render json: users, status: :ok
     end
@@ -10,9 +12,18 @@ class UsersController < ApplicationController
         render json: user, status: :created
     end
 
+    def update
+        user = User.first
+    
+        # user.avatar.attach(params[:avatar])
+        byebug
+        # user.update(user_params)
+        render json: user, status: :accepted
+    end
+
     private
 
     def user_params
-        params.permit(:username, :password, :about)
+        params.permit(:username, :password, :about, :avatar, :id, :user, :patty)
     end
 end
