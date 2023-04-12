@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-include ActiveStorage::Blob::Analyzable
+    include ActiveStorage::Blob::Analyzable
+    rescue_from ActiveRecord::RecordInvalid, with: :invalid_user_response
+    rescue_from ActiveRecord::RecordNotFound, with: :not_found_user_response
 
     def index
         users = User.all
@@ -24,5 +26,13 @@ include ActiveStorage::Blob::Analyzable
 
     def user_params
         params.permit(:username, :password, :about, :avatar, :id, :user, :patty)
+    end
+
+    def invalid_user_response(invalid)
+        render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
+    end
+
+    def not_found_user_response
+        render json: {Error: "User Not Found"}, status: :not_found
     end
 end
