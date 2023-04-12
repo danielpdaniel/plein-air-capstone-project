@@ -7,36 +7,21 @@ function App() {
   const [count, setCount] = useState("")
   const [imageFile, setImageFile] = useState("")
   const [user, setUser] = useState("")
-  // const formElem = new FormData()
 
-  // useEffect(()=>{
-  //   fetch("/hello")
-  //   .then(r=>r.json())
-  //   .then(data => setCount(data.count))
-  // }, [])
+
+  useEffect(()=>{
+    fetch("/hello")
+    .then(r=>r.json())
+    .then(data => setCount(data.count))
+  }, [])
   
 
   function handleFileChange(e){
-  
     setImageFile(e.target.files[0])
-    // formElem.append("avatar", e.target.files[0], e.target.files[0].name)
-    // formElem.append("grouchy", "margoo")
   }
-
-  // formElem.append("mary", "jooby")
-  // formElem.append("bingle", "dangle")
-  // if(imageFile){
-  //   formElem.append("avatar", imageFile)
-  // }
-
-  // var xhr = new XMLHttpRequest;
-  // xhr.open('POST', '/', true);
-  // xhr.send(formElem)
 
   function handleUserEditSubmit(e){
     e.preventDefault()
-    console.log(imageFile)
-    // console.log(JSON.stringify(formElem))
     const formData = new FormData()
     formData.append("random_test_data_sent_with_patch", "crobbit")
     formData.append("avatar", imageFile)
@@ -49,9 +34,6 @@ function App() {
   
     fetch("/users/1", {
       method: "PATCH",
-      // headers: {
-      //   "Content-Type": `application/json`,
-      // },
       body: formData
     })
     .then(r=>r.json())
