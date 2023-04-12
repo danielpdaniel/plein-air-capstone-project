@@ -19,7 +19,8 @@ class UsersController < ApplicationController
     end
 
     def update
-        user = User.first
+        user = User.find_by!(id: user_params[:id])
+        user.update!(user_params)
     
         # user.avatar.attach(params[:avatar])
 
