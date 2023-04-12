@@ -15,7 +15,7 @@ include ActiveStorage::Blob::Analyzable
         user = User.first
     
         # user.avatar.attach(params[:avatar])
-        byebug
+
         # user.update(user_params)
         render json: user, status: :accepted
     end
