@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  default_url_options :host => 'http://localhost:3000'
+
   resources :locations
   resources :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

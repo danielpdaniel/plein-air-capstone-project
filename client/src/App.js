@@ -6,6 +6,7 @@ import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
 function App() {
   const [count, setCount] = useState("")
   const [imageFile, setImageFile] = useState("")
+  const [user, setUser] = useState("")
   // const formElem = new FormData()
 
   // useEffect(()=>{
@@ -37,7 +38,7 @@ function App() {
     console.log(imageFile)
     // console.log(JSON.stringify(formElem))
     const formData = new FormData()
-    formData.append("username", "crobbit")
+    formData.append("random_test_data_sent_with_patch", "crobbit")
     formData.append("avatar", imageFile)
     const userPatchBody = {
       avatar: (imageFile),
@@ -68,7 +69,8 @@ function App() {
               <input type="file" onChange={(e)=>handleFileChange(e)}/>
               <input type="submit"/>
             </form>
-            {imageFile ? <img src={URL.createObjectURL(imageFile)}/> : null}
+            {/* {imageFile ? <img src={URL.createObjectURL(imageFile)}/> : null} */}
+            {user ? <img />: null}
           </div>
         </Route>
         <Route path="/">

@@ -2,7 +2,6 @@ class UsersController < ApplicationController
 include ActiveStorage::Blob::Analyzable
 
     def index
-   byebug
         users = User.all
         render json: users, status: :ok
     end
