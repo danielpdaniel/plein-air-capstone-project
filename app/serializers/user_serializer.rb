@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :password_digest, :about, :avatar, :avatar_info
+  attributes :id, :username, :password_digest, :about, :avatar_info
 
   def avatar_info
     # byebug
