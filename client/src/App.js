@@ -5,6 +5,7 @@ import { BrowserRouter, Switch, Route, Routes,  NavLink} from "react-router-dom"
 import LoginSignup from './LoginSignup';
 import Home from './Home';
 import NavBar from './NavBar';
+import { UserProvider } from './context/user';
 
 function App() {
   const [count, setCount] = useState("")
@@ -53,11 +54,13 @@ function App() {
 
   return (
     <>
-    <NavBar/>
-      <Routes>
-        <Route path="/login" element={<LoginSignup/>}/>
-        <Route path="/" element={<Home/>}/>
-      </Routes>
+    <UserProvider>
+      <NavBar/>
+        <Routes>
+          <Route path="/login" element={<LoginSignup/>}/>
+          <Route path="/" element={<Home/>}/>
+        </Routes>
+    </UserProvider>
       </>
   );
 }
