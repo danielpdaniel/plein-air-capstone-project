@@ -24,7 +24,12 @@ function LoginSignup(){
         .then(r=>
             {if (r.ok){
                 r.json()
-                .then(data => setUser(data))
+                .then(data => {
+                    setUser(data)
+                    setErrors("")
+                    setUsername("")
+                    setPassword("")
+                })
             }else{
                 r.json()
                 .then(data => setErrors(data.errors))
