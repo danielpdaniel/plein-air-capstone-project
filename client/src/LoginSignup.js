@@ -3,10 +3,29 @@ import { useState } from "react"
 function LoginSignup(){
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [errors, setErrors] = useState("")
 
     function handleLoginSubmit(e){
         e.preventDefault()
-        console.log(username, password)
+
+        fetch("/login", {
+            method: "POST",
+            headers:{
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username: username,
+                password: password
+            })
+        })
+        .then(r=>
+            {if (r.ok){
+                r.json()
+                .then(data => console.log(data))
+            }else{
+                r.json()
+                .then(data => console.log(data))
+            }})
     }
 
     return(
