@@ -27,7 +27,7 @@ function LoginSignup(){
                 .then(data => setUser(data))
             }else{
                 r.json()
-                .then(data => setErrors(data))
+                .then(data => setErrors(data.errors))
             }})
     }
 
@@ -41,6 +41,7 @@ function LoginSignup(){
                     <input type="password" value={password} id={2} placeholder="enter password here..." onChange={(e)=>setPassword(e.target.value)}/>
                 <input type="submit"/>
             </form>
+            {errors ? errors.map(error => <h4 key={error}>{error}</h4>) : null}
         </div>
     )
 }
