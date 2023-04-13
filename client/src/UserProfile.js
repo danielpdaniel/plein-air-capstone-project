@@ -21,7 +21,13 @@ function UserProfile(){
 
     return (
         <div>
-            {pageUser ? <h3>Valid!</h3> : <h5>GET OUT!!!!!</h5>}
+            {pageUser ? 
+            <div>
+                <h3>{pageUser.username}</h3>
+                <img src={pageUser.avatar_info} alt={pageUser.username} />
+                <p>{pageUser.about}</p>
+            </div>
+            : <h5>User Not Found</h5>}
         </div>
     )
 }
