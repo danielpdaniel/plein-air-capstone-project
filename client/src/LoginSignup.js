@@ -44,7 +44,7 @@ function LoginSignup(){
                     <input type="text" value={username} name="password" placeholder="enter username here..." onChange={(e)=>setUsername(e.target.value)}/>
                 <label htmlFor={"password"}>Password:</label>
                     <input type="password" value={password} id={2} placeholder="enter password here..." onChange={(e)=>setPassword(e.target.value)}/>
-                <input type="submit"/>
+                <input type="submit" value="Login"/>
             </form>
             {errors ? errors.map(error => <h4 key={error}>{error}</h4>) : null}
         </div>
