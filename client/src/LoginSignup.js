@@ -1,9 +1,12 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { UserContext } from "./context/user"
 
 function LoginSignup(){
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [errors, setErrors] = useState("")
+
+    const {user, setUser} = useContext(UserContext)
 
     function handleLoginSubmit(e){
         e.preventDefault()
@@ -21,10 +24,10 @@ function LoginSignup(){
         .then(r=>
             {if (r.ok){
                 r.json()
-                .then(data => console.log(data))
+                .then(data => setUser(data))
             }else{
                 r.json()
-                .then(data => console.log(data))
+                .then(data => setErrors(data))
             }})
     }
 
