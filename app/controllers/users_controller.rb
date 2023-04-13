@@ -28,6 +28,14 @@ class UsersController < ApplicationController
         render json: user, status: :accepted
     end
 
+    def session_user
+        if @user
+            render json: @user, status: :ok
+        else
+            render json: {error: "User not found"}, status: :not_found
+        end
+    end
+
     private
 
     def user_params
