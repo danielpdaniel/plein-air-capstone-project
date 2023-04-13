@@ -11,7 +11,7 @@ function LoginSignup(){
         fetch("/login", {
             method: "POST",
             headers:{
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
             },
             body: JSON.stringify({
                 username: username,
@@ -35,7 +35,7 @@ function LoginSignup(){
                 <label htmlFor={"username"}>Username:</label>
                     <input type="text" value={username} name="password" placeholder="enter username here..." onChange={(e)=>setUsername(e.target.value)}/>
                 <label htmlFor={"password"}>Password:</label>
-                    <input type="text" value={password} id={2} placeholder="enter password here..." onChange={(e)=>setPassword(e.target.value)}/>
+                    <input type="password" value={password} id={2} placeholder="enter password here..." onChange={(e)=>setPassword(e.target.value)}/>
                 <input type="submit"/>
             </form>
         </div>
