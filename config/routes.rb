@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :locations
   resources :users
+  resources :studies, only: [:create]
   
   post "/login", to: 'sessions#create'
   delete "/logout", to: 'sessions#destroy'
