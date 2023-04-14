@@ -24,7 +24,7 @@ function NewStudyForm(){
 return(
     <div>
         <form onSubmit={(e)=>handleNewStudySubmit(e)}>
-            <input type="file" accept="image/*" multiple={true} onChange={(e)=>setFiles(e.target.files)}/>
+            <input type="file" accept="image/*" multiple={true} onChange={(e)=>setFiles(e.target.files[0])}/>
             <input type="submit"/>
         </form>
     </div>

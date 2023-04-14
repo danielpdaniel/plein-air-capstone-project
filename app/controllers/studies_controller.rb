@@ -6,6 +6,7 @@ class StudiesController < ApplicationController
         render json: studies, status: :ok
     end
     def create
+        # byebug
         study = @user.studies.create!(study_params)
 
         if study&.valid?
@@ -18,7 +19,8 @@ class StudiesController < ApplicationController
     private
 
     def study_params
-        params.permit(:user_id, :location_id, images: [])
+        # params.permit(:user_id, :location_id, images: [])
+        params.permit(:user_id, :location_id, :images)
     end
 
     def invalid_study_response(invalid)
