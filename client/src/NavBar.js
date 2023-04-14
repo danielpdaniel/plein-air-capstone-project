@@ -18,7 +18,7 @@ function NavBar(){
         })
     }
     return(
-        <div>
+        <div className="NavBar">
             <NavLink to="/">Home</NavLink>
             {user ? <NavLink to={`/users/${user.id}`}>My Page</NavLink> : null}
             {user ? <button onClick={() => handleLogout()}>Logout</button> : <NavLink to="/login">Login</NavLink>}
