@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :locations, only: [:create]
   resources :users, only: [:index, :show, :create, :update]
-  resources :studies, only: [:create]
+  resources :studies, only: [:create, :index]
   
   post "/login", to: 'sessions#create'
   delete "/logout", to: 'sessions#destroy'

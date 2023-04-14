@@ -6,8 +6,8 @@ function NewStudyForm(){
 
     function handleNewStudySubmit(e){
         e.preventDefault()
-        const formData = FormData()
-        formData.append(files)
+        const formData = new FormData()
+        formData.append("images", files)
 
         fetch("/studies", {
             method: "POST",
@@ -23,7 +23,7 @@ function NewStudyForm(){
     }
 return(
     <div>
-        <form>
+        <form onSubmit={(e)=>handleNewStudySubmit(e)}>
             <input type="file" accept="image/*" multiple={true} onChange={(e)=>setFiles(e.target.files)}/>
             <input type="submit"/>
         </form>

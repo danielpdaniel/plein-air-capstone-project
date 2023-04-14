@@ -1,5 +1,10 @@
 class StudiesController < ApplicationController
-rescue_from ActiveRecord::RecordInvalid, with: :invalid_study_response
+    rescue_from ActiveRecord::RecordInvalid, with: :invalid_study_response
+
+    def index
+        studies = Study.all
+        render json: studies, status: :ok
+    end
     def create
         study = @user.studies.create!(study_params)
 
