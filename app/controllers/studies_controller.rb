@@ -1,5 +1,5 @@
 class StudiesController < ApplicationController
-
+rescue_from ActiveRecord::RecordInvalid, with: :invalid_study_response
     def create
         study = @user.studies.create!(study_params)
 
@@ -14,5 +14,9 @@ class StudiesController < ApplicationController
 
     def study_params
         params.permit(:user_id, :location_id, images: [])
+    end
+
+    def invalid_study_response(invalid)
+        render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
     end
 end
