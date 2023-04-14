@@ -1,14 +1,56 @@
 import { useState } from "react"
 
 
+
 function NewStudyForm(){
     const [files, setFiles] = useState("")
+
+    function handleFileChange(e){
+        const loadedFiles = []
+
+        for(const file of e.target.files){
+            loadedFiles.push(file)
+        }
+
+        setFiles(loadedFiles)
+    }
 
     function handleNewStudySubmit(e){
         e.preventDefault()
         const formData = new FormData()
-        formData.append("images", files)
+
+        // formData.append("images", files[0])
+        // for(const file of files){
+        //     formData.append("images", file)
+        // }
+        // formData.append("images[]", files[0])
+        // formData.append("images[]", files[1])
+        for(const file of files){
+            formData.append("images[]", file)
+        }
+        
+        // formData.set("images", formData.getAll("images"))
+
+        // console.log(formData.getAll("images"))
+
         formData.append("location_id", 1)
+       
+        for (const pair of formData.entries()) {
+            // if (pair[0] == "images"){
+            //     console.log(pair[0])
+            //     console.log(pair[1])
+            // }
+            console.log("foo")
+    
+          }
+
+        // for (var pair of formData.entries()) {
+        //     console.log(pair[0]+ ', ' + pair[1]); 
+        // }
+        
+        // var xhr = new XMLHttpRequest;
+        // xhr.open('POST', '/', true);
+        // xhr.send(formElem)
 
         fetch("/studies", {
             method: "POST",
@@ -25,7 +67,7 @@ function NewStudyForm(){
 return(
     <div>
         <form onSubmit={(e)=>handleNewStudySubmit(e)}>
-            <input type="file" accept="image/*" multiple={true} onChange={(e)=>setFiles(e.target.files[0])}/>
+            <input type="file" accept="image/*" multiple={true} onChange={(e)=>setFiles(e.target.files)}/>
             <input type="submit"/>
         </form>
     </div>

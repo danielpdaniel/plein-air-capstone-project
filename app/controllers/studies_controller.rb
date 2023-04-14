@@ -5,9 +5,16 @@ class StudiesController < ApplicationController
         studies = Study.all
         render json: studies, status: :ok
     end
+
+    def show
+        study = Study.find_by(id: study_params[:id])
+        render json: study, status: :ok
+    end
+
     def create
-        # byebug
-        study = @user.studies.create!(study_params)
+
+        study = @user.studies.create!(location_id: 1, images: params[:images])
+    
 
         if study&.valid?
             render json: study
@@ -19,8 +26,8 @@ class StudiesController < ApplicationController
     private
 
     def study_params
-        # params.permit(:user_id, :location_id, images: [])
-        params.permit(:user_id, :location_id, :images)
+        params.permit(:id, :user_id, :location_id, images: [])
+        # params.permit(:user_id, :location_id, :images)
     end
 
     def invalid_study_response(invalid)

@@ -6,7 +6,6 @@ function Home(){
 
     const {user} = useContext(UserContext)
 
-console.log("baby")
     return(
         <div>
             <h2>Welcome!</h2>
