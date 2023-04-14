@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   default_url_options :host => 'http://localhost:3000'
 
-  resources :locations
-  resources :users
+  resources :locations, only: [:create]
+  resources :users, only: [:index, :show, :create, :update]
   resources :studies, only: [:create]
   
   post "/login", to: 'sessions#create'
