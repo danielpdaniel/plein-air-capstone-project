@@ -8,6 +8,7 @@ function NewStudyForm(){
         e.preventDefault()
         const formData = new FormData()
         formData.append("images", files)
+        formData.append("location_id", 1)
 
         fetch("/studies", {
             method: "POST",
