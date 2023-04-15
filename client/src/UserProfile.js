@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom"
 import { useState, useEffect, useContext } from "react"
 import { UserContext } from "./context/user"
 import StudyCard from "./StudyCard"
-import NewStudyForm from "./NewStudyForm"
+import EditStudyForm from "./EditStudyForm"
 
 function UserProfile(){
     const params = useParams()
@@ -42,7 +42,7 @@ function UserProfile(){
                 <p>{pageUser.about}</p>
                 <div className="userStudies">
                     {studies ? studies.map(study => study.id === studyEdit ?
-                    <NewStudyForm key={study.id}/>
+                    <EditStudyForm key={study.id} study={study} setStudyEdit={setStudyEdit}/>
                     :
                     <StudyCard key={study.id} study={study} handleDeleteStudiesState={handleDeleteStudiesState} setStudyEdit={setStudyEdit}/>
                     ) : null}
