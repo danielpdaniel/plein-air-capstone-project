@@ -2,11 +2,13 @@ import { useParams } from "react-router-dom"
 import { useState, useEffect, useContext } from "react"
 import { UserContext } from "./context/user"
 import StudyCard from "./StudyCard"
+import NewStudyForm from "./NewStudyForm"
 
 function UserProfile(){
     const params = useParams()
     const [pageUser, setPageUser] = useState("")
     const [studies, setStudies] = useState("")
+    const [studyEdit, setStudyEdit] = useState("")
     const { user } = useContext(UserContext)
 
     useEffect(()=>{
@@ -39,7 +41,11 @@ function UserProfile(){
                 <img src={pageUser.avatar_info} alt={pageUser.username} />
                 <p>{pageUser.about}</p>
                 <div className="userStudies">
-                    {studies ? studies.map(study => <StudyCard key={study.id} study={study} handleDeleteStudiesState={handleDeleteStudiesState}/>) : null}
+                    {studies ? studies.map(study => study.id === studyEdit ?
+                    <NewStudyForm key={study.id}/>
+                    :
+                    <StudyCard key={study.id} study={study} handleDeleteStudiesState={handleDeleteStudiesState} setStudyEdit={setStudyEdit}/>
+                    ) : null}
                 </div>
             </div>
             : <h5>User Not Found</h5>}
