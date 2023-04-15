@@ -1,7 +1,7 @@
 class User < ApplicationRecord
     include Rails.application.routes.url_helpers
 
-    has_many :studies
+    has_many :studies, -> {order(created_at: :DESC)}
     has_many :locations, through: :studies
 
     has_one_attached :avatar
