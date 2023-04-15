@@ -19,7 +19,7 @@ function EditStudyForm({study, setStudyEdit, onStudyEdit}){
         }
 
         for(const img of imgsToPurge){
-            formData.append("images_to_purge[]", img)
+            formData.append("images_to_purge[]", img.id)
         }
 
         fetch(`/studies/${study.id}`, {
