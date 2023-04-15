@@ -3,7 +3,9 @@ import { useState } from "react"
 function EditStudyForm({study, setStudyEdit, onStudyEdit}){
 
     const [caption, setCaption] = useState(study.caption)
+    const [images, setImages] = useState(study.attached_images)
     const [files, setFiles] = useState('')
+    const [imgsToPurge, setImgsToPurge] = useState([])
 
     function handleStudyEditSubmit(e){
         e.preventDefault()
@@ -11,7 +13,7 @@ function EditStudyForm({study, setStudyEdit, onStudyEdit}){
         const formData = new FormData()
 
         formData.append("caption", caption)
-        
+
         for(const file of files){
             formData.append("images[]", file)
         }
@@ -28,31 +30,23 @@ function EditStudyForm({study, setStudyEdit, onStudyEdit}){
                 })
             }
         })
-
-        // const patchBody = {
-        //     caption: caption
-        // }
-
-        // fetch(`/studies/${study.id}`, {
-        //         method: "PATCH",
-        //         headers: {
-        //             "Content-Type": "application/json"
-        //         },
-        //         body: JSON.stringify(patchBody)
-        //     })
-        //     .then(r => {
-        //         if(r.ok){
-        //             r.json().then(data => {
-        //                 onStudyEdit(data)
-        //                 setStudyEdit("")
-        //             })
-        //         }
-        //     })
     }
+
+    function handleImageClick(imageToDelete){
+        const purgeImages = [...imgsToPurge, imageToDelete]
+        const imgs = images.filter(image => image !== imageToDelete)
+        setImages(imgs)
+        setImgsToPurge(purgeImages)
+    }
+    console.log("images to delete:", imgsToPurge)
+    console.log("images still attached:", images)
     
     return (
         <div className="studyCard">
             <form onSubmit={(e )=> handleStudyEditSubmit(e)}>
+
+                {images.map(image => <img key={image} src={image} onClick={()=>handleImageClick(image)}/>)}
+
                 <input type="file" accept="image/*" multiple={true} onChange={(e)=>setFiles(e.target.files)}/>
 
                 <textarea value={caption} onChange={(e)=>setCaption(e.target.value)}/>
