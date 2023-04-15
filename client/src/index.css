@@ -58,3 +58,7 @@ img {
 .studyCard img {
   padding: 2px;
 }
+
+.studyEditFormImage:hover {
+  opacity: .5;
+}
