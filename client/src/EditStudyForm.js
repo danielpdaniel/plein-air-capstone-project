@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-function EditStudyForm({study, setStudyEdit}){
+function EditStudyForm({study, setStudyEdit, onStudyEdit}){
 
     const [caption, setCaption] = useState(study.caption)
 
@@ -20,7 +20,10 @@ function EditStudyForm({study, setStudyEdit}){
         })
         .then(r => {
             if(r.ok){
-                r.json().then(data => console.log(data))
+                r.json().then(data => {
+                    onStudyEdit(data)
+                    setStudyEdit("")
+                })
             }
         })
     }

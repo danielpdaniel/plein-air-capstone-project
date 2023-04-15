@@ -32,6 +32,18 @@ function UserProfile(){
         console.log(updatedStudies)
         setStudies(updatedStudies)
     }
+    
+    function handleStudyEdit(editedStudy){
+        const updatedStudies = []
+        studies.map(study =>{
+            if(study.id == editedStudy.id){
+                updatedStudies.push(editedStudy)
+            }else{
+                updatedStudies.push(study)
+            }
+        })
+        setStudies(updatedStudies)
+    }
 
     return (
         <div>
@@ -42,7 +54,7 @@ function UserProfile(){
                 <p>{pageUser.about}</p>
                 <div className="userStudies">
                     {studies ? studies.map(study => study.id === studyEdit ?
-                    <EditStudyForm key={study.id} study={study} setStudyEdit={setStudyEdit}/>
+                    <EditStudyForm key={study.id} study={study} setStudyEdit={setStudyEdit} onStudyEdit={handleStudyEdit}/>
                     :
                     <StudyCard key={study.id} study={study} handleDeleteStudiesState={handleDeleteStudiesState} setStudyEdit={setStudyEdit}/>
                     ) : null}
