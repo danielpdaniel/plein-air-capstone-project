@@ -57,7 +57,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_15_230422) do
     t.string "caption"
   end
 
+  create_table "studies_tags", id: false, force: :cascade do |t|
+    t.bigint "study_id"
+    t.bigint "tag_id"
+    t.index ["study_id"], name: "index_studies_tags_on_study_id"
+    t.index ["tag_id"], name: "index_studies_tags_on_tag_id"
+  end
+
   create_table "tags", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
