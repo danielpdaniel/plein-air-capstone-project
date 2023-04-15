@@ -19,6 +19,7 @@ function StudyCard({ study, handleDeleteStudiesState, setStudyEdit }){
             }
         })
     }
+
 return (
     <div className="studyCard">
         {study.user_id == user.id ? 
@@ -31,7 +32,7 @@ return (
             </button>
             
         </div> : null}
-        {study.attached_images.map(image =>  <img key={image} src={image}/>)}
+        {study.attached_images.map(image =>  <img key={image.id} src={image.img_url}/>)}
         <p>{study.caption}</p>
         <p>{study.id}</p>
     </div>

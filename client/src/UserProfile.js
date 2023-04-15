@@ -45,6 +45,7 @@ function UserProfile(){
         setStudies(updatedStudies)
     }
 
+
     return (
         <div>
             {pageUser ? 
