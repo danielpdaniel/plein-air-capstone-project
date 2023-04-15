@@ -11,6 +11,10 @@ function EditStudyForm({study, setStudyEdit, onStudyEdit}){
         const formData = new FormData()
 
         formData.append("caption", caption)
+        
+        for(const file of files){
+            formData.append("images[]", file)
+        }
 
         fetch(`/studies/${study.id}`, {
             method: "PATCH",
