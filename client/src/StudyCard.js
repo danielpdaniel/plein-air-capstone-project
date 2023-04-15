@@ -1,12 +1,23 @@
 import { useContext } from "react"
 import { UserContext } from "./context/user"
 
-function StudyCard({ study }){
+function StudyCard({ study, handleDeleteStudiesState }){
     const {user} = useContext(UserContext)
 
 
-    function handleDeleteClick(e){
+    function handleDeleteClick(){
         console.log(study.id)
+        fetch(`/studies/${study.id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(r=>{
+            if(r.ok){
+                handleDeleteStudiesState(study.id)
+            }
+        })
     }
 return (
     <div className="studyCard">
