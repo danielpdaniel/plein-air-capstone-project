@@ -59,6 +59,16 @@ img {
   padding: 2px;
 }
 
+.studyEditFormImage {
+  background-color: none;
+}
+
 .studyEditFormImage:hover {
   opacity: .5;
+  /* border-inline-color: red; */
+  background-color: red;
+}
+
+.studyEditFormImageContainer {
+  filter: drop-shadow(0 0 0 red)
 }

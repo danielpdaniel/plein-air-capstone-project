@@ -50,9 +50,9 @@ function EditStudyForm({study, setStudyEdit, onStudyEdit}){
             <form onSubmit={(e )=> handleStudyEditSubmit(e)}>
 
                 {images.map(image => 
-                <div key={image.id}>
-                    <img src={image.img_url} onClick={()=>handleImageClick(image)} className="studyEditFormImage"/>
-                </div>
+                    <div key={image.id} className="studyEditFormImageContainer">
+                        <img src={image.img_url} onClick={()=>handleImageClick(image)} className="studyEditFormImage"/>
+                    </div>
                 )}
 
                 <input type="file" accept="image/*" multiple={true} onChange={(e)=>setFiles(e.target.files)}/>
