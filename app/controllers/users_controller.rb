@@ -2,7 +2,7 @@ class UsersController < ApplicationController
     include ActiveStorage::Blob::Analyzable
     rescue_from ActiveRecord::RecordInvalid, with: :invalid_user_response
     rescue_from ActiveRecord::RecordNotFound, with: :not_found_user_response
-    skip_before_action :authorize, only: [:index, :show]
+    skip_before_action :authorize, only: [:index, :show, :create]
     def index
         users = User.all
         render json: users, status: :ok

@@ -21,10 +21,15 @@ class StudiesController < ApplicationController
         end
     end
 
+    def update
+        const study = @user.studies.find_by(id: study_params[:id])
+        study&.update!()
+    end
+
     def destroy
         study = @user.studies.find_by(id: study_params[:id])
 
-        study.destroy!
+        study&.destroy!
 
         render json: [], status: :no_content
     end
