@@ -12,17 +12,21 @@ class StudiesController < ApplicationController
     end
 
     def create
-        byebug
-        # study = @user.studies.create!(location_id: 1, images: params[:images])
         study = @user.studies.create!(study_params)
-
-    
 
         if study&.valid?
             render json: study
         # else
         #     render json: {error: "Unauthorized User"}, status: :unauthorized
         end
+    end
+
+    def destroy
+        study = @user.studies.find_by(id: study_params[:id])
+
+        study.destroy!
+
+        render json: [], status: :no_content
     end
 
     private
