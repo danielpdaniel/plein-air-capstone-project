@@ -18,6 +18,10 @@ function EditStudyForm({study, setStudyEdit, onStudyEdit}){
             formData.append("images[]", file)
         }
 
+        for(const img of imgsToPurge){
+            formData.append("images_to_purge[]", img)
+        }
+
         fetch(`/studies/${study.id}`, {
             method: "PATCH",
             body: formData

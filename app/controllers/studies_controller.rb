@@ -23,6 +23,11 @@ class StudiesController < ApplicationController
 
     def update
         study = @user.studies.find_by(id: study_params[:id])
+        
+        params[:images_to_purge].each do |image|
+         byebug
+        end
+        
         study&.update!(study_params)
         render json: study, status: :accepted
     end

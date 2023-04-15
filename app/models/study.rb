@@ -11,8 +11,12 @@ class Study < ApplicationRecord
 
     def study_images_urls
         images = []
-        self.images.each do |image| 
-            images.push(rails_blob_path(image))
+        self.images.each do |image|
+            img_obj = {
+                id: image.id,
+                img_url: rails_blob_path(image)
+            } 
+            images.push(img_obj)
         end
 
         return images
