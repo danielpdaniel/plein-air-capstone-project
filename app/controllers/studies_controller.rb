@@ -22,8 +22,9 @@ class StudiesController < ApplicationController
     end
 
     def update
-        const study = @user.studies.find_by(id: study_params[:id])
-        study&.update!()
+        study = @user.studies.find_by(id: study_params[:id])
+        study&.update!(study_params)
+        render json: study, status: :accepted
     end
 
     def destroy
