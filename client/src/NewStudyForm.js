@@ -4,6 +4,7 @@ import { useState } from "react"
 
 function NewStudyForm(){
     const [files, setFiles] = useState("")
+    const [caption, setCaption] = useState("")
 
     function handleFileChange(e){
         const loadedFiles = []
@@ -34,6 +35,8 @@ function NewStudyForm(){
         // console.log(formData.getAll("images"))
 
         formData.append("location_id", 1)
+
+        formData.append("caption", caption)
        
         for (const pair of formData.entries()) {
             // if (pair[0] == "images"){
@@ -68,6 +71,7 @@ return(
     <div>
         <form onSubmit={(e)=>handleNewStudySubmit(e)}>
             <input type="file" accept="image/*" multiple={true} onChange={(e)=>setFiles(e.target.files)}/>
+            <textArea value={caption} onChange={(e) =>setCaption(e.target.value)}/>
             <input type="submit"/>
         </form>
     </div>

@@ -12,8 +12,10 @@ class StudiesController < ApplicationController
     end
 
     def create
+        byebug
+        # study = @user.studies.create!(location_id: 1, images: params[:images])
+        study = @user.studies.create!(study_params)
 
-        study = @user.studies.create!(location_id: 1, images: params[:images])
     
 
         if study&.valid?
@@ -26,7 +28,7 @@ class StudiesController < ApplicationController
     private
 
     def study_params
-        params.permit(:id, :user_id, :location_id, images: [])
+        params.permit(:id, :user_id, :location_id, :caption, images: [])
         # params.permit(:user_id, :location_id, :images)
     end
 
