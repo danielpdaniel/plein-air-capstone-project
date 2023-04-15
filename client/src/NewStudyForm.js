@@ -71,7 +71,7 @@ return(
     <div>
         <form onSubmit={(e)=>handleNewStudySubmit(e)}>
             <input type="file" accept="image/*" multiple={true} onChange={(e)=>setFiles(e.target.files)}/>
-            <textArea value={caption} onChange={(e) =>setCaption(e.target.value)}/>
+            <textarea value={caption} onChange={(e) =>setCaption(e.target.value)}/>
             <input type="submit"/>
         </form>
     </div>

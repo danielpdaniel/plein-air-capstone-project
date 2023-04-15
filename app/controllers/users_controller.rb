@@ -15,6 +15,9 @@ class UsersController < ApplicationController
 
     def create
         user = User.create!(user_params)
+        default_avatar = ActiveStorage::Blob.first
+        user&.avatar.attach(default_avatar)
+        byebug
         render json: user, status: :created
     end
 
