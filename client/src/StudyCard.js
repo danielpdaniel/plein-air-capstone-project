@@ -19,7 +19,10 @@ function StudyCard({ study, handleDeleteStudiesState, setStudyEdit }){
             }
         })
     }
-
+    console.log(study)
+if(study.tags){
+    console.log(study.tags)
+}
 return (
     <div className="studyCard">
         {study.user_id == user.id ? 
@@ -34,7 +37,7 @@ return (
         </div> : null}
         {study.attached_images.map(image =>  <img key={image.id} src={image.img_url}/>)}
         <p>{study.caption}</p>
-        <p>{study.id}</p>
+        {study.tags ? study.tags.map(tag => <p key={tag.id} className="studyTags">#{tag.name}</p>) : null}
     </div>
 )
 }
