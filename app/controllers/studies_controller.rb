@@ -23,7 +23,7 @@ class StudiesController < ApplicationController
 
     def update
         study = @user.studies.find_by(id: study_params[:id])
-        
+        byebug
         params[:images_to_purge].each do |image|
          study.images.find_by(id: image).purge
         end
