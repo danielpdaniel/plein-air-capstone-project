@@ -33,3 +33,28 @@ img {
   max-width: 200px;
   max-height: 200px;
 }
+
+.userStudies {
+  /* width: 70%; */
+  display: block;
+  float: left;
+  background-color: var(--secondaryColor);
+  border-radius: 7px;
+  padding: 2%;
+  margin: 2%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.studyCard {
+  background-color: var(--mainColor);
+  padding: 5%;
+  padding-top: 3%;
+  margin: 5%;
+  border: 2%;
+  border-radius: 7px;
+}
+
+.studyCard img {
+  padding: 2px;
+}
