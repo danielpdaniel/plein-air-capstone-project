@@ -12,7 +12,7 @@ class StudiesController < ApplicationController
     end
 
     def create
-        byebug
+        
         study = @user.studies.create!(study_params)
 
         if study&.valid?
@@ -32,10 +32,16 @@ class StudiesController < ApplicationController
     end
 
     def update
+    #  byebug
         study = @user.studies.find_by(id: study_params[:id])
     
-        params[:images_to_purge].each do |image|
-         study.images.find_by(id: image).purge
+        params[:images_to_delete]&.each do |image_id|
+         study.images.find_by(id: image_id).purge
+        end
+
+        params[:tags_to_delete]&.each do |tag_id|
+            study_tag = study.studies_tags.find_by(tag_id: tag_id)
+            study_tag&.destroy!
         end
         
         study&.update!(study_params)

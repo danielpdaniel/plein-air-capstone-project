@@ -24,6 +24,10 @@ function EditStudyForm({study, setStudyEdit, onStudyEdit}){
             formData.append("images_to_purge[]", img.id)
         }
 
+        for(const tag of tagsToDelete){
+            formData.append("tags_to_delete[]", tag.id)
+        }
+
         fetch(`/studies/${study.id}`, {
             method: "PATCH",
             body: formData
