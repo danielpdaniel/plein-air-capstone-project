@@ -1,6 +1,10 @@
-import { useLoadScript } from "@react-google-maps/api"
+import { GoogleMap, useLoadScript } from "@react-google-maps/api"
 
 function Map(){
+
+    const { isLoaded } = useLoadScript({
+        googleMapsApiKey: process.env.REACT_APP_PLEIN_AIR_MAP_GOOGLE_MAPS_API_KEY
+    });
 
 
     // function initMap(): void {
@@ -24,6 +28,9 @@ function Map(){
     return(
         <div>
             <h3>Welcome to the Map!</h3>
+            {isLoaded ? <GoogleMap zoom={10} center={{lat: 44, lng: -80}} mapContainerClassName="map-container"></GoogleMap>
+            :
+            <h3>Loading...</h3>}
         </div>
     )
 }
