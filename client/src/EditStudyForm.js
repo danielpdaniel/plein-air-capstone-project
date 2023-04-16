@@ -73,7 +73,7 @@ function EditStudyForm({study, setStudyEdit, onStudyEdit}){
                 <textarea value={caption} onChange={(e)=>setCaption(e.target.value)}/>
                 <input type="submit" value="Save Changes"/>
                 <div>
-                    {tags ? tags.map(tag => <button key={tag.name} className="studyEditTags" onClick={()=>handleTagClick(tag)}>{tag.name}</button>) : null}
+                    {tags ? tags.map(tag => <button key={tag.name} className="studyEditTags" onClick={()=>handleTagClick(tag)}>{tag.name}  X</button>) : null}
                 </div>
             </form>
             <button onClick={()=>setStudyEdit("")}>Cancel</button>
