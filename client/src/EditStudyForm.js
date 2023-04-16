@@ -60,8 +60,12 @@ function EditStudyForm({study, setStudyEdit, onStudyEdit}){
     function handleTagClick(tagToDelete){
         const deleteTags = [...tagsToDelete, tagToDelete]
         const updatedTags = tags.filter(tag => tag !== tagToDelete)
+        const updatedNewTags = newTags.filter(tag => tag !== tagToDelete.name)
         setTags(updatedTags)
         setTagsToDelete(deleteTags)
+        setNewTags(updatedNewTags)
+
+        console.log(updatedNewTags)
     }
 
     function handleAddTag(e){
