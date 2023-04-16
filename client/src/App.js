@@ -7,6 +7,7 @@ import Home from './Home';
 import NavBar from './NavBar';
 import { UserProvider } from './context/user';
 import UserProfile from './UserProfile';
+import Map from './Map';
 
 function App() {
   const [count, setCount] = useState("")
@@ -60,6 +61,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<LoginSignup/>}/>
           <Route path="/users/:id" element={<UserProfile/>}/>
+          <Route path="/map" element={<Map/>}/>
           <Route path="/" element={<Home/>}/>
         </Routes>
     </UserProvider>
