@@ -1,6 +1,6 @@
-import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api"
+import { GoogleMap, Map, Marker, useLoadScript } from "@react-google-maps/api"
 
-function Map(){
+function PleinAirMap(){
 
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_PLEIN_AIR_MAP_GOOGLE_MAPS_API_KEY
@@ -32,7 +32,8 @@ function Map(){
             <GoogleMap 
             zoom={10} 
             center={{lat: 44, lng: -80}} 
-            mapContainerClassName="map-container">
+            mapContainerClassName="map-container"
+            mapId='c2c10bd1417e4b9c'>
                 <Marker position={{lat: 44, lng: -80}}/>
             </GoogleMap>
             :
@@ -40,4 +41,4 @@ function Map(){
         </div>
     )
 }
-export default Map
+export default PleinAirMap
