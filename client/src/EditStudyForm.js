@@ -67,23 +67,27 @@ function EditStudyForm({study, setStudyEdit, onStudyEdit}){
     function handleAddTag(e){
         e.preventDefault()
 
-        tags.forEach(tag =>{
-           if(tag.name === currentTag){
-            setCurrentTag("")
-            return
-           }else{
-            setNewTags([...newTags, currentTag])
-            setTags([...tags, {name: currentTag}])
-            setCurrentTag("")
-           }
-        })
-        // if(!newTags.includes(currentTag)){
+        // tags.forEach(tag =>{
+        //    if(tag.name === currentTag){
+        //     console.log(tag.name, currentTag)
+        //     setCurrentTag("")
+        //     return currentTag
+        //    }else{
         //     setNewTags([...newTags, currentTag])
         //     setTags([...tags, {name: currentTag}])
         //     setCurrentTag("")
-        // }else{
-        //     setCurrentTag("")
-        // }
+        //    }
+        // })
+
+        const tagNames = tags.map(tag => tag.name)
+
+        if(!tagNames.includes(currentTag)){
+            setNewTags([...newTags, currentTag])
+            setTags([...tags, {name: currentTag}])
+            setCurrentTag("")
+        }else{
+            setCurrentTag("")
+        }
     }
     // console.log(newTags)
     // console.log(caption)
