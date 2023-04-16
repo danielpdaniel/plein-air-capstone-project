@@ -16,7 +16,7 @@ class StudiesController < ApplicationController
         study = @user.studies.create!(study_params)
 
         if study&.valid?
-            params[:tags].each do |tag|
+            params[:tags]&.each do |tag|
                 tag_record = Tag.find_by(name: tag)
                 if tag_record
                     study.studies_tags.create!(study_id: study.id, tag_id: tag_record.id)
@@ -42,6 +42,15 @@ class StudiesController < ApplicationController
         params[:tags_to_delete]&.each do |tag_id|
             study_tag = study.studies_tags.find_by(tag_id: tag_id)
             study_tag&.destroy!
+        end
+
+        params[:tags]&.each do |tag|
+            tag_record = Tag.find_by(name: tag)
+            if tag_record
+                study.studies_tags.create!(study_id: study.id, tag_id: tag_record.id)
+            else
+                study.tags.create!(name: tag)
+            end
         end
         
         study&.update!(study_params)
