@@ -3,7 +3,9 @@ class Study < ApplicationRecord
 
     belongs_to :user
     belongs_to :location
-    has_and_belongs_to_many :tags
+    
+    has_many :studies_tags
+    has_many :tags, through: :studies_tags
 
     has_many_attached :images
 

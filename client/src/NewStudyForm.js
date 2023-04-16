@@ -31,6 +31,13 @@ function NewStudyForm(){
         for(const file of files){
             formData.append("images[]", file)
         }
+
+        for(const tag of tags){
+            formData.append("tags[]", tag)
+        }
+        
+        // const testTags = ["wee", "woo"]
+        // formData.append("tags", testTags)
         
         // formData.set("images", formData.getAll("images"))
 

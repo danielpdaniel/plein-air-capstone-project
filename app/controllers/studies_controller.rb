@@ -12,10 +12,20 @@ class StudiesController < ApplicationController
     end
 
     def create
+        byebug
         study = @user.studies.create!(study_params)
 
         if study&.valid?
-            render json: study
+            params[:tags].each do |tag|
+                tag_record = Tag.find_by(name: tag)
+                if tag_record
+                    
+                else
+                    study.tags.create!(name: tag)
+                end
+            end
+
+            render json: study, status: :accepted
         # else
         #     render json: {error: "Unauthorized User"}, status: :unauthorized
         end
@@ -23,7 +33,7 @@ class StudiesController < ApplicationController
 
     def update
         study = @user.studies.find_by(id: study_params[:id])
-        byebug
+    
         params[:images_to_purge].each do |image|
          study.images.find_by(id: image).purge
         end

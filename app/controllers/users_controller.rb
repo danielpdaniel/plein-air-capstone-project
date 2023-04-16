@@ -9,9 +9,10 @@ class UsersController < ApplicationController
     end
 
     def show
+        byebug
         user = User.find_by!(id: user_params[:id])
 
-        render json: user, status: :ok, include: ['tags', 'studies.tags']
+        render json: user, status: :ok
     end
 
     def create

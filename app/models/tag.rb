@@ -1,3 +1,6 @@
 class Tag < ApplicationRecord
-    has_and_belongs_to_many :studies
+    has_many :studies_tags
+    has_many :studies, through: :studies_tags
+
+    validates :name, uniqueness: true
 end
