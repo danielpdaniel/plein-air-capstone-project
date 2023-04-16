@@ -3,11 +3,15 @@ import { useState } from "react"
 function EditStudyForm({study, setStudyEdit, onStudyEdit}){
 
     const [caption, setCaption] = useState(study.caption)
+
     const [images, setImages] = useState(study.attached_images)
-    const [tags, setTags] = useState(study.tags)
-    const [tagsToDelete, setTagsToDelete] = useState([])
     const [files, setFiles] = useState('')
     const [imgsToPurge, setImgsToPurge] = useState([])
+
+    const [tags, setTags] = useState(study.tags)
+    const [currentTag, setCurrentTag] = useState("")
+    const [newTags, setNewTags] = useState([])
+    const [tagsToDelete, setTagsToDelete] = useState([])
 
     function handleStudyEditSubmit(e){
         e.preventDefault()
@@ -55,6 +59,30 @@ function EditStudyForm({study, setStudyEdit, onStudyEdit}){
         setTags(updatedTags)
         setTagsToDelete(deleteTags)
     }
+
+    function handleAddTag(e){
+        e.preventDefault()
+
+        tags.forEach(tag =>{
+           if(tag.name === currentTag){
+            setCurrentTag("")
+            return
+           }else{
+            setNewTags([...newTags, currentTag])
+            setTags([...tags, {name: currentTag}])
+            setCurrentTag("")
+           }
+        })
+        // if(!newTags.includes(currentTag)){
+        //     setNewTags([...newTags, currentTag])
+        //     setTags([...tags, {name: currentTag}])
+        //     setCurrentTag("")
+        // }else{
+        //     setCurrentTag("")
+        // }
+    }
+    // console.log(newTags)
+    // console.log(caption)
     // console.log("images to delete:", imgsToPurge)
     // console.log("images still attached:", images)
     
@@ -71,11 +99,16 @@ function EditStudyForm({study, setStudyEdit, onStudyEdit}){
                 <input type="file" accept="image/*" multiple={true} onChange={(e)=>setFiles(e.target.files)}/>
 
                 <textarea value={caption} onChange={(e)=>setCaption(e.target.value)}/>
-                <input type="submit" value="Save Changes"/>
+                {/* <input type="submit" value="Save Changes"/> */}
                 <div>
                     {tags ? tags.map(tag => <button key={tag.name} className="studyEditTags" onClick={()=>handleTagClick(tag)}>{tag.name}  X</button>) : null}
                 </div>
             </form>
+            <form onSubmit={(e) => handleAddTag(e)}>
+                <input type="text" value={currentTag} onChange={(e)=>setCurrentTag(e.target.value)} placeholder="add tags to your post!"/>
+            </form>
+
+            <button onClick={(e) => handleStudyEditSubmit(e)}>Save Changes</button>
             <button onClick={()=>setStudyEdit("")}>Cancel</button>
         </div>
     )
