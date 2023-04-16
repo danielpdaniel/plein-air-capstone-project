@@ -19,7 +19,7 @@ class StudiesController < ApplicationController
             params[:tags].each do |tag|
                 tag_record = Tag.find_by(name: tag)
                 if tag_record
-                    
+                    study.studies_tags.create!(study_id: study.id, tag_id: tag_record.id)
                 else
                     study.tags.create!(name: tag)
                 end
