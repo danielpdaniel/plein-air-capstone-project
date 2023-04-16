@@ -1,4 +1,4 @@
-import { GoogleMap, useLoadScript } from "@react-google-maps/api"
+import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api"
 
 function Map(){
 
@@ -28,7 +28,13 @@ function Map(){
     return(
         <div>
             <h3>Welcome to the Map!</h3>
-            {isLoaded ? <GoogleMap zoom={10} center={{lat: 44, lng: -80}} mapContainerClassName="map-container"></GoogleMap>
+            {isLoaded ? 
+            <GoogleMap 
+            zoom={10} 
+            center={{lat: 44, lng: -80}} 
+            mapContainerClassName="map-container">
+                <Marker position={{lat: 44, lng: -80}}/>
+            </GoogleMap>
             :
             <h3>Loading...</h3>}
         </div>
