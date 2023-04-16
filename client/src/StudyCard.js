@@ -34,7 +34,7 @@ return (
         </div> : null}
         {study.attached_images.map(image =>  <img key={image.id} src={image.img_url}/>)}
         <p>{study.caption}</p>
-        <p>{study.tags ? study.tags.map(tag => `#${tag.name}, `): null}</p>
+        <p>{study.tags ? study.tags.map(tag => tag !== study.tags[study.tags.length - 1] ? `#${tag.name}, ` : `#${tag.name}`): null}</p>
         {/* {study.tags ? study.tags.map(tag => <p key={tag.id} className="studyTags">#{tag.name}</p>) : null} */}
     </div>
 )
