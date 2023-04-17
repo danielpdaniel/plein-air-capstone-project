@@ -43,8 +43,6 @@ function NewStudyForm({ latLng }){
 
         // console.log(formData.getAll("images"))
 
-        formData.append("location_id", 1)
-
         formData.append("caption", caption)
 
         if(latLng){
