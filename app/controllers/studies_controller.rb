@@ -12,7 +12,6 @@ class StudiesController < ApplicationController
     end
 
     def create
-        byebug
         study = @user.studies.create!(study_params)
 
         if study&.valid?
@@ -30,17 +29,13 @@ class StudiesController < ApplicationController
                 latitude = params[:latLng].slice(1..17).to_f
                 longitude =params[:latLng].slice(20..37).to_f
                location = Location.create!(lat_lng: params[:latLng], study_id: study.id, latitude: latitude, longitude: longitude)
-                # Location.create(study_id: study.id, latitude: params[:latLng][])
             end
 
             render json: study, status: :accepted
-        # else
-        #     render json: {error: "Unauthorized User"}, status: :unauthorized
         end
     end
 
     def update
-    #  byebug
         study = @user.studies.find_by(id: study_params[:id])
     
         params[:images_to_delete]&.each do |image_id|
