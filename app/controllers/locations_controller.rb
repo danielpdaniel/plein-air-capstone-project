@@ -1,10 +1,16 @@
 class LocationsController < ApplicationController
 rescue_from ActiveRecord::RecordInvalid, with: :invalid_location_response
-    
+
+    def index
+        locations = Location.all
+        render json: locations, status: :ok
+    end
+
     def create
         location = Location.create!(location_params)
         render json: location, status: :created
     end
+
 
     private
 

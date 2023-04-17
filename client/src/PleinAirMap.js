@@ -10,6 +10,10 @@ function PleinAirMap(){
     });
 
     useEffect(()=>{
+        
+    }, [])
+
+    useEffect(()=>{
         console.log(isLoaded)
     }, [isLoaded])
 
@@ -45,7 +49,7 @@ function PleinAirMap(){
                 disableDefaultUI: true,
                 clickableIcons: false
             }}>
-                <Marker className="testMarker" position={{lat: 44, lng: -80}}/>
+                {/* <Marker className="testMarker" position={{lat: 44, lng: -80}}/> */}
             </GoogleMap>
             :
             <h3>Loading...</h3>}
