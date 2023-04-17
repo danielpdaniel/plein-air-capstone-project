@@ -1,5 +1,5 @@
 import { GoogleMap, Marker, useLoadScript, InfoWindow } from "@react-google-maps/api"
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import NewStudyForm from "./NewStudyForm";
 import StudyCard from "./StudyCard";
 
@@ -8,6 +8,8 @@ function PleinAirMap(){
     const [markers, setMarkers] = useState([])
     const [selectedMarker, setSelectedMarker] = useState("")
     const [latLng, setLatLng] = useState("")
+
+    const center = useMemo(() => ({lat: 44, lng: -80}), [])
     
 
     const { isLoaded } = useLoadScript({
@@ -35,7 +37,7 @@ function PleinAirMap(){
             {isLoaded ? 
             <GoogleMap 
             zoom={10} 
-            center={{lat: 44, lng: -80}} 
+            center={center} 
             mapContainerClassName="map-container"
             onClick={(e) => setLatLng(e.latLng)}
             options={{
