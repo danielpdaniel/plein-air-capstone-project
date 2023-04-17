@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { UserContext } from "./context/user"
 
-function StudyCard({ study, handleDeleteStudiesState, setStudyEdit }){
+function StudyCard({ study, handleDeleteStudiesState, setStudyEdit, studyClassName}){
     const {user} = useContext(UserContext)
 
 
@@ -21,7 +21,7 @@ function StudyCard({ study, handleDeleteStudiesState, setStudyEdit }){
     }
 
 return (
-    <div className="studyCard">
+    <div className={studyClassName}>
         {study.user_id == user.id ? 
         <div>
             <button onClick={()=>setStudyEdit(study.id)}>

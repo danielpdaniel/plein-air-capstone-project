@@ -59,6 +59,20 @@ body {
   padding: 2px;
 }
 
+.mapStudyCard {
+  /* background-color: var(--mainColor);
+  padding: 5%;
+  padding-top: 3%;
+  margin: 5%;
+  border: 2%;
+  border-radius: 7px; */
+}
+
+.mapStudyCard img {
+  max-width: 200px;
+  padding: 2px
+}
+
 .studyEditFormImage {
   background-color: none;
 }
@@ -86,3 +100,8 @@ body {
   width: 100%;
   height: 100vh;
 }
+
+/* .studyInfoWindow {
+  max-width: 100;
+  background-color: red
+} */

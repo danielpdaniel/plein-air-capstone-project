@@ -2,7 +2,7 @@ class Study < ApplicationRecord
     include Rails.application.routes.url_helpers
 
     belongs_to :user
-    has_one :location
+    has_one :location, dependent: :destroy
     
     has_many :studies_tags
     has_many :tags, through: :studies_tags

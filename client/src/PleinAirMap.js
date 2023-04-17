@@ -29,6 +29,8 @@ function PleinAirMap(){
     function handleMarkerClick(marker){
         setSelectedMarker(marker)
     }
+console.log(selectedMarker)
+    
 
     return(
         <div>
@@ -41,7 +43,7 @@ function PleinAirMap(){
             onClick={(e) => setLatLng(e.latLng)}
             options={{
                 mapId: 'c2c10bd1417e4b9c',
-                // disableDefaultUI: true,
+                disableDefaultUI: true,
                 clickableIcons: false
             }}>
                 {markers ? markers.map(marker => 
@@ -56,9 +58,11 @@ function PleinAirMap(){
                     : null}
                 {selectedMarker ? 
                 <InfoWindow 
+                className="studyInfoWindow"
+                maxWidth={10}
                 position={{lat: selectedMarker.latitude + .03, lng: selectedMarker.longitude}}
                 onCloseClick={()=>{setSelectedMarker("")}}>
-                    <StudyCard study={selectedMarker.study}/>
+                    <StudyCard study={selectedMarker.study} studyClassName="mapStudyCard"/>
                 </InfoWindow>
                 : null}
                 {latLng ? 

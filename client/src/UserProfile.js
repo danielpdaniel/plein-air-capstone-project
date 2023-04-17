@@ -58,7 +58,7 @@ function UserProfile(){
                     {studies ? studies.map(study => study.id === studyEdit ?
                     <EditStudyForm key={study.id} study={study} setStudyEdit={setStudyEdit} onStudyEdit={handleStudyEdit}/>
                     :
-                    <StudyCard key={study.id} study={study} handleDeleteStudiesState={handleDeleteStudiesState} setStudyEdit={setStudyEdit}/>
+                    <StudyCard key={study.id} study={study} handleDeleteStudiesState={handleDeleteStudiesState} setStudyEdit={setStudyEdit} studyClassName="studyCard"/>
                     ) : null}
                 </div>
             </div>
