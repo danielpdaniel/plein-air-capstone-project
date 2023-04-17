@@ -1,5 +1,6 @@
 class LocationsController < ApplicationController
 rescue_from ActiveRecord::RecordInvalid, with: :invalid_location_response
+skip_before_action :authorize, only: [:index]
 
     def index
         locations = Location.all
