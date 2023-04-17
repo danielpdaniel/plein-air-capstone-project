@@ -2,7 +2,7 @@ import { useState } from "react"
 
 
 
-function NewStudyForm(){
+function NewStudyForm({ latLng }){
     const [files, setFiles] = useState("")
     const [caption, setCaption] = useState("")
     const [tags, setTags] = useState([])
@@ -46,6 +46,10 @@ function NewStudyForm(){
         formData.append("location_id", 1)
 
         formData.append("caption", caption)
+
+        if(latLng){
+            formData.append("latLng", latLng)
+        }
        
         // for (const pair of formData.entries()) {
         //     // if (pair[0] == "images"){

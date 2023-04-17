@@ -12,7 +12,7 @@ class StudiesController < ApplicationController
     end
 
     def create
-        
+        byebug
         study = @user.studies.create!(study_params)
 
         if study&.valid?

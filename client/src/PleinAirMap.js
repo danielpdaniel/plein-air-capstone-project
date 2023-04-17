@@ -1,5 +1,6 @@
 import { GoogleMap, Marker, useLoadScript, InfoWindow } from "@react-google-maps/api"
 import { useState, useEffect } from "react";
+import NewStudyForm from "./NewStudyForm";
 
 function PleinAirMap(){
 
@@ -19,7 +20,7 @@ function PleinAirMap(){
             }
         })
     }, [])
-console.log(markers)
+
     // useEffect(()=>{
     //     console.log(isLoaded)
     // }, [isLoaded])
@@ -59,7 +60,7 @@ console.log(markers)
             }}>
                 {/* <Marker className="testMarker" position={{lat: 44, lng: -80}}/> */}
                 {markers ? markers.map(marker => <Marker key={marker.longitude+marker.latitude} position={{lat: marker.latitude, lng: marker.longitude}} className="locationMarker"/>) : null}
-                {latLng ? <InfoWindow position={latLng}><div>Hehe :3c</div></InfoWindow> : null}
+                {latLng ? <InfoWindow position={latLng}><NewStudyForm latLng={latLng}/></InfoWindow> : null}
             </GoogleMap>
             :
             <h3>Loading...</h3>}
