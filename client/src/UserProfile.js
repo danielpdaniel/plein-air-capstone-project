@@ -14,6 +14,7 @@ function UserProfile(){
     useEffect(()=>{
         if(params.id == user.id){
             setPageUser(user)
+            setStudies(user.studies)
         }else{
         fetch(`/users/${params.id}`)
         .then(r=>{
