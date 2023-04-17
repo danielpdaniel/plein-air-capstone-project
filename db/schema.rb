@@ -49,6 +49,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_17_004721) do
     t.datetime "updated_at", null: false
     t.float "longitude"
     t.float "latitude"
+    t.integer "study_id"
   end
 
   create_table "studies", force: :cascade do |t|
