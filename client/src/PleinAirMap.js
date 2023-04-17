@@ -44,9 +44,10 @@ function PleinAirMap(){
                 caption: study.caption
             }
         }
-        console.log(markers[0])
-        console.log(newMarker)
+        // console.log(markers[0])
+        // console.log(newMarker)
         setMarkers([...markers, newMarker])
+        setLatLng("")
     }
 
     function handleDeleteStudyState(studyId){
