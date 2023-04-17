@@ -29,7 +29,7 @@ body {
   margin: 10px;
 }
 
-img {
+.studyImgs {
   max-width: 200px;
   max-height: 200px;
 }

@@ -104,7 +104,7 @@ function EditStudyForm({study, setStudyEdit, onStudyEdit}){
 
                 {images.map(image => 
                     <div key={image.id} className="studyEditFormImageContainer">
-                        <img src={image.img_url} onClick={()=>handleImageClick(image)} className="studyEditFormImage"/>
+                        <img src={image.img_url} onClick={()=>handleImageClick(image)} className="studyImgs"/>
                     </div>
                 )}
 
