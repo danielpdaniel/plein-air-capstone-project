@@ -30,12 +30,31 @@ function PleinAirMap(){
         setSelectedMarker(marker)
     }
 
+    function handleNewStudyState(study){
+        const location = study.location
+        const newMarker = {
+            id: location.id,
+            lat_lng: location.lat_lng,
+            latitude: location.latitude,
+            longitude: location.longitude,
+            study: {
+                id: study.id,
+                user_id: study.user_id,
+                attached_images: study.attached_images,
+                caption: study.caption
+            }
+        }
+        console.log(markers[0])
+        console.log(newMarker)
+        setMarkers([...markers, newMarker])
+    }
+
     function handleDeleteStudyState(studyId){
         setSelectedMarker("")
         const updatedMarkers = markers.filter(marker => marker.study.id !== studyId)
         setMarkers(updatedMarkers)
     }
-console.log(selectedMarker)
+
     
 
     return(
@@ -77,7 +96,7 @@ console.log(selectedMarker)
                 : null}
                 {latLng ? 
                 <InfoWindow position={latLng}>
-                    <NewStudyForm latLng={latLng}/>
+                    <NewStudyForm latLng={latLng} onNewStudyState={handleNewStudyState}/>
                 </InfoWindow> : null}
             </GoogleMap>
             :

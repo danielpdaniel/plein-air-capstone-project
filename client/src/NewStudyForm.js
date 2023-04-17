@@ -2,7 +2,7 @@ import { useState } from "react"
 
 
 
-function NewStudyForm({ latLng }){
+function NewStudyForm({ latLng, onNewStudyState }){
     const [files, setFiles] = useState("")
     const [caption, setCaption] = useState("")
     const [tags, setTags] = useState([])
@@ -72,7 +72,11 @@ function NewStudyForm({ latLng }){
         })
         .then(r => {
             if(r.ok){
-                r.json().then(data=>console.log(data))
+                r.json().then(data=>{
+                    if(onNewStudyState){
+                        console.log("new study!");
+                        onNewStudyState(data)
+                }})
             }else{
                 r.json().then(data=>console.log(data))
             }
