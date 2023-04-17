@@ -1,10 +1,12 @@
 import { GoogleMap, Marker, useLoadScript, InfoWindow } from "@react-google-maps/api"
 import { useState, useEffect } from "react";
 import NewStudyForm from "./NewStudyForm";
+import StudyCard from "./StudyCard";
 
 function PleinAirMap(){
 
     const [markers, setMarkers] = useState([])
+    const [selectedMarker, setSelectedMarker] = useState("")
     const [latLng, setLatLng] = useState("")
     
 
@@ -22,30 +24,9 @@ function PleinAirMap(){
         })}
     }, [isLoaded])
 
-    console.log(markers)
-
-    // useEffect(()=>{
-    //     console.log(isLoaded)
-    // }, [isLoaded])
-
-
-    // function initMap(): void {
-    //     new google.maps.Map(
-    //       document.getElementById("map") as HTMLElement,
-    //       {
-    //         mapId: "8e0a97af9386fef",
-    //         center: { lat: 48.85, lng: 2.35 },
-    //         zoom: 12,
-    //       } as google.maps.MapOptions
-    //     );
-    //   }
-      
-    //   declare global {
-    //     interface Window {
-    //       initMap: () => void;
-    //     }
-    //   }
-    //   window.initMap = initMap;
+    function handleMarkerClick(marker){
+        setSelectedMarker(marker)
+    }
 
     return(
         <div>
@@ -59,12 +40,30 @@ function PleinAirMap(){
             onClick={(e) => setLatLng(e.latLng)}
             options={{
                 mapId: 'c2c10bd1417e4b9c',
-                disableDefaultUI: true,
+                // disableDefaultUI: true,
                 clickableIcons: false
             }}>
-                {/* <Marker className="testMarker" position={{lat: 44, lng: -80}}/> */}
-                {markers ? markers.map(marker => <Marker key={marker.lat_lng} position={{lat: marker.latitude, lng: marker.longitude}} className="locationMarker"/>) : null}
-                {latLng ? <InfoWindow position={latLng}><NewStudyForm latLng={latLng}/></InfoWindow> : null}
+                {markers ? markers.map(marker => 
+                <Marker key={marker.lat_lng} position={{lat: marker.latitude, lng: marker.longitude}} className="locationMarker" onClick={()=>handleMarkerClick(marker)}>
+                    {/* {<InfoWindow 
+                    // position={{lat: marker.latitude + .03, lng: marker.longitude}}
+                    position={selectedMarker.position}
+                    >
+                        <div>hiii</div>
+                    </InfoWindow>} */}
+                </Marker>) 
+                    : null}
+                {selectedMarker ? 
+                <InfoWindow 
+                position={{lat: selectedMarker.latitude + .03, lng: selectedMarker.longitude}}
+                onCloseClick={()=>{setSelectedMarker("")}}>
+                    <StudyCard study={selectedMarker.study}/>
+                </InfoWindow>
+                : null}
+                {latLng ? 
+                <InfoWindow position={latLng}>
+                    <NewStudyForm latLng={latLng}/>
+                </InfoWindow> : null}
             </GoogleMap>
             :
             <h3>Loading...</h3>}
