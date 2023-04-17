@@ -13,13 +13,16 @@ function PleinAirMap(){
     });
 
     useEffect(()=>{
+        if(isLoaded){
         fetch("/locations")
         .then(r => {
             if(r.ok){
                 r.json().then(data => setMarkers(data))
             }
-        })
-    }, [])
+        })}
+    }, [isLoaded])
+
+    console.log(markers)
 
     // useEffect(()=>{
     //     console.log(isLoaded)
@@ -47,6 +50,7 @@ function PleinAirMap(){
     return(
         <div>
             <h3>Welcome to the Map!</h3>
+            {markers ? markers.map(marker => <p>{marker.lat_lng}</p>): null}
             {isLoaded ? 
             <GoogleMap 
             zoom={10} 
