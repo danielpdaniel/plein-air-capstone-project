@@ -1,9 +1,11 @@
-import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api"
+import { GoogleMap, Marker, useLoadScript, InfoWindow } from "@react-google-maps/api"
 import { useState, useEffect } from "react";
 
 function PleinAirMap(){
 
     const [markers, setMarkers] = useState([])
+    const [latLng, setLatLng] = useState("")
+    
 
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_PLEIN_AIR_MAP_GOOGLE_MAPS_API_KEY
@@ -49,6 +51,7 @@ console.log(markers)
             zoom={10} 
             center={{lat: 44, lng: -80}} 
             mapContainerClassName="map-container"
+            onClick={(e) => setLatLng(e.latLng)}
             options={{
                 mapId: 'c2c10bd1417e4b9c',
                 disableDefaultUI: true,
@@ -56,6 +59,7 @@ console.log(markers)
             }}>
                 {/* <Marker className="testMarker" position={{lat: 44, lng: -80}}/> */}
                 {markers ? markers.map(marker => <Marker key={marker.longitude+marker.latitude} position={{lat: marker.latitude, lng: marker.longitude}} className="locationMarker"/>) : null}
+                {latLng ? <InfoWindow position={latLng}><div>Hehe :3c</div></InfoWindow> : null}
             </GoogleMap>
             :
             <h3>Loading...</h3>}
