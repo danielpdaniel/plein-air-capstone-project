@@ -12,7 +12,7 @@ class StudiesController < ApplicationController
     end
 
     def create
-        byebug
+        # byebug
         study = @user.studies.create!(study_params)
 
         if study&.valid?
@@ -27,7 +27,7 @@ class StudiesController < ApplicationController
             end
 
             if params[:latLng]
-                byebug
+               location = Location.create!(lat_lng: params[:latLng], study_id: study.id)
                 # Location.create(study_id: study.id, latitude: params[:latLng][])
             end
 
@@ -74,7 +74,7 @@ class StudiesController < ApplicationController
     private
 
     def study_params
-        params.permit(:id, :user_id, :location_id, :caption, images: [])
+        params.permit(:id, :user_id, :caption, images: [])
         # params.permit(:user_id, :location_id, :images)
     end
 

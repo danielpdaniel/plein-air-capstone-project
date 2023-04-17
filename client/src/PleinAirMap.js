@@ -59,7 +59,7 @@ function PleinAirMap(){
                 clickableIcons: false
             }}>
                 {/* <Marker className="testMarker" position={{lat: 44, lng: -80}}/> */}
-                {markers ? markers.map(marker => <Marker key={marker.longitude+marker.latitude} position={{lat: marker.latitude, lng: marker.longitude}} className="locationMarker"/>) : null}
+                {markers ? markers.map(marker => <Marker key={marker.lat_lng} position={marker.lat_lng} className="locationMarker"/>) : null}
                 {latLng ? <InfoWindow position={latLng}><NewStudyForm latLng={latLng}/></InfoWindow> : null}
             </GoogleMap>
             :
