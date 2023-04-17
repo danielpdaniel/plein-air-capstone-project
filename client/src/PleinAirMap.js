@@ -96,7 +96,7 @@ function PleinAirMap(){
                 </InfoWindow>
                 : null}
                 {latLng ? 
-                <InfoWindow position={latLng}>
+                <InfoWindow position={latLng} onCloseClick={()=>setLatLng("")}>
                     <NewStudyForm latLng={latLng} onNewStudyState={handleNewStudyState}/>
                 </InfoWindow> : null}
             </GoogleMap>
