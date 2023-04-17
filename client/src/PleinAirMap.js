@@ -10,12 +10,17 @@ function PleinAirMap(){
     });
 
     useEffect(()=>{
-        
+        fetch("/locations")
+        .then(r => {
+            if(r.ok){
+                r.json().then(data => setMarkers(data))
+            }
+        })
     }, [])
-
-    useEffect(()=>{
-        console.log(isLoaded)
-    }, [isLoaded])
+console.log(markers)
+    // useEffect(()=>{
+    //     console.log(isLoaded)
+    // }, [isLoaded])
 
 
     // function initMap(): void {
@@ -50,6 +55,7 @@ function PleinAirMap(){
                 clickableIcons: false
             }}>
                 {/* <Marker className="testMarker" position={{lat: 44, lng: -80}}/> */}
+                {markers ? markers.map(marker => <Marker key={marker.longitude+marker.latitude} position={{lat: marker.latitude, lng: marker.longitude}} className="locationMarker"/>) : null}
             </GoogleMap>
             :
             <h3>Loading...</h3>}
