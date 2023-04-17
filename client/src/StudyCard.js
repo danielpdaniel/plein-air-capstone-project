@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { UserContext } from "./context/user"
 
-function StudyCard({ study, handleDeleteStudiesState, setStudyEdit, studyClassName}){
+function StudyCard({ study, onDeleteStudy, setStudyEdit, studyClassName}){
     const {user} = useContext(UserContext)
 
 
@@ -15,7 +15,7 @@ function StudyCard({ study, handleDeleteStudiesState, setStudyEdit, studyClassNa
         })
         .then(r=>{
             if(r.ok){
-                handleDeleteStudiesState(study.id)
+                onDeleteStudy(study.id)
             }
         })
     }

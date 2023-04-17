@@ -29,6 +29,12 @@ function PleinAirMap(){
     function handleMarkerClick(marker){
         setSelectedMarker(marker)
     }
+
+    function handleDeleteStudyState(studyId){
+        setSelectedMarker("")
+        const updatedMarkers = markers.filter(marker => marker.study.id !== studyId)
+        setMarkers(updatedMarkers)
+    }
 console.log(selectedMarker)
     
 
@@ -62,7 +68,11 @@ console.log(selectedMarker)
                 maxWidth={10}
                 position={{lat: selectedMarker.latitude + .03, lng: selectedMarker.longitude}}
                 onCloseClick={()=>{setSelectedMarker("")}}>
-                    <StudyCard study={selectedMarker.study} studyClassName="mapStudyCard"/>
+                    <StudyCard 
+                    study={selectedMarker.study} 
+                    studyClassName="mapStudyCard"
+                    onDeleteStudy={handleDeleteStudyState}
+                    />
                 </InfoWindow>
                 : null}
                 {latLng ? 
