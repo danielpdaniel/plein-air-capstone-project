@@ -1,10 +1,17 @@
 import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api"
+import { useState, useEffect } from "react";
 
 function PleinAirMap(){
+
+    const [markers, setMarkers] = useState([])
 
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_PLEIN_AIR_MAP_GOOGLE_MAPS_API_KEY
     });
+
+    useEffect(()=>{
+        console.log(isLoaded)
+    }, [isLoaded])
 
 
     // function initMap(): void {
@@ -33,12 +40,12 @@ function PleinAirMap(){
             zoom={10} 
             center={{lat: 44, lng: -80}} 
             mapContainerClassName="map-container"
-            mapId='c2c10bd1417e4b9c'
             options={{
-                mapId: 'c2c10bd1417e4b9c'
-            }}
-            >
-                <Marker position={{lat: 44, lng: -80}}/>
+                mapId: 'c2c10bd1417e4b9c',
+                disableDefaultUI: true,
+                clickableIcons: false
+            }}>
+                <Marker className="testMarker" position={{lat: 44, lng: -80}}/>
             </GoogleMap>
             :
             <h3>Loading...</h3>}
