@@ -2,7 +2,6 @@ import StudyCard from "./StudyCard"
 import EditStudyForm from "./EditStudyForm"
 
 function Profile({pageUser, studies, studyEdit, handleStudyEdit, handleDeleteStudiesState, setStudyEdit}){
-    console.log(studyEdit)
 
     return (
         <div>

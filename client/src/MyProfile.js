@@ -9,25 +9,16 @@ function MyProfile(){
     const params = useParams()
     const { user } = useContext(UserContext)
     const [pageUser, setPageUser] = useState("")
-    const [studies, setStudies] = useState(user.studies)
+    const [studies, setStudies] = useState("")
     const [studyEdit, setStudyEdit] = useState("")
 
-    // useEffect(()=>{
-    //     if(params.id == user.id){
-    //         setPageUser(user)
-    //         setStudies(user.studies)
-    //     }else{
-    //     fetch(`/users/${params.id}`)
-    //     .then(r=>{
-    //         if(r.ok){
-    //             r.json().then(data => {
-    //                 setPageUser(data)
-    //                 setStudies(data.studies)
-    //             })
-    //         }
-    //         })
-    //     }
-    // },[])
+    
+    useEffect(()=>{
+        if(user){
+            setPageUser(user)
+            setStudies(user.studies)
+        }
+    },[user])
 
     function handleDeleteStudiesState(studyID){
         const updatedStudies = studies.filter(study => study.id !== studyID)
@@ -49,7 +40,7 @@ function MyProfile(){
 
     return (
         <Profile 
-        pageUser={user} 
+        pageUser={pageUser} 
         studies={studies}
         studyEdit={studyEdit}
         setStudyEdit={setStudyEdit}
