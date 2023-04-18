@@ -8,6 +8,7 @@ import NavBar from './NavBar';
 import { UserProvider } from './context/user';
 import UserProfile from './UserProfile';
 import PleinAirMap from './PleinAirMap';
+import MyProfile from './MyProfile';
 
 function App() {
   const [count, setCount] = useState("")
@@ -60,6 +61,7 @@ function App() {
       <NavBar/>
         <Routes>
           <Route path="/login" element={<LoginSignup/>}/>
+          <Route path="/my_profile" element={<MyProfile/>}/>
           <Route path="/users/:id" element={<UserProfile/>}/>
           <Route path="/map" element={<PleinAirMap/>}/>
           <Route path="/" element={<Home/>}/>

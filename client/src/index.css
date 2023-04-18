@@ -59,14 +59,14 @@ body {
   padding: 2px;
 }
 
-.mapStudyCard {
+/* .mapStudyCard { */
   /* background-color: var(--mainColor);
   padding: 5%;
   padding-top: 3%;
   margin: 5%;
   border: 2%;
   border-radius: 7px; */
-}
+/* } */
 
 .mapStudyCard img {
   max-width: 200px;
