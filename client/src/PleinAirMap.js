@@ -10,7 +10,7 @@ function PleinAirMap(){
     const [selectedMarker, setSelectedMarker] = useState("")
     const [latLng, setLatLng] = useState("")
 
-    const { user, setUser } = useContext(UserContext)
+    // const { user, setUser } = useContext(UserContext)
 
     const center = useMemo(() => ({lat: 44, lng: -80}), [])
     
@@ -44,7 +44,8 @@ function PleinAirMap(){
                 id: study.id,
                 user_id: study.user_id,
                 attached_images: study.attached_images,
-                caption: study.caption
+                caption: study.caption,
+                tags: study.tags
             }
         }
 
