@@ -5,7 +5,11 @@ import EditStudyForm from "./EditStudyForm"
 
 function Home(){
 
-    const {user} = useContext(UserContext)
+    const {user, setUser} = useContext(UserContext)
+
+    // function handleNewStudyState(data){
+    //     updatedUser
+    // }
 
     return(
         <div>

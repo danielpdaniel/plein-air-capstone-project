@@ -1,12 +1,15 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { UserContext } from "./context/user"
 
 
 
-function NewStudyForm({ latLng, onNewStudyState }){
+function NewStudyForm({ latLng, onNewMapStudyState }){
     const [files, setFiles] = useState("")
     const [caption, setCaption] = useState("")
     const [tags, setTags] = useState([])
     const [currentTag, setCurrentTag] = useState("")
+    const { user, setUser } = useContext(UserContext)
+
 
     function handleFileChange(e){
         const loadedFiles = []
@@ -36,35 +39,12 @@ function NewStudyForm({ latLng, onNewStudyState }){
             formData.append("tags[]", tag)
         }
         
-        // const testTags = ["wee", "woo"]
-        // formData.append("tags", testTags)
-        
-        // formData.set("images", formData.getAll("images"))
-
-        // console.log(formData.getAll("images"))
 
         formData.append("caption", caption)
 
         if(latLng){
             formData.append("latLng", latLng)
         }
-       
-        // for (const pair of formData.entries()) {
-        //     // if (pair[0] == "images"){
-        //     //     console.log(pair[0])
-        //     //     console.log(pair[1])
-        //     // }
-        //     console.log("foo")
-    
-        //   }
-
-        // for (var pair of formData.entries()) {
-        //     console.log(pair[0]+ ', ' + pair[1]); 
-        // }
-        
-        // var xhr = new XMLHttpRequest;
-        // xhr.open('POST', '/', true);
-        // xhr.send(formElem)
 
         fetch("/studies", {
             method: "POST",
@@ -73,9 +53,10 @@ function NewStudyForm({ latLng, onNewStudyState }){
         .then(r => {
             if(r.ok){
                 r.json().then(data=>{
-                    if(onNewStudyState){
-                        console.log("new study!");
-                        onNewStudyState(data)
+                    if(onNewMapStudyState){
+                        onNewMapStudyState(data)
+                        const updatedUser = user
+                        updatedUser.studies = [data, ...user.studies]
                 }})
             }else{
                 r.json().then(data=>console.log(data))

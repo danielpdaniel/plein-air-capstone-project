@@ -48,12 +48,12 @@ function PleinAirMap(){
             }
         }
 
-        const updatedUser = user
-        updatedUser.studies = [study, ...user.studies]
+        // const updatedUser = user
+        // updatedUser.studies = [study, ...user.studies]
         
         setMarkers([...markers, newMarker])
         setLatLng("")
-        setUser(updatedUser)
+        // setUser(updatedUser)
     }
 
     function handleDeleteStudyState(studyId){
@@ -103,7 +103,7 @@ function PleinAirMap(){
                 : null}
                 {latLng ? 
                 <InfoWindow position={latLng} onCloseClick={()=>setLatLng("")}>
-                    <NewStudyForm latLng={latLng} onNewStudyState={handleNewStudyState}/>
+                    <NewStudyForm latLng={latLng} onNewMapStudyState={handleNewStudyState}/>
                 </InfoWindow> : null}
             </GoogleMap>
             :

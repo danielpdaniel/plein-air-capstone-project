@@ -12,6 +12,7 @@ class StudiesController < ApplicationController
     end
 
     def create
+
         study = @user.studies.create!(study_params)
 
         if study&.valid?

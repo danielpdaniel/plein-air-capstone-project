@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { UserContext } from "./context/user"
 
 function StudyCard({ study, onDeleteStudy, setStudyEdit, studyClassName}){
-    const {user} = useContext(UserContext)
+    const {user, setUser} = useContext(UserContext)
 
     function handleDeleteClick(){
         fetch(`/studies/${study.id}`, {
@@ -14,6 +14,10 @@ function StudyCard({ study, onDeleteStudy, setStudyEdit, studyClassName}){
         .then(r=>{
             if(r.ok){
                 onDeleteStudy(study.id)
+                const updatedUser = user
+                const updatedStudies = user.studies.filter(thisStudy => study.id !== thisStudy.id)
+                updatedUser.studies = updatedStudies
+                setUser(updatedUser)
             }
         })
     }
