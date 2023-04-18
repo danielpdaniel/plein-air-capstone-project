@@ -4,8 +4,6 @@ import { UserContext } from "./context/user"
 function StudyCard({ study, onDeleteStudy, setStudyEdit, studyClassName}){
     const {user} = useContext(UserContext)
 
-    console.log(study.author_username)
-
     function handleDeleteClick(){
         console.log(study.id)
         fetch(`/studies/${study.id}`, {
@@ -33,7 +31,7 @@ return (
             </button>
             
         </div> : null}
-        
+        <h4>{study.author_username}</h4>
         {studyClassName == "mapStudyCard" ? <img src={study.attached_images[0].img_url} className="studyImgs"/>: study.attached_images.map(image =>  <img key={image.id} src={image.img_url} className="studyImgs"/>)}
         <p>{study.caption}</p>
         <p>{study.tags ? study.tags.map(tag => tag !== study.tags[study.tags.length - 1] ? `#${tag.name}, ` : `#${tag.name}`): null}</p>
