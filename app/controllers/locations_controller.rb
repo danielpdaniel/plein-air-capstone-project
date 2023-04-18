@@ -4,7 +4,7 @@ skip_before_action :authorize, only: [:index]
 
     def index
         locations = Location.all
-        render json: locations, status: :ok
+        render json: locations, status: :ok, include: ['tags', 'study.tags']
     end
 
     def create
