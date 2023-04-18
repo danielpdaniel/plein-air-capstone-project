@@ -1,13 +1,16 @@
 import { GoogleMap, Marker, useLoadScript, InfoWindow } from "@react-google-maps/api"
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useContext } from "react";
 import NewStudyForm from "./NewStudyForm";
 import StudyCard from "./StudyCard";
+import { UserContext } from "./context/user";
 
 function PleinAirMap(){
 
     const [markers, setMarkers] = useState([])
     const [selectedMarker, setSelectedMarker] = useState("")
     const [latLng, setLatLng] = useState("")
+
+    const { user, setUser } = useContext(UserContext)
 
     const center = useMemo(() => ({lat: 44, lng: -80}), [])
     
@@ -44,10 +47,13 @@ function PleinAirMap(){
                 caption: study.caption
             }
         }
-        // console.log(markers[0])
-        // console.log(newMarker)
+
+        const updatedUser = user
+        updatedUser.studies = [study, ...user.studies]
+        
         setMarkers([...markers, newMarker])
         setLatLng("")
+        setUser(updatedUser)
     }
 
     function handleDeleteStudyState(studyId){

@@ -5,7 +5,6 @@ function StudyCard({ study, onDeleteStudy, setStudyEdit, studyClassName}){
     const {user} = useContext(UserContext)
 
     function handleDeleteClick(){
-        console.log(study.id)
         fetch(`/studies/${study.id}`, {
             method: "DELETE",
             headers: {

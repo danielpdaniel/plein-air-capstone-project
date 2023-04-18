@@ -7,7 +7,7 @@ import Profile from"./Profile"
 
 function MyProfile(){
     const params = useParams()
-    const { user } = useContext(UserContext)
+    const { user, setUser } = useContext(UserContext)
     const [pageUser, setPageUser] = useState("")
     const [studies, setStudies] = useState("")
     const [studyEdit, setStudyEdit] = useState("")
@@ -22,8 +22,11 @@ function MyProfile(){
 
     function handleDeleteStudiesState(studyID){
         const updatedStudies = studies.filter(study => study.id !== studyID)
-        console.log(updatedStudies)
+
+        const updatedUser = user
+        updatedUser.studies = updatedStudies
         setStudies(updatedStudies)
+        setUser(updatedUser)
     }
     
     function handleStudyEdit(editedStudy){
