@@ -38,7 +38,11 @@ function MyProfile(){
                 updatedStudies.push(study)
             }
         })
+
+        const updatedUser = user
+        updatedUser.studies = updatedStudies
         setStudies(updatedStudies)
+        setUser(updatedUser)
     }
 
     return (
