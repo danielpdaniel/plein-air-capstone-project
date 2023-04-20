@@ -71,12 +71,12 @@ function PleinAirMap(){
 
     function handleTagFilter(tagName){
         console.log(markers)
-        fetch(`/tagged/${tagName}`)
+        fetch(`/locations/${tagName}`)
         .then(r =>{
             if(r.ok){
                 r.json().then(data => {
-                    const updatedMarkers = data.filter(study => study.location_id)
-                    console.log(updatedMarkers)
+                    // const updatedMarkers = data.filter(study => study.location_id)
+                    setMarkers(data)
                     // setMarkers(updatedMarkers)
                     setLatLng("")
                     setSelectedMarker("")

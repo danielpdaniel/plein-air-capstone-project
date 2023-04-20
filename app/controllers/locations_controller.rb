@@ -13,9 +13,10 @@ skip_before_action :authorize, only: [:index, :tag_filter]
     end
 
     def tag_filter
-        byebug
-        studies =  Tag.find_by!(name: params[:tag_name]).studies
-        render json: studies, status: :ok
+        # byebug
+        tag = Tag.find_by!(name: params[:tag_name])
+        filtered_locations = tag.locations
+        render json: filtered_locations, status: :ok, include: ['tags', 'study.tags']
     end
 
 
