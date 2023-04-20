@@ -15,15 +15,6 @@ function App() {
   const [imageFile, setImageFile] = useState("")
   const [user, setUser] = useState("")
 
-
-
-
-  useEffect(()=>{
-    fetch("/hello")
-    .then(r=>r.json())
-    .then(data => setCount(data.count))
-  }, [])
-
   useEffect(()=>{
     fetch(`/users`)
     .then(r=>r.json())
