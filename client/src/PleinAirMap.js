@@ -10,6 +10,8 @@ function PleinAirMap(){
     const [markers, setMarkers] = useState([])
     const [selectedMarker, setSelectedMarker] = useState("")
     const [latLng, setLatLng] = useState("")
+    const [tagFilter, setTagFilter] = useState("")
+    const [tagEntry, setTagEntry] = useState("")
 
     // const params = useParams()
     // console.log(params)
@@ -90,6 +92,7 @@ function PleinAirMap(){
     return(
         <div>
             <h3>Welcome to the Map!</h3>
+            {tagEntry ? <button className="studyEditTags" onClick={()=>setTagEntry("")}>{tagFilter}  X</button> : <form onSubmit={()=>{setTagEntry(tagFilter)}}><input value={tagFilter} onChange={(e)=> setTagFilter(e.target.value)} placeholder="seach tag here..." /><input type="submit" value="search tag"/></form>}
             {isLoaded ? 
             <GoogleMap 
             zoom={10} 
