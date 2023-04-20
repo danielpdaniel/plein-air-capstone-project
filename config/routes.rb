@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   delete "/logout", to: 'sessions#destroy'
 
   get "/me", to: 'users#session_user'
+
+  get "/tagged/:tag_name", to: 'studies#tag_filter'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   
   # Defines the root path route ("/")

@@ -21,12 +21,13 @@ function MyProfile(){
     },[user])
 
     function handleDeleteStudiesState(studyID){
-        const updatedStudies = studies.filter(study => study.id !== studyID)
+        // const updatedStudies = studies.filter(study => study.id !== studyID)
 
-        const updatedUser = user
-        updatedUser.studies = updatedStudies
-        setStudies(updatedStudies)
-        setUser(updatedUser)
+        // const updatedUser = user
+        // updatedUser.studies = updatedStudies
+        // setStudies(updatedStudies)
+        // setUser(updatedUser)
+        console.log(studyid)
     }
     
     function handleStudyEdit(editedStudy){
