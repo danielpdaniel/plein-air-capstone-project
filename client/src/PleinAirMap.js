@@ -88,7 +88,7 @@ function PleinAirMap(){
     // }
 
     useEffect(()=>{
-        console.log(tagEntry)
+
         fetch(`/locations/${tagEntry}`)
         .then(r =>{
             if(r.ok){
