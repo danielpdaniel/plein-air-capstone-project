@@ -88,6 +88,7 @@ function PleinAirMap(){
     // }
 
     useEffect(()=>{
+        console.log(tagEntry)
         fetch(`/locations/${tagEntry}`)
         .then(r =>{
             if(r.ok){
@@ -108,7 +109,7 @@ function PleinAirMap(){
         <div>
             <h3>Welcome to the Map!</h3>
             {tagEntry ? 
-            <button className="studyEditTags" onClick={()=>setTagEntry("")}>{tagFilter}  X</button> 
+            <button className="studyEditTags" onClick={()=>setTagEntry("")}>{tagEntry}  X</button> 
             : 
             <form onSubmit={(e)=>{e.preventDefault(); setTagEntry(tagFilter)}}>
                 <input type="text" value={tagFilter} onChange={(e)=> setTagFilter(e.target.value)} placeholder="seach tag here..." />
