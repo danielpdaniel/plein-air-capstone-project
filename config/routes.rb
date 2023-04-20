@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get "/me", to: 'users#session_user'
 
-  get "/tagged/:tag_name", to: 'studies#tag_filter'
+  get "/locations/:tag_name", to: 'locations#tag_filter'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   
   # Defines the root path route ("/")

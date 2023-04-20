@@ -27,7 +27,7 @@ function MyProfile(){
         // updatedUser.studies = updatedStudies
         // setStudies(updatedStudies)
         // setUser(updatedUser)
-        console.log(studyid)
+        
     }
     
     function handleStudyEdit(editedStudy){

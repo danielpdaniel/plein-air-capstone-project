@@ -1,7 +1,7 @@
 class StudiesController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :invalid_study_response
     rescue_from ActiveRecord::RecordNotFound, with: :not_found_study_response
-    skip_before_action :authorize, only: [:tag_filter]
+    
     def index
         studies = Study.all
         render json: studies, status: :ok
@@ -86,7 +86,7 @@ class StudiesController < ApplicationController
         render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
     end
 
-    def not_found_study_response
-        render json: {error: "Study not found"}
-    end
+    # def not_found_study_response
+    #     render json: {error: "Study not found"}
+    # end
 end

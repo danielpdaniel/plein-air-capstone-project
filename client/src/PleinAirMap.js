@@ -3,12 +3,16 @@ import { useState, useEffect, useMemo, useContext } from "react";
 import NewStudyForm from "./NewStudyForm";
 import StudyCard from "./StudyCard";
 import { UserContext } from "./context/user";
+import { useParams } from "react-router-dom";
 
 function PleinAirMap(){
 
     const [markers, setMarkers] = useState([])
     const [selectedMarker, setSelectedMarker] = useState("")
     const [latLng, setLatLng] = useState("")
+
+    // const params = useParams()
+    // console.log(params)
 
     // const { user, setUser } = useContext(UserContext)
 
@@ -21,12 +25,14 @@ function PleinAirMap(){
 
     useEffect(()=>{
         if(isLoaded){
-        fetch("/locations")
-        .then(r => {
-            if(r.ok){
-                r.json().then(data => setMarkers(data))
-            }
-        })}
+            // if(!params.tag_name){
+            fetch("/locations")
+            .then(r => {
+                if(r.ok){
+                    r.json().then(data => setMarkers(data))
+                }
+            })}
+        // }
     }, [isLoaded])
 
     function handleMarkerClick(marker){
@@ -61,6 +67,22 @@ function PleinAirMap(){
         setSelectedMarker("")
         const updatedMarkers = markers.filter(marker => marker.study.id !== studyId)
         setMarkers(updatedMarkers)
+    }
+
+    function handleTagFilter(tagName){
+        console.log(markers)
+        fetch(`/tagged/${tagName}`)
+        .then(r =>{
+            if(r.ok){
+                r.json().then(data => {
+                    const updatedMarkers = data.filter(study => study.location_id)
+                    console.log(updatedMarkers)
+                    // setMarkers(updatedMarkers)
+                    setLatLng("")
+                    setSelectedMarker("")
+                })
+            }
+        })
     }
 
     
@@ -99,6 +121,7 @@ function PleinAirMap(){
                     study={selectedMarker.study} 
                     studyClassName="mapStudyCard"
                     onDeleteStudy={handleDeleteStudyState}
+                    onTagClick = {handleTagFilter}
                     />
                 </InfoWindow>
                 : null}
