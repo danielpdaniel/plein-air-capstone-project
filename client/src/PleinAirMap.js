@@ -71,9 +71,24 @@ function PleinAirMap(){
         setMarkers(updatedMarkers)
     }
 
-    function handleTagFilter(tagName){
-        console.log(markers)
-        fetch(`/locations/${tagName}`)
+    // function handleTagFilter(tagEntry){
+    //     console.log(tagEntry)
+    //     fetch(`/locations/${tagEntry}`)
+    //     .then(r =>{
+    //         if(r.ok){
+    //             r.json().then(data => {
+    //                 // const updatedMarkers = data.filter(study => study.location_id)
+    //                 setMarkers(data)
+    //                 // setMarkers(updatedMarkers)
+    //                 setLatLng("")
+    //                 setSelectedMarker("")
+    //             })
+    //         }
+    //     })
+    // }
+
+    useEffect(()=>{
+        fetch(`/locations/${tagEntry}`)
         .then(r =>{
             if(r.ok){
                 r.json().then(data => {
@@ -85,14 +100,21 @@ function PleinAirMap(){
                 })
             }
         })
-    }
+    }, [tagEntry])
 
     
 
     return(
         <div>
             <h3>Welcome to the Map!</h3>
-            {tagEntry ? <button className="studyEditTags" onClick={()=>setTagEntry("")}>{tagFilter}  X</button> : <form onSubmit={()=>{setTagEntry(tagFilter)}}><input value={tagFilter} onChange={(e)=> setTagFilter(e.target.value)} placeholder="seach tag here..." /><input type="submit" value="search tag"/></form>}
+            {tagEntry ? 
+            <button className="studyEditTags" onClick={()=>setTagEntry("")}>{tagFilter}  X</button> 
+            : 
+            <form onSubmit={(e)=>{e.preventDefault(); setTagEntry(tagFilter)}}>
+                <input type="text" value={tagFilter} onChange={(e)=> setTagFilter(e.target.value)} placeholder="seach tag here..." />
+                <input type="submit" value="search tag"/>
+            </form>}
+
             {isLoaded ? 
             <GoogleMap 
             zoom={10} 
@@ -124,7 +146,7 @@ function PleinAirMap(){
                     study={selectedMarker.study} 
                     studyClassName="mapStudyCard"
                     onDeleteStudy={handleDeleteStudyState}
-                    onTagClick = {handleTagFilter}
+                    onTagClick = {setTagEntry}
                     />
                 </InfoWindow>
                 : null}
