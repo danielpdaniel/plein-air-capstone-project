@@ -9,7 +9,7 @@ function LoginSignup(){
 
     const {user, setUser} = useContext(UserContext)
 
-
+    const navigate = useNavigate()
 
     function handleLoginSubmit(e){
         e.preventDefault()
@@ -32,7 +32,7 @@ function LoginSignup(){
                     setErrors("")
                     setUsername("")
                     setPassword("")
-                   
+                    navigate("/")
                 })
             }else{
                 r.json()
