@@ -13,7 +13,7 @@ function MyProfile(){
     const [studyEdit, setStudyEdit] = useState("")
     const navigate = useNavigate()
 
-    console.log(params)
+    
     useEffect(()=>{
         if(user){
             setPageUser(user)
@@ -22,19 +22,19 @@ function MyProfile(){
     },[user])
 
     function handleDeleteStudiesState(studyID){
-        // const updatedStudies = studies.filter(study => study.id !== studyID)
+        const updatedStudies = studies.filter(study => study.id !== studyID)
 
-        // const updatedUser = user
-        // updatedUser.studies = updatedStudies
-        // setStudies(updatedStudies)
-        // setUser(updatedUser)
+        const updatedUser = user
+        updatedUser.studies = updatedStudies
+        setStudies(updatedStudies)
+        setUser(updatedUser)
         
     }
     
     function handleStudyEdit(editedStudy){
         const updatedStudies = []
         studies.map(study =>{
-            if(study.id == editedStudy.id){
+            if(study.id === editedStudy.id){
                 updatedStudies.push(editedStudy)
             }else{
                 updatedStudies.push(study)
