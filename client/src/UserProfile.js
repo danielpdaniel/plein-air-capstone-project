@@ -20,9 +20,10 @@ console.log(params)
             setPageUser(user)
             setStudies(user.studies)
         }else{
-            // if(params.tag_id){
+            if(params.tag_id){
                 console.log(params.tag_id)
-            // }else{
+                fetch(`/users`)
+            }else{
                 fetch(`/users/${params.id}`)
                 .then(r=>{
                     if(r.ok){
@@ -32,9 +33,9 @@ console.log(params)
                         })
                     }
                     })
-                // }
+                }
             }
-    },[])
+    }, [])
 
     function onTagClick(tag){
         // console.log(tag)

@@ -22,7 +22,7 @@ function StudyCard({ study, onDeleteStudy, setStudyEdit, studyClassName, onTagCl
             }
         })
     }
-    console.log(study)
+
 
 return (
     <div className={studyClassName}>
@@ -36,7 +36,8 @@ return (
             </button>
             
         </div> : null}
-        <NavLink>{study.author_username}</NavLink>
+        <NavLink to={study ? `/users/${study.user_id}` : null}>{study.author_username}</NavLink>
+        <br></br>
         {studyClassName == "mapStudyCard" ? <img src={study.attached_images[0].img_url} className="studyImgs"/>: study.attached_images.map(image =>  <img key={image.id} src={image.img_url} className="studyImgs"/>)}
         <p>{study.caption}</p>
         <p>{study.tags ? study.tags.map(tag => <button className="studyEditTags" key={tag.name} onClick={()=>onTagClick(tag)}>#{tag.name}</button>) : null}</p>
