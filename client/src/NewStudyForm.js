@@ -58,7 +58,11 @@ function NewStudyForm({ latLng, onNewMapStudyState }){
                 }
                 const updatedUser = user
                 updatedUser.studies = [data, ...user.studies]
-                console.log(data)
+                
+                setFiles("")
+                setCaption("")
+                setCurrentTag("")
+                setTags("")
             })
             }else{
                 r.json().then(data=>console.log(data))
