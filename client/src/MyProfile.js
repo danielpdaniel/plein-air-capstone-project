@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { useState, useEffect, useContext } from "react"
 import { UserContext } from "./context/user"
 import StudyCard from "./StudyCard"
@@ -11,8 +11,9 @@ function MyProfile(){
     const [pageUser, setPageUser] = useState("")
     const [studies, setStudies] = useState("")
     const [studyEdit, setStudyEdit] = useState("")
+    const navigate = useNavigate()
 
-    
+    console.log(params)
     useEffect(()=>{
         if(user){
             setPageUser(user)
@@ -46,6 +47,12 @@ function MyProfile(){
         setUser(updatedUser)
     }
 
+    function onTagClick(tag){
+        console.log(tag)
+        navigate(`/my_profile/tags/${tag.id}/studies`)
+
+    }
+
     return (
         <Profile 
         pageUser={pageUser} 
@@ -54,6 +61,7 @@ function MyProfile(){
         setStudyEdit={setStudyEdit}
         handleStudyEdit={handleStudyEdit}
         handleDeleteStudiesState={handleDeleteStudiesState}
+        onTagClick={onTagClick}
         />
     )
 

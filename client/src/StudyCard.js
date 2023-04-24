@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { UserContext } from "./context/user"
+import { NavLink } from "react-router-dom"
 
 function StudyCard({ study, onDeleteStudy, setStudyEdit, studyClassName, onTagClick}){
     const {user, setUser} = useContext(UserContext)
@@ -21,6 +22,7 @@ function StudyCard({ study, onDeleteStudy, setStudyEdit, studyClassName, onTagCl
             }
         })
     }
+    console.log(study)
 
 return (
     <div className={studyClassName}>
@@ -34,10 +36,10 @@ return (
             </button>
             
         </div> : null}
-        <h4>{study.author_username}</h4>
+        <NavLink>{study.author_username}</NavLink>
         {studyClassName == "mapStudyCard" ? <img src={study.attached_images[0].img_url} className="studyImgs"/>: study.attached_images.map(image =>  <img key={image.id} src={image.img_url} className="studyImgs"/>)}
         <p>{study.caption}</p>
-        <p>{study.tags ? study.tags.map(tag => <button className="studyEditTags" key={tag.name} onClick={()=>onTagClick(tag.name)}>#{tag.name}</button>) : null}</p>
+        <p>{study.tags ? study.tags.map(tag => <button className="studyEditTags" key={tag.name} onClick={()=>onTagClick(tag)}>#{tag.name}</button>) : null}</p>
         {/* {study.tags ? study.tags.map(tag => <p key={tag.id} className="studyTags">#{tag.name}</p>) : null} */}
     </div>
 )

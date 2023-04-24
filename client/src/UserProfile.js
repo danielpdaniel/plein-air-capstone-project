@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { useState, useEffect, useContext } from "react"
 import { UserContext } from "./context/user"
 import StudyCard from "./StudyCard"
@@ -11,23 +11,36 @@ function UserProfile(){
     const [studies, setStudies] = useState("")
     // const [studyEdit, setStudyEdit] = useState("")
     const { user } = useContext(UserContext)
+    const navigate = useNavigate()
+
+console.log(params)
 
     useEffect(()=>{
         if(params.id == user.id){
             setPageUser(user)
             setStudies(user.studies)
         }else{
-        fetch(`/users/${params.id}`)
-        .then(r=>{
-            if(r.ok){
-                r.json().then(data => {
-                    setPageUser(data)
-                    setStudies(data.studies)
-                })
+            // if(params.tag_id){
+                console.log(params.tag_id)
+            // }else{
+                fetch(`/users/${params.id}`)
+                .then(r=>{
+                    if(r.ok){
+                        r.json().then(data => {
+                            setPageUser(data)
+                            setStudies(data.studies)
+                        })
+                    }
+                    })
+                // }
             }
-            })
-        }
     },[])
+
+    function onTagClick(tag){
+        // console.log(tag)
+        navigate(`/users/${pageUser.id}/tags/${tag.id}/studies`)
+
+    }
 
     // function handleDeleteStudiesState(studyID){
     //     const updatedStudies = studies.filter(study => study.id !== studyID)
@@ -51,6 +64,7 @@ function UserProfile(){
         <Profile 
         pageUser={pageUser} 
         studies={studies}
+        onTagClick={(tag)=>onTagClick(tag)}
         />
     )
 

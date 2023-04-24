@@ -147,7 +147,7 @@ function PleinAirMap(){
                     study={selectedMarker.study} 
                     studyClassName="mapStudyCard"
                     onDeleteStudy={handleDeleteStudyState}
-                    onTagClick = {setTagEntry}
+                    onTagClick = {(tag)=>setTagEntry(tag.name)}
                     />
                 </InfoWindow>
                 : null}
