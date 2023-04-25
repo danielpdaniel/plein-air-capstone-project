@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   default_url_options :host => 'http://localhost:3000'
 
   resources :users, only: [:index, :show, :create, :update] 
-  get "/users/:user_id/tags/:tag_id/studies", to: "studies#tag_filter_with_user"
   resources :studies, only: [:create, :index, :show, :update, :destroy]
   resources :locations, only: [:index, :create]
 

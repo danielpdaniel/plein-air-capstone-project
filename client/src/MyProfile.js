@@ -47,7 +47,7 @@ function MyProfile(){
     }
 
     function onTagClick(tag){
-        navigate(`/my_profile/tags/${tag.id}/studies`)
+        // navigate(`/my_profile/tags/${tag.id}/studies`)
     }
 
     return (

@@ -37,16 +37,9 @@ console.log(params)
     // }, [])
 
     useEffect(()=>{
-        if(params.tag_id){
-            fetch(`/users/${params.id}/tags/${params.tag_id}`)
-            .then(r=>{
-                if(r.ok){
-                    r.json().then(data => {
-                        setPageUser(data)
-                        setStudies(data.studies)
-                    })
-                }
-                })
+        if(params.id == user.id){
+            setPageUser(user)
+            setStudies(user.studies)
         }else{
             if(params.tag_id){
                 console.log(params.tag_id)
@@ -66,8 +59,8 @@ console.log(params)
     }, [])
 
     function onTagClick(tag){
-        // console.log(tag)
-        navigate(`/users/${pageUser.id}/tags/${tag.id}/studies`)
+        console.log(tag)
+        // navigate(`/users/${pageUser.id}/tags/${tag.id}/studies`)
 
     }
 

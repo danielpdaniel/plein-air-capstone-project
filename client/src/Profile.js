@@ -10,7 +10,7 @@ function Profile({pageUser, studies, studyEdit, handleStudyEdit, handleDeleteStu
     function handleTagClick(tag){
         console.log(tag)
         // console.log(params)
-        navigate(`/tags/${tag.id}/studies`)
+        // navigate(`/tags/${tag.id}/studies`)
     }
     return (
         <div>

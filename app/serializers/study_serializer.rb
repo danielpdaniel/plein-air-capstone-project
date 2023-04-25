@@ -11,8 +11,4 @@ class StudySerializer < ActiveModel::Serializer
   def author_username
     object.user.username
   end
-
-  # def author_id
-  #   object.user.id
-  # end
 end
