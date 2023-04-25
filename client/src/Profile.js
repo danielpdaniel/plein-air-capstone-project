@@ -19,14 +19,15 @@ function Profile({pageUser, studies, studyEdit, handleStudyEdit, handleDeleteStu
 
     useEffect(()=>{
         if(tagEntry){
-            // console.log(tagEntry)
+            
             fetch(`/tagged/${tagEntry}`)
             .then(r => {
                 if(r.ok){
                     r.json().then(data => setStudies(data))
                 }
             })
-        }else{
+        }else if(pageUser){
+            
             fetch(`/users/${pageUser.id}`)
             .then(r =>{
                 if(r.ok){
@@ -48,7 +49,7 @@ function Profile({pageUser, studies, studyEdit, handleStudyEdit, handleDeleteStu
                 {tagEntry ? 
             <button className="studyEditTags" onClick={()=>setTagEntry("")}>{tagEntry}  X</button> 
             : 
-            <form onSubmit={(e)=>{e.preventDefault(); setTagEntry(tagFilter)}}>
+            <form onSubmit={(e)=>{e.preventDefault(); setTagEntry(tagFilter); setTagFilter("")}}>
                 <input type="text" value={tagFilter} onChange={(e)=> setTagFilter(e.target.value)} placeholder="seach tag here..." />
                 <input type="submit" value="search tag"/>
             </form>}
