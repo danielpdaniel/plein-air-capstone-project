@@ -1,5 +1,5 @@
 class StudySerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :location_id, :created_at, :attached_images, :caption, :author_username, :author_id
+  attributes :id, :user_id, :location_id, :created_at, :attached_images, :caption, :author_username
 
   has_many :tags
   has_one :location
@@ -12,7 +12,7 @@ class StudySerializer < ActiveModel::Serializer
     object.user.username
   end
 
-  def author_id
-    object.user.id
-  end
+  # def author_id
+  #   object.user.id
+  # end
 end

@@ -1,5 +1,5 @@
 class TaggedStudySerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :location_id, :created_at, :attached_images, :caption, :author_username, :author_id
+  attributes :id, :user_id, :location_id, :created_at, :attached_images, :caption, :author_username
 
   has_many :tags
   has_one :location

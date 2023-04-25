@@ -4,16 +4,19 @@ import NewStudyForm from "./NewStudyForm";
 import StudyCard from "./StudyCard";
 import { UserContext } from "./context/user";
 import { useParams } from "react-router-dom";
+import EditStudyForm from "./EditStudyForm";
 
 function PleinAirMap(){
 
-    const {user} = useContext(UserContext)
+    const {user, setUser} = useContext(UserContext)
 
     const [markers, setMarkers] = useState([])
     const [selectedMarker, setSelectedMarker] = useState("")
     const [latLng, setLatLng] = useState("")
     const [tagFilter, setTagFilter] = useState("")
     const [tagEntry, setTagEntry] = useState("")
+
+    const [studyEdit, setStudyEdit] = useState("")
 
     // const params = useParams()
     // console.log(params)
@@ -107,6 +110,30 @@ function PleinAirMap(){
         })
     }, [tagEntry])
 
+    function handleStudyEdit(editedStudy){
+        // const updatedMarkers = []
+        const updatedMarkers = markers.map(marker =>{
+            if(marker.study.id === editedStudy.id){
+                marker.study = editedStudy
+                return marker
+            }else{
+                return marker
+            }
+        })
+        setMarkers(updatedMarkers)
+    
+        const updatedUser = user
+        updatedUser.studies = updatedUser.studies.map(study =>{
+            if(study.id === editedStudy.id){
+                return editedStudy
+            }else{
+                return study
+            }
+        })
+        // setMarkers(updatedStudies)
+        setUser(updatedUser)
+    }
+
     
 
     return(
@@ -147,12 +174,18 @@ function PleinAirMap(){
                 maxWidth={10}
                 position={{lat: selectedMarker.latitude + .03, lng: selectedMarker.longitude}}
                 onCloseClick={()=>{setSelectedMarker("")}}>
+                    
+                    {studyEdit == selectedMarker.study.id
+                    ?
+                    <EditStudyForm study={selectedMarker.study} setStudyEdit={setStudyEdit} onStudyEdit={handleStudyEdit}/>
+                    :
                     <StudyCard 
                     study={selectedMarker.study} 
                     studyClassName="mapStudyCard"
                     onDeleteStudy={handleDeleteStudyState}
                     onTagClick = {(tag)=>setTagEntry(tag.name)}
-                    />
+                    setStudyEdit = {setStudyEdit}
+                    />}
                 </InfoWindow>
                 : null}
                 {latLng ? 
