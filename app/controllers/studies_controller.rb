@@ -73,6 +73,7 @@ class StudiesController < ApplicationController
     end
 
     def tag_filter
+        # byebug
         studies =  Tag.find_by!(name: params[:tag_name]).studies
         render json: studies, status: :ok
     end
@@ -88,7 +89,7 @@ class StudiesController < ApplicationController
         render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
     end
 
-    # def not_found_study_response
-    #     render json: {error: "Study not found"}
-    # end
+    def not_found_study_response
+        render json: {error: "Study not found"}
+    end
 end

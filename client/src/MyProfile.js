@@ -54,6 +54,7 @@ function MyProfile(){
         <Profile 
         pageUser={pageUser} 
         studies={studies}
+        setStudies={setStudies}
         studyEdit={studyEdit}
         setStudyEdit={setStudyEdit}
         handleStudyEdit={handleStudyEdit}

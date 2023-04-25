@@ -12,8 +12,6 @@ function UserProfile(){
     const { user } = useContext(UserContext)
     const navigate = useNavigate()
 
-console.log(params)
-
     // useEffect(()=>{
     //     if(params.id == user.id){
     //         setPageUser(user)
@@ -86,6 +84,7 @@ console.log(params)
         <Profile 
         pageUser={pageUser} 
         studies={studies}
+        setStudies={setStudies}
         onTagClick={(tag)=>onTagClick(tag)}
         />
     )
