@@ -7,6 +7,8 @@ import { useParams } from "react-router-dom";
 
 function PleinAirMap(){
 
+    const {user} = useContext(UserContext)
+
     const [markers, setMarkers] = useState([])
     const [selectedMarker, setSelectedMarker] = useState("")
     const [latLng, setLatLng] = useState("")
@@ -36,6 +38,8 @@ function PleinAirMap(){
             })}
         // }
     }, [isLoaded])
+
+
 
     function handleMarkerClick(marker){
         setSelectedMarker(marker)
@@ -121,7 +125,7 @@ function PleinAirMap(){
             zoom={10} 
             center={center} 
             mapContainerClassName="map-container"
-            onClick={(e) => setLatLng(e.latLng)}
+            onClick={(e) => {if(user){setLatLng(e.latLng)}}}
             options={{
                 mapId: 'c2c10bd1417e4b9c',
                 disableDefaultUI: true,

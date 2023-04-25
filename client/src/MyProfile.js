@@ -12,7 +12,6 @@ function MyProfile(){
     const [studies, setStudies] = useState("")
     const [studyEdit, setStudyEdit] = useState("")
     const navigate = useNavigate()
-
     
     useEffect(()=>{
         if(user){
@@ -48,9 +47,7 @@ function MyProfile(){
     }
 
     function onTagClick(tag){
-        console.log(tag)
         navigate(`/my_profile/tags/${tag.id}/studies`)
-
     }
 
     return (

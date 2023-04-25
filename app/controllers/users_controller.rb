@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     end
 
     def show
-      
+    #   byebug 
         user = User.find_by!(id: user_params[:id])
 
         render json: user, status: :ok, include: ['tags', 'studies.tags']
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:username, :password, :about, :avatar, :id, :user, :patty)
+        params.permit(:username, :password, :about, :avatar, :id, :user, :tag_id)
     end
 
     def invalid_user_response(invalid)

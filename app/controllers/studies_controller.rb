@@ -1,6 +1,8 @@
 class StudiesController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :invalid_study_response
     rescue_from ActiveRecord::RecordNotFound, with: :not_found_study_response
+
+    skip_before_action :authorize, only: [:tag_filter_with_user]
     
     def index
         studies = Study.all
@@ -29,7 +31,7 @@ class StudiesController < ApplicationController
 
             if params[:latLng]
                 latitude = params[:latLng].slice(1..17).to_f
-                longitude =params[:latLng].slice(20..37).to_f
+                longitude = params[:latLng].slice(20..37).to_f
                location = Location.create!(lat_lng: params[:latLng], study_id: study.id, latitude: latitude, longitude: longitude)
             end
 
@@ -73,6 +75,21 @@ class StudiesController < ApplicationController
     def tag_filter
         studies =  Tag.find_by!(name: params[:tag_name]).studies
         render json: studies, status: :ok
+    end
+
+    def tag_filter_with_user
+        user = User.find_by!(id: params[:user_id])
+        studies = Tag.find_by!(id: params[:tag_id]).studies.where(user_id: params[:user_id])
+        test_obj = {
+            # id: user.id,
+            # username: user.username,
+            # about: user.about,
+            # avatar_info: user.avatar_info,
+            # studies: studies
+        }
+        # test_obj[:user] = user
+        # test_obj[:studies] = studies
+        render json: studies, status: :ok, include: ["tags", "studies.tags"]
     end
 
     private

@@ -12,4 +12,8 @@ class User < ApplicationRecord
     def avatar_url
         rails_blob_path(self.avatar)
     end
+
+    # def filtered_user_studies(tag_id)
+    #     Tag.find_by!(id: tag_id).studies.where(user_id: self.id)
+    # end
 end

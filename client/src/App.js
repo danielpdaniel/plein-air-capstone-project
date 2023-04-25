@@ -54,8 +54,8 @@ function App() {
           <Route path="/login" element={<LoginSignup/>}/>
           <Route path="/my_profile" element={<MyProfile/>}/>
           <Route path="/my_profile/tags/:tag_id/studies" element={<MyProfile/>}/>
+          <Route path="/users/:id/tags/:tag_id/studies" element={<UserProfile/>}/>
           <Route path="/users/:id" element={<UserProfile/>}/>
-          <Route path="/users/:id/tags/:tag_id/studies" element={UserProfile}/>
           <Route path="/map/tagged/:tag_name" element={<PleinAirMap/>}/>
           <Route path="/map" element={<PleinAirMap/>}/>
           <Route path="/" element={<Home/>}/>

@@ -9,20 +9,48 @@ function UserProfile(){
     const params = useParams()
     const [pageUser, setPageUser] = useState("")
     const [studies, setStudies] = useState("")
-    // const [studyEdit, setStudyEdit] = useState("")
     const { user } = useContext(UserContext)
     const navigate = useNavigate()
 
 console.log(params)
 
+    // useEffect(()=>{
+    //     if(params.id == user.id){
+    //         setPageUser(user)
+    //         setStudies(user.studies)
+    //     }else{
+    //         if(params.tag_id){
+    //             console.log(params.tag_id)
+    //             fetch(`/users/${params.id}`)
+    //         }else{
+    //             fetch(`/users/${params.id}`)
+    //             .then(r=>{
+    //                 if(r.ok){
+    //                     r.json().then(data => {
+    //                         setPageUser(data)
+    //                         setStudies(data.studies)
+    //                     })
+    //                 }
+    //                 })
+    //             }
+    //         }
+    // }, [])
+
     useEffect(()=>{
-        if(params.id == user.id){
-            setPageUser(user)
-            setStudies(user.studies)
+        if(params.tag_id){
+            fetch(`/users/${params.id}/tags/${params.tag_id}`)
+            .then(r=>{
+                if(r.ok){
+                    r.json().then(data => {
+                        setPageUser(data)
+                        setStudies(data.studies)
+                    })
+                }
+                })
         }else{
             if(params.tag_id){
                 console.log(params.tag_id)
-                fetch(`/users`)
+                fetch(`/users/${params.id}`)
             }else{
                 fetch(`/users/${params.id}`)
                 .then(r=>{

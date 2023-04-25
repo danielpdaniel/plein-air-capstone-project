@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   default_url_options :host => 'http://localhost:3000'
 
-  resources :users, only: [:index, :show, :create, :update]
+  resources :users, only: [:index, :show, :create, :update] 
+  get "/users/:user_id/tags/:tag_id/studies", to: "studies#tag_filter_with_user"
   resources :studies, only: [:create, :index, :show, :update, :destroy]
   resources :locations, only: [:index, :create]
 
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   get "/me", to: 'users#session_user'
 
   get "/locations/:tag_name", to: 'locations#tag_filter'
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   
   # Defines the root path route ("/")

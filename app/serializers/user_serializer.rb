@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :password_digest, :about, :avatar_info
+  attributes :id, :username, :password_digest, :about, :avatar_info, :filtered_studies
 
   has_many :studies
   
@@ -7,4 +7,10 @@ class UserSerializer < ActiveModel::Serializer
     # byebug
     object.avatar_url
   end
+
+  def filtered_studies
+    # byebug
+  end
+  
+ 
 end
