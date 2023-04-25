@@ -26,6 +26,13 @@ function Profile({pageUser, studies, studyEdit, handleStudyEdit, handleDeleteStu
                     r.json().then(data => setStudies(data))
                 }
             })
+        }else{
+            fetch(`/users/${pageUser.id}`)
+            .then(r =>{
+                if(r.ok){
+                    r.json().then(data => setStudies(data.studies))
+                }
+            })
         }
     }, [tagEntry])
 
