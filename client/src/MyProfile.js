@@ -16,6 +16,7 @@ function MyProfile(){
     useEffect(()=>{
         if(user){
             setPageUser(user)
+            // console.log(user.studies)
             setStudies(user.studies)
         }
     },[user])
