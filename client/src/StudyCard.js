@@ -5,6 +5,8 @@ import { NavLink } from "react-router-dom"
 function StudyCard({ study, onDeleteStudy, setStudyEdit, studyClassName, onTagClick}){
     const {user, setUser} = useContext(UserContext)
 
+    console.log(study)
+
     function handleDeleteClick(){
         fetch(`/studies/${study.id}`, {
             method: "DELETE",
@@ -43,6 +45,7 @@ return (
         <p>{study.caption}</p>
         <p>{study.tags ? study.tags.map(tag => <button className="studyEditTags" key={tag.name} onClick={()=>onTagClick(tag)}>#{tag.name}</button>) : null}</p>
         {/* {study.tags ? study.tags.map(tag => <p key={tag.id} className="studyTags">#{tag.name}</p>) : null} */}
+        <button onClick={()=>console.log(study.comments)}></button>
     </div>
 )
 }

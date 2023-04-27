@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
     def session_user
         if @user
-            render json: @user, status: :ok, include: ['tags', 'studies.tags']
+            render json: @user, status: :ok, include: ['tags', 'studies.tags', 'comments', 'studies.comments']
         else
             render json: {error: "User not found"}, status: :not_found
         end
