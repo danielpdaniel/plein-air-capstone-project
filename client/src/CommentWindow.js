@@ -36,6 +36,21 @@ function CommentWindow({ comments, studyId, onNewComment }){
         })
     }
 
+    function handleDeleteComment(comment){
+        console.log(comment.id)
+        fetch(`/comments/${comment.id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(r=>{
+            if(r.ok){
+                r.json().then(data=>console.log(data))
+            }
+        })
+    }
+
 
     return(
         <div className="commentWindow">
@@ -44,8 +59,8 @@ function CommentWindow({ comments, studyId, onNewComment }){
             {comments ? comments.map(comment => 
                 <div key={comment.id + comment.comment_text} className="comment">
                     <h5>{comment.author_username}:</h5>
-                    {comment.user_id === user.id ? <button>🗑️</button>: null}
                     <p>{comment.comment_text}</p>
+                    {comment.user_id === user.id ? <button onClick={()=>handleDeleteComment(comment)}>🗑️</button>: null}
                 </div>
             ) : null}
 
