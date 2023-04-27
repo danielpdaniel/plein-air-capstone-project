@@ -3,6 +3,7 @@ class StudySerializer < ActiveModel::Serializer
 
   has_many :tags
   has_one :location
+  has_many :comments
 
   def attached_images
     object.study_images_urls
