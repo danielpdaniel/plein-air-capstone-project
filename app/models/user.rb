@@ -7,6 +7,8 @@ class User < ApplicationRecord
     has_one_attached :avatar
     has_secure_password
 
+    has_many :comments
+
     validates :username, presence: true, uniqueness: true
 
     def avatar_url
