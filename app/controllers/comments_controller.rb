@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
     def create
         # byebug
         comment = @user.comments.create!(comment_params)
+        render json: comment, status: :ok
     end
 
     private

@@ -51,6 +51,23 @@ function MyProfile(){
         // navigate(`/my_profile/tags/${tag.id}/studies`)
     }
 
+    function handleNewComment(comment){
+        const updatedStudies = []
+        studies.map(study =>{
+            if(study.id === comment.study_id){
+                study.comments = [...study.comments, comment]
+                updatedStudies.push(study)
+            }else{
+                updatedStudies.push(study)
+            }
+        })
+
+        const updatedUser = user
+        updatedUser.studies = updatedStudies
+        setStudies(updatedStudies)
+        setUser(updatedUser)
+    }
+
     return (
         <Profile 
         pageUser={pageUser} 
@@ -61,6 +78,7 @@ function MyProfile(){
         handleStudyEdit={handleStudyEdit}
         handleDeleteStudiesState={handleDeleteStudiesState}
         onTagClick={onTagClick}
+        onNewComment={handleNewComment}
         />
     )
 
