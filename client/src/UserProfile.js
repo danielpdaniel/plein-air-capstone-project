@@ -62,6 +62,20 @@ function UserProfile(){
 
     }
 
+    function handleNewComment(comment){
+        const updatedStudies = []
+        studies.map(study =>{
+            if(study.id === comment.study_id){
+                study.comments = [...study.comments, comment]
+                updatedStudies.push(study)
+            }else{
+                updatedStudies.push(study)
+            }
+        })
+
+        setStudies(updatedStudies)
+    }
+
     // function handleDeleteStudiesState(studyID){
     //     const updatedStudies = studies.filter(study => study.id !== studyID)
     //     console.log(updatedStudies)
@@ -86,6 +100,7 @@ function UserProfile(){
         studies={studies}
         setStudies={setStudies}
         onTagClick={(tag)=>onTagClick(tag)}
+        onNewComment={handleNewComment}
         />
     )
 

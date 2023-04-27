@@ -8,7 +8,7 @@ function CommentWindow({ comments, studyId, onNewComment }){
 
     function handlePostComment(e){
         e.preventDefault()
-        console.log(newComment)
+
         const postBody = {
             user_id: user.id,
             study_id: studyId,
