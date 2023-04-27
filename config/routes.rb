@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :create, :update] 
   resources :studies, only: [:create, :index, :show, :update, :destroy]
   resources :locations, only: [:index, :create]
-  resources :comments, only: [:create]
+  resources :comments, only: [:create, :destroy]
 
   post "/login", to: 'sessions#create'
   delete "/logout", to: 'sessions#destroy'

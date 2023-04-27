@@ -8,10 +8,16 @@ class CommentsController < ApplicationController
         render json: comment, status: :ok
     end
 
+    def destroy
+        comment = @user.comments.find_by!(id: comment_params[:id])
+        comment&.destroy!
+        render json: [], status: :no_content
+    end
+
     private
 
     def comment_params
-        params.permit(:study_id, :comment_text)
+        params.permit(:id, :study_id, :comment_text)
     end
 
     def invalid_comment_response(invalid)
