@@ -44,6 +44,7 @@ function CommentWindow({ comments, studyId, onNewComment }){
             {comments ? comments.map(comment => 
                 <div key={comment.id + comment.comment_text}>
                     <h5>{comment.author_username}:</h5>
+                    {comment.user_id === user.id ? <button>🗑️</button>: null}
                     <p>{comment.comment_text}</p>
                 </div>
             ) : null}
