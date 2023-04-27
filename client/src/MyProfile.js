@@ -68,6 +68,24 @@ function MyProfile(){
         setUser(updatedUser)
     }
 
+    function handleDeleteComment(comment){
+        const updatedStudies = []
+        studies.map(study =>{
+            if(study.id === comment.study_id){
+                const updatedComments = study.comments.filter(thisComment => thisComment.id !== comment.id)
+                study.comments = updatedComments
+                updatedStudies.push(study)
+            }else{
+                updatedStudies.push(study)
+            }
+        })
+
+        const updatedUser = user
+        updatedUser.studies = updatedStudies
+        setStudies(updatedStudies)
+        setUser(updatedUser)
+    }
+
     return (
         <Profile 
         pageUser={pageUser} 
@@ -79,6 +97,7 @@ function MyProfile(){
         handleDeleteStudiesState={handleDeleteStudiesState}
         onTagClick={onTagClick}
         onNewComment={handleNewComment}
+        onDeleteComment={handleDeleteComment}
         />
     )
 

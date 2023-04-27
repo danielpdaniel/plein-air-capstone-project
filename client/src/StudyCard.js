@@ -3,7 +3,7 @@ import { UserContext } from "./context/user"
 import { NavLink } from "react-router-dom"
 import CommentWindow from "./CommentWindow"
 
-function StudyCard({ study, onDeleteStudy, setStudyEdit, studyClassName, onTagClick, onNewComment}){
+function StudyCard({ study, onDeleteStudy, setStudyEdit, studyClassName, onTagClick, onNewComment, onDeleteComment}){
     const {user, setUser} = useContext(UserContext)
     const [commentStatus, setCommentStatus] = useState(false)
 
@@ -45,7 +45,7 @@ return (
         <p>{study.tags ? study.tags.map(tag => <button className="studyEditTags" key={tag.name} onClick={()=>onTagClick(tag)}>#{tag.name}</button>) : null}</p>
         {/* {study.tags ? study.tags.map(tag => <p key={tag.id} className="studyTags">#{tag.name}</p>) : null} */}
         <button onClick={() => setCommentStatus(!commentStatus)}>{commentStatus ? 'X' : '💬' }</button>
-        {commentStatus ? <CommentWindow comments={study.comments} studyId={study.id} onNewComment={onNewComment}/> : null}
+        {commentStatus ? <CommentWindow comments={study.comments} studyId={study.id} onNewComment={onNewComment} onDeleteComment={onDeleteComment}/> : null}
     </div>
 )
 }

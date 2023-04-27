@@ -1,7 +1,7 @@
 import { useContext, useState } from "react"
 import { UserContext } from "./context/user"
 
-function CommentWindow({ comments, studyId, onNewComment }){
+function CommentWindow({ comments, studyId, onNewComment, onDeleteComment }){
     const [newComment, setNewComment] = useState("")
     const [errors, setErrors] = useState("")
     const {user} = useContext(UserContext)
@@ -37,7 +37,7 @@ function CommentWindow({ comments, studyId, onNewComment }){
     }
 
     function handleDeleteComment(comment){
-        console.log(comment.id)
+  
         fetch(`/comments/${comment.id}`, {
             method: "DELETE",
             headers: {
@@ -46,7 +46,7 @@ function CommentWindow({ comments, studyId, onNewComment }){
         })
         .then(r=>{
             if(r.ok){
-                r.json().then(data=>console.log(data))
+                onDeleteComment(comment)
             }
         })
     }

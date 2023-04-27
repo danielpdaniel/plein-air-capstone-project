@@ -76,6 +76,21 @@ function UserProfile(){
         setStudies(updatedStudies)
     }
 
+    function handleDeleteComment(comment){
+        const updatedStudies = []
+        studies.map(study =>{
+            if(study.id === comment.study_id){
+                const updatedComments = study.comments.filter(thisComment => thisComment.id !== comment.id)
+                study.comments = updatedComments
+                updatedStudies.push(study)
+            }else{
+                updatedStudies.push(study)
+            }
+        })
+
+        setStudies(updatedStudies)
+    }
+
     // function handleDeleteStudiesState(studyID){
     //     const updatedStudies = studies.filter(study => study.id !== studyID)
     //     console.log(updatedStudies)
@@ -101,6 +116,7 @@ function UserProfile(){
         setStudies={setStudies}
         onTagClick={(tag)=>onTagClick(tag)}
         onNewComment={handleNewComment}
+        onDeleteComment={handleDeleteComment}
         />
     )
 

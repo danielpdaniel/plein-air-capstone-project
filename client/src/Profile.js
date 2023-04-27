@@ -3,7 +3,7 @@ import EditStudyForm from "./EditStudyForm"
 import { useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 
-function Profile({pageUser, studies, studyEdit, handleStudyEdit, handleDeleteStudiesState, setStudyEdit, onTagClick, setStudies, onNewComment}){
+function Profile({pageUser, studies, studyEdit, handleStudyEdit, handleDeleteStudiesState, setStudyEdit, onTagClick, setStudies, onNewComment, onDeleteComment}){
 
     const navigate = useNavigate()
     // const params = useParams
@@ -68,6 +68,7 @@ function Profile({pageUser, studies, studyEdit, handleStudyEdit, handleDeleteStu
                     studyClassName="studyCard"
                     onTagClick={(tag)=>setTagEntry(tag.name)}
                     onNewComment={onNewComment}
+                    onDeleteComment={onDeleteComment}
                     />
                     ) : null}
                 </div>
