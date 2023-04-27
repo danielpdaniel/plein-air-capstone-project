@@ -24,7 +24,11 @@ function CommentWindow({ comments, studyId, onNewComment }){
         })
         .then(r => {
             if(r.ok){
-                r.json().then(data => onNewComment(data))
+                r.json().then(data => {
+                    onNewComment(data);
+                    setErrors("")
+                    setNewComment("")
+                })
             }
             else{
                 r.json().then(data=>setErrors(data.errors))
