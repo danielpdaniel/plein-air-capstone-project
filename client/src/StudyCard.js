@@ -1,11 +1,11 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { UserContext } from "./context/user"
 import { NavLink } from "react-router-dom"
+import CommentWindow from "./CommentWindow"
 
 function StudyCard({ study, onDeleteStudy, setStudyEdit, studyClassName, onTagClick}){
     const {user, setUser} = useContext(UserContext)
-
-    console.log(study)
+    const [commentStatus, setCommentStatus] = useState(false)
 
     function handleDeleteClick(){
         fetch(`/studies/${study.id}`, {
@@ -26,7 +26,6 @@ function StudyCard({ study, onDeleteStudy, setStudyEdit, studyClassName, onTagCl
         })
     }
 
-
 return (
     <div className={studyClassName}>
         {study.user_id == user.id ? 
@@ -45,7 +44,8 @@ return (
         <p>{study.caption}</p>
         <p>{study.tags ? study.tags.map(tag => <button className="studyEditTags" key={tag.name} onClick={()=>onTagClick(tag)}>#{tag.name}</button>) : null}</p>
         {/* {study.tags ? study.tags.map(tag => <p key={tag.id} className="studyTags">#{tag.name}</p>) : null} */}
-        <button onClick={()=>console.log(study.comments)}></button>
+        <button onClick={() => setCommentStatus(!commentStatus)}>{commentStatus ? 'X' : '💬' }</button>
+        {commentStatus ? <CommentWindow comments={study.comments} /> : null}
     </div>
 )
 }
