@@ -35,7 +35,7 @@ function Notifications(){
                         </div>
                         :
                         <div>
-                            <p>you got a notification over here!</p>
+                            <p>you got a notification over here! {notif.id}</p>
                         </div>
                         }
                     </div>

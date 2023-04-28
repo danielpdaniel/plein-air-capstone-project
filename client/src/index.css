@@ -126,8 +126,7 @@ body {
 
 .notificationsWindow {
   background-color: var(--tertiaryColor);
-  padding-left: 2%;
-  padding-right: 2%;
+  padding: 2%;
   border-radius: 7px
 }
 
