@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
     has_many :comments
 
+    has_many :notifications
+
     validates :username, presence: true, uniqueness: true
 
     def avatar_url

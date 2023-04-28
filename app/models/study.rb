@@ -9,6 +9,8 @@ class Study < ApplicationRecord
 
     has_many :comments
 
+    has_many :notifications
+
     has_many_attached :images
 
     validates :user_id, presence: true
