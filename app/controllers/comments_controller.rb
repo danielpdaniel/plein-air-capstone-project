@@ -3,11 +3,10 @@ class CommentsController < ApplicationController
 
 
     def create
-        byebug
         comment = @user.comments.create!(comment_params)
 
         study_for_notif = Study.find_by!(id: params[:study_id])
-        notification = study_for_notif.user.notifications.create!(author_id: params[:user_id], study_id: study_for_notif.id, read_status: false)
+        notification = study_for_notif.user.notifications.create!(comment_id: comment.id], study_id: study_for_notif.id, read_status: false)
 
         render json: comment, status: :ok
     end
