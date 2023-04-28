@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :studies, only: [:create, :index, :show, :update, :destroy]
   resources :locations, only: [:index, :create]
   resources :comments, only: [:create, :destroy]
+  # resources :notifications, only: [:update]
+
+  get "/notifications", to: "notifications#mark_all_as_read"
 
   post "/login", to: 'sessions#create'
   delete "/logout", to: 'sessions#destroy'
