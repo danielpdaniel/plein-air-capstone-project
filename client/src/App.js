@@ -10,6 +10,7 @@ import UserProfile from './UserProfile';
 import PleinAirMap from './PleinAirMap';
 import MyProfile from './MyProfile';
 import Notifications from './Notifications';
+import Study from './Study';
 
 function App() {
   const [count, setCount] = useState("")
@@ -58,6 +59,7 @@ function App() {
           {/* <Route path="/my_profile/tags/:tag_id/studies" element={<MyProfile/>}/> */}
           <Route path="/users/:id" element={<UserProfile/>}/>
           <Route path="/map" element={<PleinAirMap/>}/>
+          <Route path="/studies/:id" element={<Study/>}/>
           <Route path="/" element={<Home/>}/>
         </Routes>
     </UserProvider>
