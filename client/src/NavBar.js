@@ -21,7 +21,7 @@ function NavBar(){
         <div className="NavBar">
             <NavLink to="/">Home</NavLink>
             <NavLink to="/map">Map</NavLink>
-            {user ? <NavLink to={'/notifications'}>🔔</NavLink> : null}
+            {user ? <NavLink to={'/notifications'}>{user.unread_notifs ? '⛅' : '☁️' }</NavLink> : null}
             {user ? <NavLink to={`/my_profile`}>My Page</NavLink> : null}
             {user ? <button onClick={() => handleLogout()}>Logout</button> : <NavLink to="/login">Login</NavLink>}
         </div>
