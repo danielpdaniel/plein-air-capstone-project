@@ -2,7 +2,7 @@ class Notification < ApplicationRecord
     belongs_to :user
     belongs_to :study
     # has_one :user, as: :author_id
-    has_one :comment
+    belongs_to :comment
     # has_one :user, through: comment
 
     validates :user_id, presence: true
