@@ -31,7 +31,7 @@ function Notifications(){
                         {notif.comment ?  
                         <div>
                         <a href={`/users/${notif.comment.user_id}`}>{notif.comment.author_username}</a>
-                        <p>commented on your post: {notif.comment.comment_text}</p>
+                        <p>commented on your <a href={`/studies/${notif.study_id}`}>post</a> {notif.comment.comment_text}</p>
                         </div>
                         :
                         <div>
