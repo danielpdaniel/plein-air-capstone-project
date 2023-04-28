@@ -1,4 +1,8 @@
 class NotificationSerializer < ActiveModel::Serializer
-  attributes :id, :user_id, :study_id, :read_status, :study, :author
+  attributes :id, :user_id, :study_id, :read_status, :study, :comment_id
+
+  def comment
+    # byebug
+  end
   
 end
