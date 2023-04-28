@@ -46,6 +46,31 @@ body {
   margin-right: 0;
 }
 
+.singleStudy {
+  width: 100%;
+  display: block;
+  float: left;
+  background-color: var(--secondaryColor);
+  border-radius: 7px;
+  padding: 2%;
+  margin: 2%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.singleStudyCard {
+  background-color: var(--mainColor);
+  padding: 5%;
+  padding-top: 3%;
+  margin: 5%;
+  border: 2%;
+  border-radius: 7px;
+}
+
+.singleStudyCard img {
+  max-width: 100%
+}
+
 .studyCard {
   background-color: var(--mainColor);
   padding: 5%;
