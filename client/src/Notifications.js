@@ -22,10 +22,18 @@ function Notifications(){
 
     return(
         <div>
+            <h3>these are your notifications!</h3>
             {user ? 
-            <div>
-                <h3>these are your notifications!</h3>
-                {notifications ? notifications.map(notif => <p key={notif.user_id + notif.study_id + notif.id}>{notif.comment ? `${notif.comment.author_username} commented on your study: ${notif.comment.comment_text}` : "you got a notification over here!"}!</p>) : <p>no notifications yet :)</p>}
+            <div className="notificationsWindow">
+                {notifications ? notifications.map(notif => 
+                <div className="notification" >
+                    <p key={notif.user_id + notif.study_id + notif.id}>
+                        {notif.comment ? `${notif.comment.author_username} commented on your study: ${notif.comment.comment_text}` : "you got a notification over here!"}!
+                    </p>
+                </div>
+                ) 
+                : 
+                <p>no notifications yet :)</p>}
             </div>
             : <h2>Login/Signup to get started!</h2>}
         </div>

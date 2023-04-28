@@ -123,3 +123,17 @@ body {
 .commentWindow form {
   padding: 10px
 }
+
+.notificationsWindow {
+  background-color: var(--tertiaryColor);
+  padding-left: 2%;
+  padding-right: 2%;
+  border-radius: 7px
+}
+
+.notification {
+  background-color: var(--secondaryColor);
+  padding-left: 2%;
+  padding-right: 2%;
+  border-radius: 7px;
+}
