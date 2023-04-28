@@ -145,6 +145,10 @@ body {
   border-radius: 7px;
 }
 
+.commentDeleteBtn{
+  float: right
+}
+
 .commentWindow form {
   padding: 10px
 }
