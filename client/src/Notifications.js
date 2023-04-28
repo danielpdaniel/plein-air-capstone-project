@@ -10,7 +10,7 @@ function Notifications(){
             {user ? 
             <div>
                 <h3>these are your notifications!</h3>
-                <p>weee</p>
+                {user.notifications ? user.notifications.map(notif => <p>you got a notification for {notif.study_id}!</p>) : <p>no notifications yet :)</p>}
             </div>
             : <h2>Login/Signup to get started!</h2>}
         </div>
