@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 
 
     def create
-        # byebug
+        byebug
         comment = @user.comments.create!(comment_params)
 
         study_for_notif = Study.find_by!(id: params[:study_id])

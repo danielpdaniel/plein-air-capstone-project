@@ -67,7 +67,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_28_183342) do
     t.boolean "read_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "author"
+    t.integer "author_id"
   end
 
   create_table "studies", force: :cascade do |t|
