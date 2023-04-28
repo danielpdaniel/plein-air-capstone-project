@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useContext, useEffect, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom"
 import StudyCard from "./StudyCard"
 import CommentWindow from "./CommentWindow"
+import { UserContext } from "./context/user"
 
 function Study(){
     const params = useParams()
+    const { user, setUser } = useContext(UserContext)
     const [study, setStudy] = useState("")
+    const navigate = useNavigate()
 
     useEffect(()=>{
         fetch(`/studies/${params.id}`)
@@ -15,11 +18,37 @@ function Study(){
             }
         })
     }, [])
+
+    function handleDeleteStudy(studyId){
+        fetch(`/studies/${studyId}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(r=>{
+            if(r.ok){
+                const updatedUser = user
+                updatedUser.studies = user.studies.filter(study => study.id !== studyId)
+                setUser(updatedUser)
+                navigate('/my_profile')
+            }
+        })
+    }
     
     return (
         <div className="singleStudy">
             {study ? 
-            <StudyCard study={study} studyClassName="singleStudyCard"/>
+            <StudyCard 
+            study={study} 
+            studyClassName="singleStudyCard"
+            onDeleteStudy={handleDeleteStudy} 
+            // setStudyEdit={setStudyEdit} 
+            // studyClassName="studyCard"
+            // onTagClick={(tag)=>setTagEntry(tag.name)}
+            // onNewComment={onNewComment}
+            // onDeleteComment={onDeleteComment}
+            />
             :
             <h5>Loading...</h5>}
         </div>
