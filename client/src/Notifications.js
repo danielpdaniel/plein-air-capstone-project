@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { UserContext } from "./context/user"
+import { NavLink } from "react-router-dom"
 
 function Notifications(){
 
@@ -26,11 +27,18 @@ function Notifications(){
             {user ? 
             <div className="notificationsWindow">
                 {notifications ? notifications.map(notif => 
-                <div className="notification" >
-                    <p key={notif.user_id + notif.study_id + notif.id}>
-                        {notif.comment ? `${notif.comment.author_username} commented on your study: ${notif.comment.comment_text}` : "you got a notification over here!"}!
-                    </p>
-                </div>
+                    <div key={notif.user_id + notif.study_id + notif.id} className="notification">
+                        {notif.comment ?  
+                        <div>
+                        <a href={`/users/${notif.comment.user_id}`}>{notif.comment.author_username}</a>
+                        <p>commented on your post: {notif.comment.comment_text}</p>
+                        </div>
+                        :
+                        <div>
+                            <p>you got a notification over here!</p>
+                        </div>
+                        }
+                    </div>
                 ) 
                 : 
                 <p>no notifications yet :)</p>}
