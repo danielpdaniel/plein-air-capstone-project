@@ -23,6 +23,7 @@ function NavBar(){
 
     useEffect(()=>{
         if(user){
+            console.log("hello from navbar")
             console.log(user.unread_notifs)
             setNotif(user.unread_notifs)
         }

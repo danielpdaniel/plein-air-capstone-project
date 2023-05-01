@@ -7,7 +7,7 @@ class Study < ApplicationRecord
     has_many :studies_tags
     has_many :tags, through: :studies_tags
 
-    has_many :comments
+    has_many :comments, -> {order(created_at: :ASC)}
 
     has_many :notifications
 

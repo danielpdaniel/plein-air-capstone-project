@@ -12,6 +12,7 @@ function Notifications(){
         .then(r=>{
             if(r.ok){
                 r.json().then(data => {
+                    console.log("fetched!")
                     setNotifications(data)
                     const updatedUser = user
                     updatedUser.unread_notifs = false
