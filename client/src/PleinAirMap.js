@@ -25,7 +25,6 @@ function PleinAirMap(){
 
     const center = useMemo(() => ({lat: 44, lng: -80}), [])
     
-
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_PLEIN_AIR_MAP_GOOGLE_MAPS_API_KEY
     });
@@ -134,6 +133,23 @@ function PleinAirMap(){
         setUser(updatedUser)
     }
 
+    function handleNewComment(comment){
+        // marker.study.comments
+        const updatedMarkers = markers.map(marker => {
+            if(marker.study.id === comment.study_id){
+                marker.study.comments = [...marker.study.comments, comment]
+                return marker
+            }else{
+                return marker
+            }
+        })
+        setMarkers(updatedMarkers)
+    }
+
+    function handleDeleteComment(comment){
+        console.log(comment)
+    }
+
     
 
     return(
@@ -185,6 +201,8 @@ function PleinAirMap(){
                     onDeleteStudy={handleDeleteStudyState}
                     onTagClick = {(tag)=>setTagEntry(tag.name)}
                     setStudyEdit = {setStudyEdit}
+                    onNewComment={handleNewComment}
+                    onDeleteComment={handleDeleteComment}
                     />}
                 </InfoWindow>
                 : null}
