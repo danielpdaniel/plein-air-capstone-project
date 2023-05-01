@@ -24,8 +24,9 @@ function MyProfile(){
     function handleDeleteStudiesState(studyID){
         const updatedStudies = studies.filter(study => study.id !== studyID)
 
-        const updatedUser = user
+        const updatedUser = {...user}
         updatedUser.studies = updatedStudies
+  
         setStudies(updatedStudies)
         setUser(updatedUser)
         
@@ -41,7 +42,7 @@ function MyProfile(){
             }
         })
 
-        const updatedUser = user
+        const updatedUser = {...user}
         updatedUser.studies = updatedStudies
         setStudies(updatedStudies)
         setUser(updatedUser)
@@ -62,7 +63,7 @@ function MyProfile(){
             }
         })
 
-        const updatedUser = user
+        const updatedUser = {...user}
         updatedUser.studies = updatedStudies
         setStudies(updatedStudies)
         setUser(updatedUser)
@@ -80,7 +81,7 @@ function MyProfile(){
             }
         })
 
-        const updatedUser = user
+        const updatedUser = {...user}
         updatedUser.studies = updatedStudies
         setStudies(updatedStudies)
         setUser(updatedUser)

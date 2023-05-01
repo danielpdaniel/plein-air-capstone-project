@@ -122,7 +122,7 @@ function PleinAirMap(){
         })
         setMarkers(updatedMarkers)
     
-        const updatedUser = user
+        const updatedUser = {...user}
         updatedUser.studies = updatedUser.studies.map(study =>{
             if(study.id === editedStudy.id){
                 return editedStudy

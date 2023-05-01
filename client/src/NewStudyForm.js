@@ -56,9 +56,10 @@ function NewStudyForm({ latLng, onNewMapStudyState }){
                     if(onNewMapStudyState){
                         onNewMapStudyState(data)
                 }
-                const updatedUser = user
+                const updatedUser = {...user}
                 updatedUser.studies = [data, ...user.studies]
                 
+                setUser(updatedUser)
                 setFiles("")
                 setCaption("")
                 setCurrentTag("")

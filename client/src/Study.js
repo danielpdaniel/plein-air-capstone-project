@@ -28,7 +28,7 @@ function Study(){
         })
         .then(r=>{
             if(r.ok){
-                const updatedUser = user
+                const updatedUser = {...user}
                 updatedUser.studies = user.studies.filter(study => study.id !== studyId)
                 setUser(updatedUser)
                 navigate('/my_profile')

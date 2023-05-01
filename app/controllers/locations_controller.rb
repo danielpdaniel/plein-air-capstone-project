@@ -6,7 +6,7 @@ skip_before_action :authorize, only: [:index, :tag_filter]
     def index
         # byebug
         locations = Location.all
-        render json: locations, status: :ok, include: ['tags', 'study.tags']
+        render json: locations, status: :ok, include: ['tags', 'study.tags', 'comments', 'study.comments']
     end
 
     def create
