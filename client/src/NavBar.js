@@ -6,7 +6,7 @@ function NavBar(){
     const { user, setUser } = useContext(UserContext)
     const [notif, setNotif] = useState(user ? user.unread_notifs : "")
 
-    console.log(notif)
+    console.log(user.unread_notifs)
 
     function handleLogout(){
         fetch("/logout", {
@@ -21,12 +21,12 @@ function NavBar(){
         })
     }
 
-    // useEffect(()=>{
-    //     if(user){
-    //         console.log(user.unread_notifs)
-    //         setNotif(user.unread_notifs)
-    //     }
-    // }, [user])
+    useEffect(()=>{
+        if(user){
+            console.log(user.unread_notifs)
+            setNotif(user.unread_notifs)
+        }
+    }, [user])
 
     return(
         <div className="NavBar">

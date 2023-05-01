@@ -30,8 +30,8 @@ function Notifications(){
                     <div key={notif.user_id + notif.study_id + notif.id} className="notification">
                         {notif.comment ?  
                         <div>
-                        <a href={`/users/${notif.comment.user_id}`}>{notif.comment.author_username}</a>
-                        <p>commented on your <a href={`/studies/${notif.study_id}`}>post:</a> {notif.comment.comment_text}</p>
+                        <NavLink to={`/users/${notif.comment.user_id}`}>{notif.comment.author_username}</NavLink>
+                        <p>commented on your <NavLink to={`/studies/${notif.study_id}`}>post:</NavLink> {notif.comment.comment_text}</p>
                         </div>
                         :
                         <div>

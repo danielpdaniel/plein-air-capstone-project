@@ -38,7 +38,7 @@ return (
             </button>
             
         </div> : null}
-        <a href={study ? `/users/${study.user_id}` : null}>{study.author_username}</a>
+        <NavLink to={study ? `/users/${study.user_id}` : null}>{study.author_username}</NavLink>
         <br></br>
         {studyClassName == "mapStudyCard" ? <img src={study.attached_images[0].img_url} className="studyImgs"/>: study.attached_images.map(image =>  <img key={image.id} src={image.img_url} className="studyImgs"/>)}
         <p>{study.caption}</p>
