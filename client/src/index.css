@@ -135,7 +135,8 @@ body {
   background-color: var(--tertiaryColor);
   padding-left: 2%;
   padding-right: 2%;
-  border-radius: 7px
+  border-radius: 7px;
+  overflow: auto;
 }
 
 .comment {
