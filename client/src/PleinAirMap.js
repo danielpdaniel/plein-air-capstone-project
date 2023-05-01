@@ -147,7 +147,16 @@ function PleinAirMap(){
     }
 
     function handleDeleteComment(comment){
-        console.log(comment)
+        const updatedMarkers = markers.map(marker => {
+            if(marker.study.id === comment.study_id){
+                const filteredComments = marker.study.comments.filter(filterComment => filterComment.id !== comment.id)
+                marker.study.comments = filteredComments
+                return marker
+            }else{
+                return marker
+            }
+        })
+        setMarkers(updatedMarkers)
     }
 
     
