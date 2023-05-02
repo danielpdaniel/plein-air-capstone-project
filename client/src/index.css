@@ -23,6 +23,8 @@ body {
   background-color: var(--mainColor);
 }
 
+
+
 .NavBar a{
   background-color: var(--secondaryColor);
   padding: 10px;
@@ -125,7 +127,7 @@ body {
 
 .map-container {
   width: 100%;
-  height: 100vh;
+  height: 85vh;
 }
 
 /* .studyInfoWindow {
