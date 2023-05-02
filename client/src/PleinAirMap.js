@@ -23,7 +23,7 @@ function PleinAirMap(){
 
     // const { user, setUser } = useContext(UserContext)
 
-    const center = useMemo(() => ({lat: 44, lng: -80}), [])
+    const center = useMemo(() => ({lat: 15, lng: 0}), [])
     
     const { isLoaded } = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_PLEIN_AIR_MAP_GOOGLE_MAPS_API_KEY
@@ -174,7 +174,7 @@ function PleinAirMap(){
 
             {isLoaded ? 
             <GoogleMap 
-            zoom={10} 
+            zoom={2} 
             center={center} 
             mapContainerClassName="map-container"
             onClick={(e) => {if(user){setLatLng(e.latLng)}}}
