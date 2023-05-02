@@ -197,7 +197,7 @@ function PleinAirMap(){
                 <InfoWindow 
                 className="studyInfoWindow"
                 maxWidth={10}
-                position={{lat: selectedMarker.latitude + .03, lng: selectedMarker.longitude}}
+                position={{lat: selectedMarker.latitude, lng: selectedMarker.longitude}}
                 onCloseClick={()=>{setSelectedMarker("")}}>
                     
                     {studyEdit == selectedMarker.study.id
