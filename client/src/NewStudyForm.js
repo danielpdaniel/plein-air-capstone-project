@@ -44,6 +44,8 @@ function NewStudyForm({ latLng, onNewMapStudyState }){
 
         if(latLng){
             formData.append("latLng", latLng)
+            formData.append("lat", latLng.lat())
+            formData.append("lng", latLng.lng())
         }
 
         fetch("/studies", {

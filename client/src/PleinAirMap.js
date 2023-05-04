@@ -159,8 +159,6 @@ function PleinAirMap(){
         setMarkers(updatedMarkers)
     }
 
-    
-
     return(
         <div>
             <h3>Welcome to the Map!</h3>
