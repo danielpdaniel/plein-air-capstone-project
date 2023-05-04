@@ -26,9 +26,16 @@ body {
 
 
 .NavBar a{
+  text-decoration: none;
   background-color: var(--secondaryColor);
   padding: 10px;
   margin: 10px;
+}
+
+.NavBar a.active {
+  /* background-color: red; */
+  /* text-decoration: underline */
+  border-bottom: 10px solid var(--tertiaryColor)
 }
 
 .studyImgs {
