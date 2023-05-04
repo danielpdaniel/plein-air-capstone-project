@@ -200,7 +200,7 @@ function PleinAirMap(){
                     
                     {studyEdit == selectedMarker.study.id
                     ?
-                    <EditStudyForm study={selectedMarker.study} setStudyEdit={setStudyEdit} onStudyEdit={handleStudyEdit}/>
+                    <EditStudyForm study={selectedMarker.study} setStudyEdit={setStudyEdit} onStudyEdit={handleStudyEdit} editFormClassName="mapStudyCard"/>
                     :
                     <StudyCard 
                     study={selectedMarker.study} 

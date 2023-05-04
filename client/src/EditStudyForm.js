@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-function EditStudyForm({study, setStudyEdit, onStudyEdit}){
+function EditStudyForm({study, setStudyEdit, onStudyEdit, editFormClassName}){
 
     const [caption, setCaption] = useState(study.caption)
 
@@ -99,7 +99,7 @@ function EditStudyForm({study, setStudyEdit, onStudyEdit}){
     // console.log("images still attached:", images)
     
     return (
-        <div className="studyCard">
+        <div className={editFormClassName}>
             <form onSubmit={(e )=> handleStudyEditSubmit(e)}>
 
                 {images.map(image => 
