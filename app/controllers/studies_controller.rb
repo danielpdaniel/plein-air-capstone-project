@@ -30,8 +30,8 @@ class StudiesController < ApplicationController
             end
 
             if params[:latLng]
-                latitude = params[:latLng].slice(1..17).to_f
-                longitude = params[:latLng].slice(20..37).to_f
+                latitude = params[:lat].to_f
+                longitude = params[:lng].to_f
                location = Location.create!(lat_lng: params[:latLng], study_id: study.id, latitude: latitude, longitude: longitude)
             end
 
