@@ -11,6 +11,7 @@ function MyProfile(){
     const [pageUser, setPageUser] = useState("")
     const [studies, setStudies] = useState("")
     const [studyEdit, setStudyEdit] = useState("")
+    const [editStatus, setEditStatus] = useState(false)
     const navigate = useNavigate()
     
     useEffect(()=>{
@@ -88,18 +89,29 @@ function MyProfile(){
     }
 
     return (
-        <Profile 
-        pageUser={pageUser} 
-        studies={studies}
-        setStudies={setStudies}
-        studyEdit={studyEdit}
-        setStudyEdit={setStudyEdit}
-        handleStudyEdit={handleStudyEdit}
-        handleDeleteStudiesState={handleDeleteStudiesState}
-        onTagClick={onTagClick}
-        onNewComment={handleNewComment}
-        onDeleteComment={handleDeleteComment}
-        />
+    <>
+    {editStatus ? 
+    <form>
+        <input type="text" value={pageUser.username} name="username"/>
+    </form>
+    :
+    null}
+    <button onClick={()=>setEditStatus(editStatus => !editStatus)}>{editStatus ? "Cancel" : "Edit Profile" }</button>
+
+            <Profile 
+            pageUser={pageUser} 
+            studies={studies}
+            setStudies={setStudies}
+            studyEdit={studyEdit}
+            setStudyEdit={setStudyEdit}
+            handleStudyEdit={handleStudyEdit}
+            handleDeleteStudiesState={handleDeleteStudiesState}
+            onTagClick={onTagClick}
+            onNewComment={handleNewComment}
+            onDeleteComment={handleDeleteComment}
+            />
+    </>
+        
     )
 
 
