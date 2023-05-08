@@ -177,3 +177,7 @@ body {
   padding-right: 2%;
   border-radius: 7px;
 }
+
+.profileAvatar {
+  width: 100px;
+}

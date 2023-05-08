@@ -1,24 +1,40 @@
-# README
+# Plein Air Capstone Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Plein Air Capstone Project is an app that allows users to digitize their artistic studies, organize them, and view their plein air studies on a map associated with the real world locations where said study was drawn/painted. My hope is that the project can function as a sort of virtual sketchbook that might encourage artist's to hone their skills through getting out into the world and drawing or painting whatever they see. The app is currently not deployed anywhere, but I would love for it to someday also allow users to connect with each other in a more social media-like capacity.
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+To run the app locally, fork and clone this repo. Then from within the project directory, run:
 
-* System dependencies
+```bash
+bundle install
+npm install --prefix client
+```
+to install the ruby gems and npm packages. Next, run:
+```bash
+rails db:migrate
+```
+to run the migrations to set up the database.
+To get the map up and running, you will also need your own API key from the Google Maps API. Visit the [Google Maps console](https://console.cloud.google.com/google/maps-apis) and login/verify your account. Then navigate to map management to set up your own map and get the API key. Once you have the key, create a .env.local file in the app's client directory. In the .env.local file, add:
 
-* Configuration
+REACT_APP_PLEIN_AIR_MAP_GOOGLE_MAPS_API_KEY= "your API key"
 
-* Database creation
+This way the PleinAirMap component will be able to load the map you created in the Google Maps API console.
 
-* Database initialization
+## Usage
+To run the app, open a new window in your terminal and enter:
+```
+rails s
+```
+to start the backend rails server.
+Then, open another window and enter:
+```
+npm start --prefix client
+```
+to run the react frontend in your default browser. Now you can create an account, login, edit your studies or post new ones from the map using location data or from the homepage if there is no location data involved. Have fun!
+## Contributing
+Feel free to play around with stuff in your own forked version if you like. Since this is a school project (and one I hope to continue developing myself!), I probably won't be able to accept contributions to the main branch.
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Credits
+The frontend for the app is built using [React](https://reactjs.org/) with a [Rails](https://rubyonrails.org/) backend.
+Adding image attachments was made possible through [Active Storage](https://edgeguides.rubyonrails.org/active_storage_overview.html). For the map display and location data, I used the Google Maps JavaScript API
