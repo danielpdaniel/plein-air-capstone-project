@@ -15,7 +15,7 @@ to install the ruby gems and npm packages. Next, run:
 rails db:migrate
 ```
 to run the migrations to set up the database.
-To get the map up and running, you will also need your own API key from the Google Maps API. Visit the [Google Maps console](https://console.cloud.google.com/google/maps-apis) and login/verify your account. Then navigate to map management to set up your own map and get the API key. Once you have the key, create a .env.local file in the app's client directory. In the .env.local file, add:
+To get the map up and running, you will also need your own API key from the Google Maps API. [This documentation](https://developers.google.com/maps/documentation/javascript/get-api-key) will walk you through getting an API key. Once you have the key, create a .env.local file in the app's client directory. In the .env.local file, add:
 
 REACT_APP_PLEIN_AIR_MAP_GOOGLE_MAPS_API_KEY= "your API key"
 
@@ -37,4 +37,5 @@ Feel free to play around with stuff in your own forked version if you like. Sinc
 
 ## Credits
 The frontend for the app is built using [React](https://reactjs.org/) with a [Rails](https://rubyonrails.org/) backend.
-Adding image attachments was made possible through [Active Storage](https://edgeguides.rubyonrails.org/active_storage_overview.html). For the map display and location data, I used the Google Maps JavaScript API
+Adding image attachments was made possible through [Active Storage](https://edgeguides.rubyonrails.org/active_storage_overview.html). For the map display and location data, I used the [Google Maps JavaScript API](https://developers.google.com/maps) to handle the map and location based features of the app.
+This project was done for my Phase 5 Capstone Project for Flatiron School's Software Engineering flex bootcamp. Thank you so much to everyone at Flatiron for seeing me through to the end of the program, I hope this project can show just how far I've come in my programming journey!
