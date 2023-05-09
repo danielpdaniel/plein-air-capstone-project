@@ -11,15 +11,13 @@ function UserEditProfile({pageUser, studies, studyEdit, handleStudyEdit, handleD
 
     const {setUser} = useContext(UserContext)
 
-console.log(errors)
-
     function handleUserEditSubmit(e){
         e.preventDefault()
         const formData = new FormData()
 
         formData.append("username", username)
         formData.append("about", about)
-        
+
         if(avatar !== pageUser.avatar){
         formData.append("avatar", avatar)
         }
@@ -32,7 +30,7 @@ console.log(errors)
             if(r.ok){
                 r.json().then(data=>{setUser(data); setEditStatus(false); setErrors("")})
             }else{
-                r.json().then(data => setErrors(data))
+                r.json().then(data => setErrors(data.errors))
             }
         })
 
@@ -55,7 +53,7 @@ console.log(errors)
                     <input type="submit" value="Submit"/>
                 </form>
 
-                {/* {errors ? errors.map(error => <p>{error}</p>) : null} */}
+                {errors ? errors.map(error => <p>{error}</p>) : null}
 
 
                 {/* {tagEntry ? 
