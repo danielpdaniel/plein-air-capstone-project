@@ -19,7 +19,10 @@ console.log(errors)
 
         formData.append("username", username)
         formData.append("about", about)
+        
+        if(avatar !== pageUser.avatar){
         formData.append("avatar", avatar)
+        }
 
         fetch(`users/${pageUser.id}`, {
             method: "PATCH",
@@ -27,7 +30,7 @@ console.log(errors)
         })
         .then(r => {
             if(r.ok){
-                r.json().then(data=>{setUser(data); setEditStatus(false)})
+                r.json().then(data=>{setUser(data); setEditStatus(false); setErrors("")})
             }else{
                 r.json().then(data => setErrors(data))
             }

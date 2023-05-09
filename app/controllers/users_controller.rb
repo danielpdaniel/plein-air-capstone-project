@@ -26,9 +26,12 @@ class UsersController < ApplicationController
     def update
         # byebug
         # user = User.find_by!(id: user_params[:id])
-        @user&.update!(user_params)
-    
+        @user&.update!(username: params[:username], about: params[:about])
+
+        if params[:avatar]
+            byebug
         @user&.avatar.attach(params[:avatar])
+        end
 
         # user.update(user_params)
         render json: @user, status: :accepted
