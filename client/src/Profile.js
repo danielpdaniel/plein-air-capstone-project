@@ -58,7 +58,12 @@ function Profile({pageUser, studies, studyEdit, handleStudyEdit, handleDeleteStu
 
                 <div className="userStudies">
                     {studies ? studies.map(study => study.id === studyEdit ?
-                    <EditStudyForm key={study.id} study={study} setStudyEdit={setStudyEdit} onStudyEdit={handleStudyEdit} className="studyCard"/>
+                    <EditStudyForm 
+                    key={study.id} 
+                    study={study} 
+                    setStudyEdit={setStudyEdit} 
+                    onStudyEdit={handleStudyEdit} 
+                    editFormClassName="studyCard"/>
                     :
                     <StudyCard 
                     key={study.id} 

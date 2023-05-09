@@ -24,13 +24,14 @@ class UsersController < ApplicationController
     end
 
     def update
-        user = User.find_by!(id: user_params[:id])
-        user.update!(user_params)
+        # byebug
+        # user = User.find_by!(id: user_params[:id])
+        @user&.update!(user_params)
     
-        # user.avatar.attach(params[:avatar])
+        @user&.avatar.attach(params[:avatar])
 
         # user.update(user_params)
-        render json: user, status: :accepted
+        render json: @user, status: :accepted
     end
 
     def session_user

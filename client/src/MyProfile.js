@@ -4,6 +4,7 @@ import { UserContext } from "./context/user"
 import StudyCard from "./StudyCard"
 import EditStudyForm from "./EditStudyForm"
 import Profile from"./Profile"
+import UserEditProfile from "./UserEditProfile"
 
 function MyProfile(){
     const params = useParams()
@@ -12,6 +13,8 @@ function MyProfile(){
     const [studies, setStudies] = useState("")
     const [studyEdit, setStudyEdit] = useState("")
     const [editStatus, setEditStatus] = useState(false)
+
+    const [formUsername, setFormUsername] = useState(pageUser.username)
     const navigate = useNavigate()
     
     useEffect(()=>{
@@ -90,26 +93,44 @@ function MyProfile(){
 
     return (
     <>
-    {editStatus ? 
-    <form>
-        <input type="text" value={pageUser.username} name="username"/>
-    </form>
-    :
-    null}
     <button onClick={()=>setEditStatus(editStatus => !editStatus)}>{editStatus ? "Cancel" : "Edit Profile" }</button>
 
-            <Profile 
-            pageUser={pageUser} 
-            studies={studies}
-            setStudies={setStudies}
-            studyEdit={studyEdit}
-            setStudyEdit={setStudyEdit}
-            handleStudyEdit={handleStudyEdit}
-            handleDeleteStudiesState={handleDeleteStudiesState}
-            onTagClick={onTagClick}
-            onNewComment={handleNewComment}
-            onDeleteComment={handleDeleteComment}
-            />
+    {editStatus ? 
+    // <form>
+    //     <label htmlFor="username">Username:</label>
+    //     <input type="text" value={user.username} name="username"/>
+    //     <label htmlFor="about">About:</label>
+    //     <textarea value={user.about}/>
+    //     <input type="submit" value="submit"/>
+    // </form>
+        <UserEditProfile
+        pageUser={pageUser} 
+        studies={studies}
+        setStudies={setStudies}
+        studyEdit={studyEdit}
+        setStudyEdit={setStudyEdit}
+        handleStudyEdit={handleStudyEdit}
+        handleDeleteStudiesState={handleDeleteStudiesState}
+        onTagClick={onTagClick}
+        onNewComment={handleNewComment}
+        onDeleteComment={handleDeleteComment}
+        setEditStatus={setEditStatus}
+        />
+    :
+    
+        <Profile 
+        pageUser={pageUser} 
+        studies={studies}
+        setStudies={setStudies}
+        studyEdit={studyEdit}
+        setStudyEdit={setStudyEdit}
+        handleStudyEdit={handleStudyEdit}
+        handleDeleteStudiesState={handleDeleteStudiesState}
+        onTagClick={onTagClick}
+        onNewComment={handleNewComment}
+        onDeleteComment={handleDeleteComment}
+        />}
+        
     </>
         
     )
