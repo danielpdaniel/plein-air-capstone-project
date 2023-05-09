@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :password_digest, :about, :avatar_info, :unread_notifs
+  attributes :id, :username, :about, :avatar_info, :unread_notifs
 
   has_many :studies
   # has_many :notifications
