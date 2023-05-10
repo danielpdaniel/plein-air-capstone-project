@@ -1,10 +1,12 @@
-import { NavLink, useParams } from "react-router-dom"
+import { NavLink, useNavigate, useParams } from "react-router-dom"
 import { useContext, useEffect, useState } from "react"
 import { UserContext } from "./context/user"
 
 function NavBar(){
     const { user, setUser } = useContext(UserContext)
     const [notif, setNotif] = useState(user ? user.unread_notifs : "")
+
+    const navigate = useNavigate()
 
     function handleLogout(){
         fetch("/logout", {
@@ -15,6 +17,7 @@ function NavBar(){
         }).then(r=>{
             if(r.ok){
                 setUser("")
+                navigate("/")
             }
         })
     }
