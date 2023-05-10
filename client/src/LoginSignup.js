@@ -44,7 +44,8 @@ function LoginSignup(){
         e.preventDefault()
         const newUser = {
             username: username,
-            password: password
+            password: password,
+            about: ""
         }
         fetch("/users", {
             method: "POST",
