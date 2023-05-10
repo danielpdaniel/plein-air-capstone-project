@@ -181,3 +181,10 @@ body {
 .profileAvatar {
   width: 100px;
 }
+
+.userEditForm {
+  max-width: 30%;
+  background-color: var(--tertiaryColor);
+  padding: 2%;
+  border-radius: 7px
+}

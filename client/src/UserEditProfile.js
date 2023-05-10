@@ -3,7 +3,7 @@ import EditStudyForm from "./EditStudyForm"
 import StudyCard from "./StudyCard"
 import { UserContext } from "./context/user"
 
-function UserEditProfile({pageUser, studies, studyEdit, handleStudyEdit, handleDeleteStudiesState, setStudyEdit, onTagClick, setStudies, onNewComment, onDeleteComment, setEditStatus}){
+function UserEditProfile({pageUser, studies, studyEdit, handleStudyEdit, handleDeleteStudiesState, setStudyEdit, onTagClick, setStudies, onNewComment, onDeleteComment, setEditProfileStatus}){
     const [username, setUsername] = useState(pageUser.username)
     const [about, setAbout] = useState(pageUser.about)
     const [avatar, setAvatar] = useState(pageUser.avatar)
@@ -28,7 +28,7 @@ function UserEditProfile({pageUser, studies, studyEdit, handleStudyEdit, handleD
         })
         .then(r => {
             if(r.ok){
-                r.json().then(data=>{setUser(data); setEditStatus(false); setErrors("")})
+                r.json().then(data=>{setUser(data); setEditProfileStatus(false); setErrors("")})
             }else{
                 r.json().then(data => setErrors(data.errors))
             }
@@ -37,19 +37,26 @@ function UserEditProfile({pageUser, studies, studyEdit, handleStudyEdit, handleD
     }
     return (
         <div>
-            <h2>Oooh we are editing the user data!!!</h2>
             {pageUser ? 
             <div>
                 {/* <h3>{pageUser.username}</h3>
                 <img src={pageUser.avatar_info} alt={pageUser.username} className="profileAvatar"/>
                 <p>{pageUser.about}</p> */}
-                <form onSubmit={(e)=>handleUserEditSubmit(e)}>
+                <form onSubmit={(e)=>handleUserEditSubmit(e)} className="userEditForm">
                     <label htmlFor="username">Username:</label>
+                    <br></br>
                     <input name="username" type="text" value={username} onChange={(e)=>setUsername(e.target.value)}/>
-                    <input type="file" accept="image/*" multiple={false} onChange={(e)=>setAvatar(e.target.files[0])}/>
+                    <br></br>
+
+                    <label htmlFor="avatarSubmitField">Avatar:</label>
+                    <br></br>
+                    <input type="file" accept="image/*" name="avatarSubmitField" multiple={false} onChange={(e)=>setAvatar(e.target.files[0])}/>
+                    <br></br>
 
                     <label htmlFor="about">About:</label>
+                    <br></br>
                     <textarea name="about" value={about} onChange={(e)=>setAbout(e.target.value)}/>
+                    <br></br>
                     <input type="submit" value="Submit"/>
                 </form>
 

@@ -10,7 +10,7 @@ function MyProfile(){
     const [pageUser, setPageUser] = useState("")
     const [studies, setStudies] = useState("")
     const [studyEdit, setStudyEdit] = useState("")
-    const [editStatus, setEditStatus] = useState(false)
+    const [editProfileStatus, setEditProfileStatus] = useState(false)
 
     const [formUsername, setFormUsername] = useState(pageUser.username)
     const navigate = useNavigate()
@@ -86,9 +86,9 @@ function MyProfile(){
 
     return (
     <>
-    <button onClick={()=>setEditStatus(editStatus => !editStatus)}>{editStatus ? "Cancel" : "Edit Profile" }</button>
+    <button onClick={()=>setEditProfileStatus(editProfileStatus => !editProfileStatus)}>{editProfileStatus ? "Cancel" : "Edit Profile" }</button>
 
-    {editStatus ? 
+    {editProfileStatus ? 
         <UserEditProfile
         pageUser={pageUser} 
         studies={studies}
@@ -99,7 +99,7 @@ function MyProfile(){
         handleDeleteStudiesState={handleDeleteStudiesState}
         onNewComment={handleNewComment}
         onDeleteComment={handleDeleteComment}
-        setEditStatus={setEditStatus}
+        setEditProfileStatus={setEditProfileStatus}
         />
     :
     

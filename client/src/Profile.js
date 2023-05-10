@@ -3,7 +3,7 @@ import EditStudyForm from "./EditStudyForm"
 import { useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 
-function Profile({pageUser, studies, studyEdit, handleStudyEdit, handleDeleteStudiesState, setStudyEdit, onTagClick, setStudies, onNewComment, onDeleteComment}){
+function Profile({pageUser, studies, studyEdit, handleStudyEdit, handleDeleteStudiesState, setStudyEdit, setStudies, onNewComment, onDeleteComment}){
 
     const navigate = useNavigate()
     // const params = useParams
