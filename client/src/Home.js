@@ -6,7 +6,7 @@ import EditStudyForm from "./EditStudyForm"
 function Home(){
 
     const {user, setUser} = useContext(UserContext)
-
+console.log(user)
     // function handleNewStudyState(data){
     //     updatedUser
     // }

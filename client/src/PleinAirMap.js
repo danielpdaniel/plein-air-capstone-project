@@ -135,6 +135,7 @@ function PleinAirMap(){
 
     function handleNewComment(comment){
         // marker.study.comments
+        console.log(comment)
         const updatedMarkers = markers.map(marker => {
             if(marker.study.id === comment.study_id){
                 marker.study.comments = [...marker.study.comments, comment]

@@ -6,7 +6,7 @@ import CommentWindow from "./CommentWindow"
 function StudyCard({ study, onDeleteStudy, setStudyEdit, studyClassName, onTagClick, onNewComment, onDeleteComment}){
     const {user, setUser} = useContext(UserContext)
     const [commentStatus, setCommentStatus] = useState(false)
-    
+   
     function handleDeleteClick(){
         fetch(`/studies/${study.id}`, {
             method: "DELETE",
