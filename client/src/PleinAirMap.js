@@ -163,6 +163,22 @@ function PleinAirMap(){
     }
 
     function handleDeleteComment(comment){
+        if(comment.study_author_id === user.id){
+            const updatedStudies = []
+            user.studies.map(study =>{
+                if(study.id === comment.study_id){
+                    const updatedComments = study.comments.filter(thisComment => thisComment.id !== comment.id)
+                    study.comments = updatedComments
+                    updatedStudies.push(study)
+                }else{
+                    updatedStudies.push(study)
+                }
+            })
+
+            const updatedUser = {...user}
+            updatedUser.studies = updatedStudies
+            setUser(updatedUser)
+        }
         const updatedMarkers = markers.map(marker => {
             if(marker.study.id === comment.study_id){
                 const filteredComments = marker.study.comments.filter(filterComment => filterComment.id !== comment.id)
