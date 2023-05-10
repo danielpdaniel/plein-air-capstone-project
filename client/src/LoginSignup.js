@@ -40,6 +40,34 @@ function LoginSignup(){
             }})
     }
 
+    function handleSignup(e){
+        e.preventDefault()
+        const newUser = {
+            username: username,
+            password: password
+        }
+        fetch("/users", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newUser)
+        })
+        .then(r =>{
+            if(r.ok){
+                r.json().then(data => 
+                {    setUser(data);
+                    setErrors("");
+                    setUsername("");
+                    setPassword("");
+                    navigate("/")
+                })
+            }else{
+                r.json().then(data => setErrors(data.errors))
+            }
+        })
+    }
+
     function handleLogout(){
         fetch("/logout", {
             method: "DELETE",
@@ -64,6 +92,7 @@ function LoginSignup(){
                 <label htmlFor={"password"}>Password:</label>
                     <input type="password" value={password} id={2} placeholder="enter password here..." onChange={(e)=>setPassword(e.target.value)}/>
                 <input type="submit" value="Login"/>
+                <button onClick={(e)=>handleSignup(e)}>Sign Up</button>
             </form>
             {errors ? errors.map(error => <h4 key={error}>{error}</h4>) : null}
         </div>  
