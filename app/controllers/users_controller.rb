@@ -19,8 +19,10 @@ class UsersController < ApplicationController
         user = User.create!(user_params)
         default_avatar = ActiveStorage::Blob.first
         user&.avatar.attach(default_avatar)
-     
+        if user&.valid?
+        session[:user_id] = user.id
         render json: user, status: :created
+        end
     end
 
     def update
@@ -29,7 +31,7 @@ class UsersController < ApplicationController
         @user&.update!(username: params[:username], about: params[:about])
 
         if params[:avatar]
-            byebug
+           
         @user&.avatar.attach(params[:avatar])
         end
 

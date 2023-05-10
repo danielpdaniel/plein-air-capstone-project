@@ -55,8 +55,8 @@ function LoginSignup(){
         })
         .then(r =>{
             if(r.ok){
-                r.json().then(data => 
-                {    setUser(data);
+                r.json().then(data => {    
+                    setUser(data);
                     setErrors("");
                     setUsername("");
                     setPassword("");
