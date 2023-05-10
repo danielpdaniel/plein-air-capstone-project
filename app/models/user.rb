@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
     has_many :comments
 
-    has_many :notifications
+    has_many :notifications, -> {order(created_at: :DESC)}
 
     validates :username, presence: true, uniqueness: true
 
