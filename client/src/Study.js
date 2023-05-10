@@ -43,11 +43,6 @@ function Study(){
             study={study} 
             studyClassName="singleStudyCard"
             onDeleteStudy={handleDeleteStudy} 
-            // setStudyEdit={setStudyEdit} 
-            // studyClassName="studyCard"
-            // onTagClick={(tag)=>setTagEntry(tag.name)}
-            // onNewComment={onNewComment}
-            // onDeleteComment={onDeleteComment}
             />
             :
             <h5>Loading...</h5>}

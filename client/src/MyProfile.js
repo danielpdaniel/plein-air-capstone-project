@@ -1,8 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom"
 import { useState, useEffect, useContext } from "react"
 import { UserContext } from "./context/user"
-import StudyCard from "./StudyCard"
-import EditStudyForm from "./EditStudyForm"
 import Profile from"./Profile"
 import UserEditProfile from "./UserEditProfile"
 
@@ -20,7 +18,6 @@ function MyProfile(){
     useEffect(()=>{
         if(user){
             setPageUser(user)
-            // console.log(user.studies)
             setStudies(user.studies)
         }
     },[user])
@@ -50,10 +47,6 @@ function MyProfile(){
         updatedUser.studies = updatedStudies
         setStudies(updatedStudies)
         setUser(updatedUser)
-    }
-
-    function onTagClick(tag){
-        // navigate(`/my_profile/tags/${tag.id}/studies`)
     }
 
     function handleNewComment(comment){
@@ -96,13 +89,6 @@ function MyProfile(){
     <button onClick={()=>setEditStatus(editStatus => !editStatus)}>{editStatus ? "Cancel" : "Edit Profile" }</button>
 
     {editStatus ? 
-    // <form>
-    //     <label htmlFor="username">Username:</label>
-    //     <input type="text" value={user.username} name="username"/>
-    //     <label htmlFor="about">About:</label>
-    //     <textarea value={user.about}/>
-    //     <input type="submit" value="submit"/>
-    // </form>
         <UserEditProfile
         pageUser={pageUser} 
         studies={studies}
@@ -111,7 +97,6 @@ function MyProfile(){
         setStudyEdit={setStudyEdit}
         handleStudyEdit={handleStudyEdit}
         handleDeleteStudiesState={handleDeleteStudiesState}
-        onTagClick={onTagClick}
         onNewComment={handleNewComment}
         onDeleteComment={handleDeleteComment}
         setEditStatus={setEditStatus}
@@ -126,34 +111,13 @@ function MyProfile(){
         setStudyEdit={setStudyEdit}
         handleStudyEdit={handleStudyEdit}
         handleDeleteStudiesState={handleDeleteStudiesState}
-        onTagClick={onTagClick}
         onNewComment={handleNewComment}
         onDeleteComment={handleDeleteComment}
         />}
         
     </>
         
-    )
-
-
-    // return (
-    //     <div>
-    //         {pageUser ? 
-    //         <div>
-    //             <h3>{pageUser.username}</h3>
-    //             <img src={pageUser.avatar_info} alt={pageUser.username} />
-    //             <p>{pageUser.about}</p>
-    //             <div className="userStudies">
-    //                 {studies ? studies.map(study => study.id === studyEdit ?
-    //                 <EditStudyForm key={study.id} study={study} setStudyEdit={setStudyEdit} onStudyEdit={handleStudyEdit}/>
-    //                 :
-    //                 <StudyCard key={study.id} study={study} onDeleteStudy={handleDeleteStudiesState} setStudyEdit={setStudyEdit} studyClassName="studyCard"/>
-    //                 ) : null}
-    //             </div>
-    //         </div>
-    //         : <h5>User Not Found</h5>}
-    //     </div>
-    // )
+    )   
 }
 
 export default MyProfile
