@@ -135,7 +135,22 @@ function PleinAirMap(){
 
     function handleNewComment(comment){
         // marker.study.comments
-        console.log(comment)
+        if(comment.study_author_id === user.id){
+            const updatedStudies = []
+            user.studies.map(study =>{
+                if(study.id === comment.study_id){
+                    study.comments = [...study.comments, comment]
+                    updatedStudies.push(study)
+                }else{
+                    updatedStudies.push(study)
+                }
+            })
+
+            const updatedUser = {...user}
+            updatedUser.studies = updatedStudies
+            setUser(updatedUser)
+        }
+
         const updatedMarkers = markers.map(marker => {
             if(marker.study.id === comment.study_id){
                 marker.study.comments = [...marker.study.comments, comment]
