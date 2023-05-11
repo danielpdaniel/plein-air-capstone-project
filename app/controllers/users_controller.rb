@@ -20,8 +20,9 @@ class UsersController < ApplicationController
         default_avatar = ActiveStorage::Blob.first
         user&.avatar.attach(default_avatar)
         if user&.valid?
-        session[:user_id] = user.id
-        render json: user, status: :created
+            user.update!(circular_avatar_status: false)
+            session[:user_id] = user.id
+            render json: user, status: :created
         end
     end
 
@@ -50,7 +51,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:username, :password, :about, :avatar, :id, :user, :tag_id)
+        params.permit(:username, :password, :about, :avatar, :id, :user, :tag_id, :circular_avatar_status)
     end
 
     def invalid_user_response(invalid)
