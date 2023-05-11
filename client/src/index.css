@@ -184,6 +184,13 @@ body {
   object-fit: cover;
 }
 
+.profileAvatarCircle {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 100%
+}
+
 .userEditForm {
   max-width: 30%;
   background-color: var(--tertiaryColor);
