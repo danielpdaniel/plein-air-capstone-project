@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     def update
         # byebug
         # user = User.find_by!(id: user_params[:id])
-        @user&.update!(username: params[:username], about: params[:about])
+        @user&.update!(username: params[:username], about: params[:about], circular_avatar_status: params[:circular_avatar_status])
 
         if params[:avatar]
            

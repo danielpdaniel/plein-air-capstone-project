@@ -7,6 +7,7 @@ function UserEditProfile({pageUser, studies, studyEdit, handleStudyEdit, handleD
     const [username, setUsername] = useState(pageUser.username)
     const [about, setAbout] = useState(pageUser.about)
     const [avatar, setAvatar] = useState(pageUser.avatar)
+    const [avatarCircleStatus, setAvatarCircleStatus] = useState(pageUser.avatar_circle_status)
     const [errors, setErrors] = useState("")
 
     const {setUser} = useContext(UserContext)
@@ -21,6 +22,8 @@ function UserEditProfile({pageUser, studies, studyEdit, handleStudyEdit, handleD
         if(avatar !== pageUser.avatar){
         formData.append("avatar", avatar)
         }
+
+        formData.append("circular_avatar_status", avatarCircleStatus)
 
         fetch(`users/${pageUser.id}`, {
             method: "PATCH",
@@ -51,6 +54,15 @@ function UserEditProfile({pageUser, studies, studyEdit, handleStudyEdit, handleD
                     <label htmlFor="avatarSubmitField">Avatar:</label>
                     <br></br>
                     <input type="file" accept="image/*" name="avatarSubmitField" multiple={false} onChange={(e)=>setAvatar(e.target.files[0])}/>
+                    <br></br>
+
+                    <label>Avatar Shape:</label>
+                    <br></br>
+                    <label htmlFor="circularRadio">Circular</label>
+                    <input name="circularRadio" type="radio" checked={avatarCircleStatus ? true : false} onChange={()=>setAvatarCircleStatus(true)}/>
+
+                    <label htmlFor="squareRadio">Square</label>
+                    <input name="squareRadio" type="radio" checked={avatarCircleStatus ? false : true} onChange={()=>setAvatarCircleStatus(false)}/>
                     <br></br>
 
                     <label htmlFor="about">About:</label>
