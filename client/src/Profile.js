@@ -42,7 +42,7 @@ function Profile({pageUser, studies, studyEdit, handleStudyEdit, handleDeleteStu
             {pageUser ? 
             <div>
                 <h3>{pageUser.username}</h3>
-                <img src={pageUser.avatar_info} alt={pageUser.username} className="profileAvatar"/>
+                <img src={pageUser.avatar_info} alt={pageUser.username} className={pageUser.circular_avatar_status ? "profileAvatarCircle" : "profileAvatar"}/>
                 <p>{pageUser.about}</p>
 
 
