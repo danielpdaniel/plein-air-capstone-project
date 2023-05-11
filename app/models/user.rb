@@ -12,7 +12,7 @@ class User < ApplicationRecord
     has_many :notifications, -> {order(created_at: :DESC)}
 
     validates :username, presence: true, uniqueness: true
-    validates :circular_avatar_status, presence: true
+    validates :circular_avatar_status,inclusion: [true, false]
 
     def avatar_url
         rails_blob_path(self.avatar)
