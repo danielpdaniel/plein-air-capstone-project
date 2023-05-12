@@ -80,16 +80,18 @@ function NewStudyForm({ latLng, onNewMapStudyState }){
         setCurrentTag("")
     }
 return(
-    <div>
+    <div className="newStudyForm">
         <form onSubmit={(e)=>handleNewStudySubmit(e)}>
-            <input type="file" accept="image/*" multiple={true} onChange={(e)=>setFiles(e.target.files)}/>
-            <textarea value={caption} onChange={(e) =>setCaption(e.target.value)}/>
-            <input type="submit"/>
+            <input name="imageSubmit" type="file" accept="image/*" multiple={true} onChange={(e)=>setFiles(e.target.files)}/>
+            <br></br>
+            <textarea value={caption} onChange={(e) =>setCaption(e.target.value)} placeHolder="Add a description to your post!"/>
+            {/* <input type="submit"/> */}
         </form>
         {tags ? <p>{tags.map(tag => `#${tag}, `)}</p> : null}
         <form onSubmit={(e) => handleAddTag(e)}>
             <input type="text" value={currentTag} onChange={(e)=>setCurrentTag(e.target.value)} placeholder="add tags to your post!"/>
         </form>
+        <button onClick={handleNewStudySubmit}>Submit</button>
     </div>
 )
 }
