@@ -9,6 +9,7 @@ function NewStudyForm({ latLng, onNewMapStudyState }){
     const [tags, setTags] = useState([])
     const [currentTag, setCurrentTag] = useState("")
     const { user, setUser } = useContext(UserContext)
+    const [errors, setErrors] = useState("")
 
 
     function handleFileChange(e){
@@ -66,9 +67,10 @@ function NewStudyForm({ latLng, onNewMapStudyState }){
                 setCaption("")
                 setCurrentTag("")
                 setTags("")
+                setErrors("")
             })
             }else{
-                r.json().then(data=>console.log(data))
+                r.json().then(data=>setErrors(data.errors))
             }
         })
     }
@@ -84,7 +86,7 @@ return(
         <form onSubmit={(e)=>handleNewStudySubmit(e)}>
             <input name="imageSubmit" type="file" accept="image/*" multiple={true} onChange={(e)=>setFiles(e.target.files)}/>
             <br></br>
-            <textarea value={caption} onChange={(e) =>setCaption(e.target.value)} placeHolder="Add a description to your post!"/>
+            <textarea value={caption} onChange={(e) =>setCaption(e.target.value)} placeholder="Add a description to your post!"/>
             {/* <input type="submit"/> */}
         </form>
         {tags ? <p>{tags.map(tag => `#${tag}, `)}</p> : null}
@@ -92,6 +94,7 @@ return(
             <input type="text" value={currentTag} onChange={(e)=>setCurrentTag(e.target.value)} placeholder="add tags to your post!"/>
         </form>
         <button onClick={handleNewStudySubmit}>Submit</button>
+        {errors ? errors.map(error => <p key={error}>{error}</p>) : null}
     </div>
 )
 }
