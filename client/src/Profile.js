@@ -20,7 +20,7 @@ function Profile({pageUser, studies, studyEdit, handleStudyEdit, handleDeleteStu
     useEffect(()=>{
         if(tagEntry){
             
-            fetch(`/tagged/${tagEntry}`)
+            fetch(`/users/${pageUser.id}/tagged/${tagEntry}`)
             .then(r => {
                 if(r.ok){
                     r.json().then(data => setStudies(data))

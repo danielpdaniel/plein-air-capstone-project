@@ -2,7 +2,7 @@ class StudiesController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :invalid_study_response
     rescue_from ActiveRecord::RecordNotFound, with: :not_found_study_response
 
-    skip_before_action :authorize, only: [:tag_filter_with_user]
+    skip_before_action :authorize, only: [:user_tag_filter]
     
     def index
         studies = Study.all
@@ -75,6 +75,13 @@ class StudiesController < ApplicationController
     def tag_filter
         # byebug
         studies =  Tag.find_by!(name: params[:tag_name]).studies
+        render json: studies, status: :ok
+    end
+
+    def user_tag_filter
+        # byebug
+        # user = User.find_by!(id: study_params[:id])
+        studies = Tag.find_by!(name: params[:tag_name]).studies.where(user_id: study_params[:id])
         render json: studies, status: :ok
     end
 
