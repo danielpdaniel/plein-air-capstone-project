@@ -1,11 +1,16 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import StudyCard from "./StudyCard"
+import { UserContext } from "./context/user"
+import EditStudyForm from "./EditStudyForm"
 
 function Search(){
     const [tagValue, setTagValue] = useState("")
     const [tagEntry, setTagEntry] = useState("")
     const [studies, setStudies] = useState("")
     const [errors, setErrors] = useState("")
+    const [studyEdit, setStudyEdit] = useState("")
+
+    const {user, setUser} = useContext(UserContext)
 
     function handleSearchSubmit(e){
         e.preventDefault()
@@ -26,6 +31,68 @@ function Search(){
         }
     }, [tagEntry])
 
+    function handleStudyEdit(editedStudy){
+        const updatedStudies = []
+        studies.map(study =>{
+            if(study.id === editedStudy.id){
+                updatedStudies.push(editedStudy)
+            }else{
+                updatedStudies.push(study)
+            }
+        })
+
+        const updatedUser = {...user}
+        updatedUser.studies = updatedStudies
+        setStudies(updatedStudies)
+        setUser(updatedUser)
+    }
+
+    function handleDeleteStudiesState(studyID){
+        const updatedStudies = studies.filter(study => study.id !== studyID)
+
+        const updatedUser = {...user}
+        updatedUser.studies = updatedStudies
+  
+        setStudies(updatedStudies)
+        setUser(updatedUser)
+        
+    }
+
+    function handleNewComment(comment){
+        const updatedStudies = []
+        studies.map(study =>{
+            if(study.id === comment.study_id){
+                study.comments = [...study.comments, comment]
+                updatedStudies.push(study)
+            }else{
+                updatedStudies.push(study)
+            }
+        })
+
+        const updatedUser = {...user}
+        updatedUser.studies = updatedStudies
+        setStudies(updatedStudies)
+        setUser(updatedUser)
+    }
+
+    function handleDeleteComment(comment){
+        const updatedStudies = []
+        studies.map(study =>{
+            if(study.id === comment.study_id){
+                const updatedComments = study.comments.filter(thisComment => thisComment.id !== comment.id)
+                study.comments = updatedComments
+                updatedStudies.push(study)
+            }else{
+                updatedStudies.push(study)
+            }
+        })
+
+        const updatedUser = {...user}
+        updatedUser.studies = updatedStudies
+        setStudies(updatedStudies)
+        setUser(updatedUser)
+    }
+
     return(
         <div>
             <h2>Search Studies By Tag</h2>
@@ -35,11 +102,26 @@ function Search(){
             </form>
             <div className="userStudies">
                 {studies ? studies.map(study => 
-                <StudyCard
-                key={study.id} 
-                study={study}
-                studyClassName="studyCard"
-                />)
+                    study.id === studyEdit ?
+                    <EditStudyForm
+                    key={study.id} 
+                    study={study} 
+                    setStudyEdit={setStudyEdit} 
+                    onStudyEdit={handleStudyEdit} 
+                    editFormClassName="studyCard"
+                    />
+                    :
+                    <StudyCard
+                    key={study.id} 
+                    study={study} 
+                    onDeleteStudy={handleDeleteStudiesState} 
+                    setStudyEdit={setStudyEdit} 
+                    studyClassName="studyCard"
+                    onTagClick={(tag)=>setTagEntry(tag.name)}
+                    onNewComment={handleNewComment}
+                    onDeleteComment={handleDeleteComment}
+                    />
+                    )
                 : <h3>use the form to search all studies by tag...</h3>}
             </div>
         </div>
