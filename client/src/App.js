@@ -11,6 +11,7 @@ import PleinAirMap from './PleinAirMap';
 import MyProfile from './MyProfile';
 import Notifications from './Notifications';
 import Study from './Study';
+import Search from './Search';
 
 function App() {
   const [count, setCount] = useState("")
@@ -60,6 +61,7 @@ function App() {
           <Route path="/users/:id" element={<UserProfile/>}/>
           <Route path="/map" element={<PleinAirMap/>}/>
           <Route path="/studies/:id" element={<Study/>}/>
+          <Route path="/search" element={<Search/>}/>
           <Route path="/" element={<Home/>}/>
         </Routes>
     </UserProvider>

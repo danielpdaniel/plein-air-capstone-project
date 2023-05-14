@@ -31,6 +31,7 @@ function NavBar(){
     return(
         <div className="NavBar">
             <NavLink to="/">Home</NavLink>
+            <NavLink to="/search">Search</NavLink>
             <NavLink to="/map">Map</NavLink>
             {user ? <NavLink to={'/notifications'}>{notif ? '⛅' : '☁️' }</NavLink> : null}
             {user ? <NavLink to={`/my_profile`}>My Page</NavLink> : null}
