@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import StudyCard from "./StudyCard"
 
 function Search(){
     const [tagValue, setTagValue] = useState("")
@@ -25,7 +26,6 @@ function Search(){
         }
     }, [tagEntry])
 
-    console.log(studies)
     return(
         <div>
             <h2>Search Studies By Tag</h2>
@@ -33,6 +33,15 @@ function Search(){
                 <input type="text" value={tagValue} onChange={e => setTagValue(e.target.value)} placeholder="search tag..."/>
                 <input type="submit"/>
             </form>
+            <div className="userStudies">
+                {studies ? studies.map(study => 
+                <StudyCard
+                key={study.id} 
+                study={study}
+                studyClassName="studyCard"
+                />)
+                : <h3>use the form to search all studies by tag...</h3>}
+            </div>
         </div>
     )
 }
