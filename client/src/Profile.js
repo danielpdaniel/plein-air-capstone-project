@@ -46,6 +46,18 @@ function Profile({pageUser, studies, studyEdit, handleStudyEdit, handleDeleteStu
                 <p>{pageUser.about}</p>
 
 
+                {/* {tagEntry ? 
+            <button className="studyEditTags" onClick={()=>setTagEntry("")}>{tagEntry}  X</button> 
+            : 
+            <form onSubmit={(e)=>{e.preventDefault(); setTagEntry(tagFilter); setTagFilter("")}}>
+                <input type="text" value={tagFilter} onChange={(e)=> setTagFilter(e.target.value)} placeholder="seach tag here..." />
+                <input type="submit" value="search tag"/>
+            </form>} */}
+
+                    <br></br>
+
+                <div className="userStudies">
+                    
                 {tagEntry ? 
             <button className="studyEditTags" onClick={()=>setTagEntry("")}>{tagEntry}  X</button> 
             : 
@@ -54,9 +66,6 @@ function Profile({pageUser, studies, studyEdit, handleStudyEdit, handleDeleteStu
                 <input type="submit" value="search tag"/>
             </form>}
 
-                    <br></br>
-
-                <div className="userStudies">
                     {studies ? studies.map(study => study.id === studyEdit ?
                     <EditStudyForm 
                     key={study.id} 

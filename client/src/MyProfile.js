@@ -86,8 +86,8 @@ function MyProfile(){
 
     return (
     <>
-    <button onClick={()=>setEditProfileStatus(editProfileStatus => !editProfileStatus)}>{editProfileStatus ? "Cancel" : "Edit Profile" }</button>
-
+    <br></br>
+    <button id="editProfileBtn" onClick={()=>setEditProfileStatus(editProfileStatus => !editProfileStatus)}>{editProfileStatus ? "Cancel" : "Edit Profile" }</button>
     {editProfileStatus ? 
         <UserEditProfile
         pageUser={pageUser} 

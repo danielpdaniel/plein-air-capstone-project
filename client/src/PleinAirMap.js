@@ -35,7 +35,7 @@ function PleinAirMap(){
             fetch("/locations")
             .then(r => {
                 if(r.ok){
-                    r.json().then(data => {setMarkers(data); console.log(data)})
+                    r.json().then(data => setMarkers(data))
                 }
             })}
         // }
