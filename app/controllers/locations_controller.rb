@@ -33,6 +33,6 @@ skip_before_action :authorize, only: [:index, :tag_filter]
     end
 
     def not_found_study_response
-            render json: {error: "Study not found"}
+            render json: {error: "Study not found"}, status: :not_found
         end
 end
