@@ -42,23 +42,15 @@ class StudiesController < ApplicationController
     def update
         study = @user.studies.find_by(id: study_params[:id])
 # byebug
-        # if(params[:images_to_purge])
-            # if (study.images.count <= params[:images_to_purge].count)
-                # byebug
-                # raise ActiveRecord::RecordInvalid
-                # study.images.update!(images: nil)
-                # byebug
-                # raise ActiveRecord::RecordInvalid: Validation failed: Name can't be blank
-                # raise "test error exception raising"
-                # study.images.destroy!
-                # byebug
-            # else
+        if(params[:images_to_purge])
+            if (study.images.count <= params[:images_to_purge].count)
+                return render json: {errors: ["Images cannot be blank"]}, status: :unprocessable_entity
+            else
                 params[:images_to_purge]&.each do |image_id|
-                #  if(study.images.count > params[:images_to_purge].count)
                     study.images.find_by!(id: image_id).purge
                  end
-            # end
-        # end 
+            end
+        end 
     # end
 
         params[:tags_to_delete]&.each do |tag_id|
@@ -113,6 +105,6 @@ class StudiesController < ApplicationController
     end
 
     def not_found_study_response
-        render json: {error: "Study not found"}
+        render json: {error: "Study not found"}, status: :not_found
     end
 end
