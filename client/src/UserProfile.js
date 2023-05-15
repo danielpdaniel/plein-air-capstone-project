@@ -12,8 +12,9 @@ function UserProfile(){
 
     useEffect(()=>{
         if(params.id == user.id){
-            setPageUser(user)
-            setStudies(user.studies)
+            navigate('/my_profile')
+            // setPageUser(user)
+            // setStudies(user.studies)
         }else{
             if(params.tag_id){
                 console.log(params.tag_id)
