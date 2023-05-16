@@ -45,6 +45,7 @@ function PleinAirMap(){
 
     function handleMarkerClick(marker){
         setSelectedMarker(marker)
+        setStudyEdit("")
     }
 
     function handleNewStudyState(study){
@@ -214,7 +215,11 @@ function PleinAirMap(){
                 clickableIcons: false
             }}>
                 {markers ? markers.map(marker => 
-                <Marker key={marker.lat_lng} position={{lat: marker.latitude, lng: marker.longitude}} className="locationMarker" onClick={()=>handleMarkerClick(marker)}>
+                <Marker 
+                key={marker.lat_lng} 
+                position={{lat: marker.latitude, lng: marker.longitude}} 
+                className="locationMarker" 
+                onClick={()=>handleMarkerClick(marker)}>
                     {/* {<InfoWindow 
                     // position={{lat: marker.latitude + .03, lng: marker.longitude}}
                     position={selectedMarker.position}
@@ -228,11 +233,15 @@ function PleinAirMap(){
                 className="studyInfoWindow"
                 maxWidth={10}
                 position={{lat: selectedMarker.latitude, lng: selectedMarker.longitude}}
-                onCloseClick={()=>{setSelectedMarker("")}}>
+                onCloseClick={()=>{setSelectedMarker(""); setStudyEdit("")}}>
                     
                     {studyEdit == selectedMarker.study.id
                     ?
-                    <EditStudyForm study={selectedMarker.study} setStudyEdit={setStudyEdit} onStudyEdit={handleStudyEdit} editFormClassName="mapStudyCard"/>
+                    <EditStudyForm 
+                    study={selectedMarker.study} 
+                    setStudyEdit={setStudyEdit} 
+                    onStudyEdit={handleStudyEdit} 
+                    editFormClassName="mapStudyCard"/>
                     :
                     <StudyCard 
                     study={selectedMarker.study} 
