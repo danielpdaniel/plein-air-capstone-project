@@ -37,5 +37,5 @@ Feel free to play around with stuff in your own forked version if you like. Sinc
 
 ## Credits
 The frontend for the app is built using [React](https://reactjs.org/) with a [Rails](https://rubyonrails.org/) backend.
-Adding image attachments was made possible through [Active Storage](https://edgeguides.rubyonrails.org/active_storage_overview.html). For the map display and location data, I used the [Google Maps JavaScript API](https://developers.google.com/maps) to handle the map and location based features of the app.
+Adding image attachments was made possible through [Active Storage](https://edgeguides.rubyonrails.org/active_storage_overview.html). For the map display and location data, I used the [Google Maps JavaScript API](https://developers.google.com/maps) and the [react-google-maps/api](https://www.npmjs.com/package/@react-google-maps/api) library to handle the map and location based features of the app.
 This project was done for my Phase 5 Capstone Project for Flatiron School's Software Engineering flex bootcamp. Thank you so much to everyone at Flatiron for seeing me through to the end of the program, I hope this project can show just how far I've come in my programming journey!
