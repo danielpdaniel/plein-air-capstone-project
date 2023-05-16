@@ -11,11 +11,11 @@ function Profile({pageUser, studies, studyEdit, handleStudyEdit, handleDeleteStu
     const [tagEntry, setTagEntry] = useState("")
     const [tagFilter, setTagFilter] = useState("")
 
-    function handleTagClick(tag){
-        console.log(tag)
+    // function handleTagClick(tag){
+    //     console.log(tag)
         // console.log(params)
         // navigate(`/tags/${tag.id}/studies`)
-    }
+    // }
 
     useEffect(()=>{
         if(tagEntry){

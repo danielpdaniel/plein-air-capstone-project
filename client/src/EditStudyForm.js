@@ -14,6 +14,8 @@ function EditStudyForm({study, setStudyEdit, onStudyEdit, editFormClassName}){
     const [newTags, setNewTags] = useState([])
     const [tagsToDelete, setTagsToDelete] = useState([])
 
+    const [errors, setErrors] = useState("")
+
     function handleStudyEditSubmit(e){
         e.preventDefault()
 
@@ -47,6 +49,8 @@ function EditStudyForm({study, setStudyEdit, onStudyEdit, editFormClassName}){
                     onStudyEdit(data)
                     setStudyEdit("")
                 })
+            }else{
+                r.json().then(data => setErrors(data.errors))
             }
         })
     }
@@ -124,6 +128,7 @@ function EditStudyForm({study, setStudyEdit, onStudyEdit, editFormClassName}){
 
             <button onClick={(e) => handleStudyEditSubmit(e)}>Save Changes</button>
             <button onClick={()=>setStudyEdit("")}>Cancel</button>
+            {errors ? errors.map(error => <p key={error}>{error}</p>) : null}
         </div>
     )
 }
