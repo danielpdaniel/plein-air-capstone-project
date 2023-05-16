@@ -14,7 +14,7 @@ class Study < ApplicationRecord
     has_many_attached :images
 
     validates :user_id, presence: true
-    validates :images, presence: true
+    validates :images, presence: true, length: {maximum: 10}
 
     def study_images_urls
         images = []
