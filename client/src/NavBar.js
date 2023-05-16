@@ -35,7 +35,7 @@ function NavBar(){
             <NavLink to="/map">Map</NavLink>
             {user ? <NavLink to={'/notifications'}>{notif ? '⛅' : '☁️' }</NavLink> : null}
             {user ? <NavLink to={`/my_profile`}>My Page</NavLink> : null}
-            {user ? <button onClick={() => handleLogout()}>Logout</button> : <NavLink to="/login">Login</NavLink>}
+            {user ? <button onClick={() => handleLogout()} className="logoutButton">Logout</button> : <NavLink to="/login">Login</NavLink>}
         </div>
     )
 }

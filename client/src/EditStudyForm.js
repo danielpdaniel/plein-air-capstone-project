@@ -7,6 +7,7 @@ function EditStudyForm({study, setStudyEdit, onStudyEdit, editFormClassName}){
     const [images, setImages] = useState(study.attached_images)
     const [files, setFiles] = useState('')
     const [imgsToPurge, setImgsToPurge] = useState([])
+    const [mousedOverImg, setMousedOverImg] = useState("")
 
     const [tags, setTags] = useState(study.tags)
     const [currentTag, setCurrentTag] = useState("")
@@ -104,7 +105,8 @@ function EditStudyForm({study, setStudyEdit, onStudyEdit, editFormClassName}){
 
                 {images.map(image => 
                     <div key={image.id} className="studyEditFormImageContainer">
-                        <img src={image.img_url} onClick={()=>handleImageClick(image)} className="studyImgs"/>
+                        {image.id === mousedOverImg ? <div className="xOutImg">X</div> : null}
+                        <img src={image.img_url} onClick={()=>handleImageClick(image)} className="studyEditFormImage" onMouseOver={()=>setMousedOverImg(image.id)} onMouseOut={()=>setMousedOverImg(null)}/>
                     </div>
                 )}
 

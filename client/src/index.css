@@ -1,4 +1,4 @@
-/* body {
+body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,13 +10,14 @@
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-} */
+}
 
 :root{
   --mainColor: rgb(161, 161, 161);
   --secondaryColor: rgb(255, 255, 255);
   --tertiaryColor: rgb(163, 193, 222);
   --accentColor: rgb(129, 126, 141);
+  --transition: all 1000ms;
 }
 
 body {
@@ -30,6 +31,8 @@ body {
   background-color: var(--secondaryColor);
   padding: 10px;
   margin: 10px;
+  color: black;
+  transition: var(--transition)
 }
 
 .NavBar a.active {
@@ -41,6 +44,7 @@ body {
 .studyImgs {
   max-width: 200px;
   max-height: 200px;
+  padding: 2px;
 }
 
 .userStudies {
@@ -87,11 +91,12 @@ body {
   margin: 5%;
   border: 2%;
   border-radius: 7px;
+  transition: var(--transition)
 }
 
-.studyCard img {
+/* .studyCard img {
   padding: 2px;
-}
+} */
 
 .mapStudyCard {
   /* background-color: var(--mainColor);
@@ -101,7 +106,7 @@ body {
   border: 2%;
   border-radius: 7px; */
   max-height: 200px;
-  max-width: 200px
+  max-width: 200px;
 }
 
 .mapStudyCard img {
@@ -111,16 +116,32 @@ body {
 
 .studyEditFormImage {
   background-color: none;
+  max-width: 200px;
+  max-height: 200px;
+  padding: 2px;
 }
 
 .studyEditFormImage:hover {
   opacity: .5;
   /* border-inline-color: red; */
   background-color: red;
+  max-width: 200px;
+  max-height: 200px;
+  padding: 2px;
 }
 
 .studyEditFormImageContainer {
   filter: drop-shadow(0 0 0 red)
+}
+
+.xOutImg {
+  position: absolute;
+  top: 50%;
+  left: 100px;
+  transform: translate(-50%, -50%);
+  font-size: 100px;
+  color:rgb(255, 255, 255);
+  font-style: ;
 }
 
 .studyEditTags {
@@ -148,6 +169,7 @@ body {
   padding-right: 2%;
   border-radius: 7px;
   overflow: auto;
+  /* transition: var(--transition) */
 }
 
 .comment {
@@ -210,3 +232,18 @@ body {
   /* position:absolute; */
   /* float:right */
 }
+
+.logoutButton {
+  min-height: 40px;
+  background-color: var(--tertiaryColor);
+  /* border-color: var(--tertiaryColor); */
+  border: none;
+  transition: var(--transition)
+}
+
+.logoutButton:hover {
+  background-color: var(--accentColor);
+  color: var(--mainColor);
+  transition: var(--transition)
+}
+
