@@ -119,6 +119,7 @@ body {
   max-width: 200px;
   max-height: 200px;
   padding: 2px;
+  transition: var(--transition)
 }
 
 .studyEditFormImage:hover {
@@ -128,6 +129,7 @@ body {
   max-width: 200px;
   max-height: 200px;
   padding: 2px;
+  transition: var(--transition)
 }
 
 .studyEditFormImageContainer {
