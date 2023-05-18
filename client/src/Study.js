@@ -35,6 +35,20 @@ function Study(){
             }
         })
     }
+
+    function handleNewComment(comment){
+        const updatedStudy = {...study}
+        const updatedComments = [...study.comments, comment]
+        updatedStudy.comments = updatedComments
+        setStudy(updatedStudy)
+    }
+
+    function handleDeleteComment(comment){
+        const updatedStudy = {...study}
+        const updatedComments = study.comments.filter(thisComment => thisComment.id !== comment.id)
+        updatedStudy.comments = updatedComments
+        setStudy(updatedStudy)
+    }
     
     return (
         <div className="singleStudy">
@@ -43,6 +57,8 @@ function Study(){
             study={study} 
             studyClassName="singleStudyCard"
             onDeleteStudy={handleDeleteStudy} 
+            onNewComment={handleNewComment}
+            onDeleteComment={handleDeleteComment}
             />
             :
             <h5>Loading...</h5>}
