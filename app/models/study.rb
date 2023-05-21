@@ -15,6 +15,7 @@ class Study < ApplicationRecord
 
     validates :user_id, presence: true
     validates :images, presence: true, length: {maximum: 10}
+    validates :caption, length: {maximum: 560}
 
     def study_images_urls
         images = []
