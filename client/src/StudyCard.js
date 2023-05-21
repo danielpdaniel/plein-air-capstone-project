@@ -6,6 +6,8 @@ import CommentWindow from "./CommentWindow"
 function StudyCard({ study, onDeleteStudy, setStudyEdit, studyClassName, onTagClick, onNewComment, onDeleteComment}){
     const {user, setUser} = useContext(UserContext)
     const [commentStatus, setCommentStatus] = useState(false)
+    
+    const studyDisplayDate = study ? `${study.created_at.slice(5, 7)}/${study.created_at.slice(8, 10)}/${study.created_at.slice(0, 4)}` : ""
    
     function handleDeleteClick(){
         fetch(`/studies/${study.id}`, {
@@ -46,7 +48,7 @@ return (
         <button onClick={() => setCommentStatus(!commentStatus)}>{commentStatus ? 'X' : '💬' }</button>
         {commentStatus ? <CommentWindow comments={study.comments} studyId={study.id} onNewComment={onNewComment} onDeleteComment={onDeleteComment}/> : null}
         <br></br>
-        <NavLink className="studyLink" to={`/studies/${study.id}`}>Posted: {study.created_at}</NavLink>
+        <NavLink className="studyLink" to={`/studies/${study.id}`}>Posted: {studyDisplayDate}</NavLink>
     </div>
 )
 }
