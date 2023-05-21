@@ -43,9 +43,10 @@ return (
         {studyClassName == "mapStudyCard" ? <img src={study.attached_images[0].img_url} className="studyImgs"/>: study.attached_images.map(image =>  <img key={image.id} src={image.img_url} className="studyImgs"/>)}
         <p>{study.caption}</p>
         <p>{study.tags ? study.tags.map(tag => <button className="studyEditTags" key={tag.tag_name} onClick={()=>onTagClick(tag)}>#{tag.tag_name}</button>) : null}</p>
-        {/* {study.tags ? study.tags.map(tag => <p key={tag.id} className="studyTags">#{tag.tag_name}</p>) : null} */}
         <button onClick={() => setCommentStatus(!commentStatus)}>{commentStatus ? 'X' : '💬' }</button>
         {commentStatus ? <CommentWindow comments={study.comments} studyId={study.id} onNewComment={onNewComment} onDeleteComment={onDeleteComment}/> : null}
+        <br></br>
+        <NavLink className="studyLink" to={`/studies/${study.id}`}>Posted: {study.created_at}</NavLink>
     </div>
 )
 }
