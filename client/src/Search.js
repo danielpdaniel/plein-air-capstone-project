@@ -15,6 +15,7 @@ function Search(){
     function handleSearchSubmit(e){
         e.preventDefault()
         setTagEntry(tagValue)
+        setTagValue("")
     }
 
     useEffect(()=>{
@@ -25,7 +26,7 @@ function Search(){
                     r.json().then(data=>{setStudies(data); setErrors("")})
                 }
                 else{
-                    r.json().then(data => setErrors([data.error]))
+                    r.json().then(data => {setErrors([data.error]); setStudies("")})
                 }
             })
         }
@@ -97,10 +98,15 @@ function Search(){
     return(
         <div>
             <h2>Search Studies By Tag</h2>
+            {tagEntry ?
+            <button className="studyEditTags" onClick={()=>{setTagEntry(""); setTagValue("")}}>{tagEntry}  X</button> 
+            :
             <form onSubmit={(e)=>handleSearchSubmit(e)}>
                 <input type="text" value={tagValue} onChange={e => setTagValue(e.target.value)} placeholder="search tag..."/>
                 <input type="submit"/>
-            </form>
+            </form>}
+            {errors ? errors.map(error => <p key={error}>{error}</p>) : null}
+            <br></br>
             <div className="userStudies">
                 {studies ? studies.map(study => 
                     study.id === studyEdit ?
