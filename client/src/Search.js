@@ -22,14 +22,15 @@ function Search(){
             fetch(`/tagged/${tagEntry}`)
             .then(r=>{
                 if(r.ok){
-                    r.json().then(data=>setStudies(data))
+                    r.json().then(data=>{setStudies(data); setErrors("")})
                 }
                 else{
-                    r.json().then(data => setErrors(data.errors))
+                    r.json().then(data => setErrors([data.error]))
                 }
             })
         }
     }, [tagEntry])
+
 
     function handleStudyEdit(editedStudy){
         const updatedStudies = []
@@ -123,6 +124,9 @@ function Search(){
                     />
                     )
                 : <h3>use the form to search all studies by tag...</h3>}
+                            
+                {errors ? errors.map(error => <p key={error}>{error}</p>) : null}
+
             </div>
         </div>
     )
