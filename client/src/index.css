@@ -249,5 +249,8 @@ body {
   transition: var(--transition)
 }
 
-
+.studyLink {
+  color: var(--tertiaryColor);
+  float: right
+}
 
