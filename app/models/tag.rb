@@ -3,5 +3,5 @@ class Tag < ApplicationRecord
     has_many :studies, through: :studies_tags
     has_many :locations, through: :studies
 
-    validates :name, uniqueness: true
+    validates :name, uniqueness: true, length: {maximum: 140}
 end
