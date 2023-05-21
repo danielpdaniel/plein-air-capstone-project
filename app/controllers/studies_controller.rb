@@ -20,12 +20,12 @@ class StudiesController < ApplicationController
 
         if study&.valid?
             params[:tags]&.each do |tag|
-                tag_record = Tag.find_by(name: tag)
+                tag_record = Tag.find_by(tag_name: tag)
 
                 if tag_record
                     study.studies_tags.create!(study_id: study.id, tag_id: tag_record.id)
                 else
-                    study.tags.create!(name: tag)
+                    study.tags.create!(tag_name: tag)
                 end
             end
 
@@ -59,11 +59,11 @@ class StudiesController < ApplicationController
         end
 
         params[:tags]&.each do |tag|
-            tag_record = Tag.find_by(name: tag)
+            tag_record = Tag.find_by(tag_name: tag)
             if tag_record
                 study.studies_tags.create!(study_id: study.id, tag_id: tag_record.id)
             else
-                study.tags.create!(name: tag)
+                study.tags.create!(tag_name: tag)
             end
         end
         
@@ -81,14 +81,14 @@ class StudiesController < ApplicationController
 
     def tag_filter
         # byebug
-        studies =  Tag.find_by!(name: params[:tag_name]).studies
+        studies =  Tag.find_by!(tag_name: params[:tag_name]).studies
         render json: studies, status: :ok
     end
 
     def user_tag_filter
         # byebug
         # user = User.find_by!(id: study_params[:id])
-        studies = Tag.find_by!(name: params[:tag_name]).studies.where(user_id: study_params[:id])
+        studies = Tag.find_by!(tag_name: params[:tag_name]).studies.where(user_id: study_params[:id])
         render json: studies, status: :ok
     end
 

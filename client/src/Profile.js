@@ -80,7 +80,7 @@ function Profile({pageUser, studies, studyEdit, handleStudyEdit, handleDeleteStu
                     onDeleteStudy={handleDeleteStudiesState} 
                     setStudyEdit={setStudyEdit} 
                     studyClassName="studyCard"
-                    onTagClick={(tag)=>setTagEntry(tag.name)}
+                    onTagClick={(tag)=>setTagEntry(tag.tag_name)}
                     onNewComment={onNewComment}
                     onDeleteComment={onDeleteComment}
                     />

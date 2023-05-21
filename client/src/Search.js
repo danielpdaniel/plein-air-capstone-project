@@ -118,7 +118,7 @@ function Search(){
                     onDeleteStudy={handleDeleteStudiesState} 
                     setStudyEdit={setStudyEdit} 
                     studyClassName="studyCard"
-                    onTagClick={(tag)=>setTagEntry(tag.name)}
+                    onTagClick={(tag)=>setTagEntry(tag.tag_name)}
                     onNewComment={handleNewComment}
                     onDeleteComment={handleDeleteComment}
                     />

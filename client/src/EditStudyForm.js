@@ -65,34 +65,32 @@ function EditStudyForm({study, setStudyEdit, onStudyEdit, editFormClassName}){
     function handleTagClick(tagToDelete){
         const deleteTags = [...tagsToDelete, tagToDelete]
         const updatedTags = tags.filter(tag => tag !== tagToDelete)
-        const updatedNewTags = newTags.filter(tag => tag !== tagToDelete.name)
+        const updatedNewTags = newTags.filter(tag => tag !== tagToDelete.tag_name)
         setTags(updatedTags)
         setTagsToDelete(deleteTags)
         setNewTags(updatedNewTags)
-
-        console.log(updatedNewTags)
     }
 
     function handleAddTag(e){
         e.preventDefault()
 
         // tags.forEach(tag =>{
-        //    if(tag.name === currentTag){
-        //     console.log(tag.name, currentTag)
+        //    if(tag.tag_name === currentTag){
+        //     console.log(tag.tag_name, currentTag)
         //     setCurrentTag("")
         //     return currentTag
         //    }else{
         //     setNewTags([...newTags, currentTag])
-        //     setTags([...tags, {name: currentTag}])
+        //     setTags([...tags, {tag_name: currentTag}])
         //     setCurrentTag("")
         //    }
         // })
 
-        const tagNames = tags.map(tag => tag.name)
+        const tagNames = tags.map(tag => tag.tag_name)
 
         if(!tagNames.includes(currentTag)){
             setNewTags([...newTags, currentTag])
-            setTags([...tags, {name: currentTag}])
+            setTags([...tags, {tag_name: currentTag}])
             setCurrentTag("")
         }else{
             setCurrentTag("")
@@ -119,7 +117,7 @@ function EditStudyForm({study, setStudyEdit, onStudyEdit, editFormClassName}){
                 <textarea value={caption} onChange={(e)=>setCaption(e.target.value)}/>
                 {/* <input type="submit" value="Save Changes"/> */}
                 <div>
-                    {tags ? tags.map(tag => <button key={tag.name} className="studyEditTags" onClick={()=>handleTagClick(tag)}>{tag.name}  X</button>) : null}
+                    {tags ? tags.map(tag => <button key={tag.tag_name} className="studyEditTags" onClick={()=>handleTagClick(tag)}>{tag.tag_name}  X</button>) : null}
                 </div>
             </form>
             <form onSubmit={(e) => handleAddTag(e)}>

@@ -16,7 +16,7 @@ skip_before_action :authorize, only: [:index, :tag_filter]
 
     def tag_filter
         # byebug
-        tag = Tag.find_by!(name: params[:tag_name])
+        tag = Tag.find_by!(tag_name: params[:tag_name])
         filtered_locations = tag.locations
         render json: filtered_locations, status: :ok, include: ['tags', 'study.tags']
     end

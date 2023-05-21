@@ -100,7 +100,7 @@ function UserEditProfile({pageUser, studies, studyEdit, handleStudyEdit, handleD
                     onDeleteStudy={handleDeleteStudiesState} 
                     setStudyEdit={setStudyEdit} 
                     studyClassName="studyCard"
-                    // onTagClick={(tag)=>setTagEntry(tag.name)}
+                    // onTagClick={(tag)=>setTagEntry(tag.tag_name)}
                     onNewComment={onNewComment}
                     onDeleteComment={onDeleteComment}
                     />
