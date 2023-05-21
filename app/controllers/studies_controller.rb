@@ -2,7 +2,7 @@ class StudiesController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :invalid_study_response
     rescue_from ActiveRecord::RecordNotFound, with: :not_found_study_response
 
-    skip_before_action :authorize, only: [:user_tag_filter, :tag_filter]
+    skip_before_action :authorize, only: [:user_tag_filter, :tag_filter, :show]
     
     def index
         studies = Study.all
