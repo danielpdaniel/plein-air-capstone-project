@@ -118,15 +118,12 @@ function Search(){
                     onDeleteStudy={handleDeleteStudiesState} 
                     setStudyEdit={setStudyEdit} 
                     studyClassName="studyCard"
-                    onTagClick={(tag)=>setTagEntry(tag.tag_name)}
+                    onTagClick={(tag)=>{setTagEntry(tag.tag_name); setTagValue(tag.tag_name)}}
                     onNewComment={handleNewComment}
                     onDeleteComment={handleDeleteComment}
                     />
                     )
                 : <h3>use the form to search all studies by tag...</h3>}
-                            
-                {errors ? errors.map(error => <p key={error}>{error}</p>) : null}
-
             </div>
         </div>
     )
