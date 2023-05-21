@@ -1,4 +1,5 @@
 class TagsController < ApplicationController
+rescue_from ActiveRecord::RecordInvalid, with: :invalid_tag_response
 
     def index
         tags = Tag.all
@@ -15,5 +16,9 @@ class TagsController < ApplicationController
 
     def tag_params
         params.permit(:id)
+    end
+
+    def invalid_tag_response(invalid)
+        render json: {errors: invalid.record.errors.full_messages}, status: :unprocessable_entity
     end
 end
