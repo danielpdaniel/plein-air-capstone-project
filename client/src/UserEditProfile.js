@@ -4,14 +4,15 @@ import StudyCard from "./StudyCard"
 import { UserContext } from "./context/user"
 
 function UserEditProfile({pageUser, studies, studyEdit, handleStudyEdit, handleDeleteStudiesState, setStudyEdit, onTagClick, setStudies, onNewComment, onDeleteComment, setEditProfileStatus}){
+
+    const {user, setUser} = useContext(UserContext)
+
     const [username, setUsername] = useState(pageUser.username)
     const [about, setAbout] = useState(pageUser.about)
     const [avatar, setAvatar] = useState(pageUser.avatar)
-    const [avatarCircleStatus, setAvatarCircleStatus] = useState(pageUser.avatar_circle_status)
+    const [avatarCircleStatus, setAvatarCircleStatus] = useState(user.circular_avatar_status)
     const [errors, setErrors] = useState("")
-
-    const {setUser} = useContext(UserContext)
-
+    
     function handleUserEditSubmit(e){
         e.preventDefault()
         const formData = new FormData()
@@ -42,9 +43,6 @@ function UserEditProfile({pageUser, studies, studyEdit, handleStudyEdit, handleD
         <div>
             {pageUser ? 
             <div>
-                {/* <h3>{pageUser.username}</h3>
-                <img src={pageUser.avatar_info} alt={pageUser.username} className="profileAvatar"/>
-                <p>{pageUser.about}</p> */}
                 <form onSubmit={(e)=>handleUserEditSubmit(e)} className="userEditForm">
                     <label htmlFor="username">Username:</label>
                     <br></br>
@@ -59,10 +57,10 @@ function UserEditProfile({pageUser, studies, studyEdit, handleStudyEdit, handleD
                     <label>Avatar Shape:</label>
                     <br></br>
                     <label htmlFor="circularRadio">Circular</label>
-                    <input name="circularRadio" type="radio" checked={avatarCircleStatus ? true : false} onChange={()=>setAvatarCircleStatus(true)}/>
+                    <input name="circularRadio" type="radio" checked={avatarCircleStatus ? true : false} onChange={()=>{setAvatarCircleStatus(true); console.log("foo")}}/>
 
                     <label htmlFor="squareRadio">Square</label>
-                    <input name="squareRadio" type="radio" checked={avatarCircleStatus ? false : true} onChange={()=>setAvatarCircleStatus(false)}/>
+                    <input name="squareRadio" type="radio" checked={avatarCircleStatus ? false : true} onChange={()=>{setAvatarCircleStatus(false); console.log("bar")}}/>
                     <br></br>
 
                     <label htmlFor="about">About:</label>
