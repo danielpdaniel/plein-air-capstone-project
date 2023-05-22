@@ -57,10 +57,10 @@ function UserEditProfile({pageUser, studies, studyEdit, handleStudyEdit, handleD
                     <label>Avatar Shape:</label>
                     <br></br>
                     <label htmlFor="circularRadio">Circular</label>
-                    <input name="circularRadio" type="radio" checked={avatarCircleStatus ? true : false} onChange={()=>{setAvatarCircleStatus(true); console.log("foo")}}/>
+                    <input name="circularRadio" type="radio" checked={avatarCircleStatus ? true : false} onChange={()=>{setAvatarCircleStatus(true)}}/>
 
                     <label htmlFor="squareRadio">Square</label>
-                    <input name="squareRadio" type="radio" checked={avatarCircleStatus ? false : true} onChange={()=>{setAvatarCircleStatus(false); console.log("bar")}}/>
+                    <input name="squareRadio" type="radio" checked={avatarCircleStatus ? false : true} onChange={()=>{setAvatarCircleStatus(false)}}/>
                     <br></br>
 
                     <label htmlFor="about">About:</label>
