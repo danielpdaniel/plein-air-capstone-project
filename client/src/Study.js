@@ -49,6 +49,10 @@ function Study(){
         updatedStudy.comments = updatedComments
         setStudy(updatedStudy)
     }
+
+    // function handleTagClick(tag){
+       
+    // }
     
     return (
         <div className="singleStudy">
@@ -59,6 +63,7 @@ function Study(){
             onDeleteStudy={handleDeleteStudy} 
             onNewComment={handleNewComment}
             onDeleteComment={handleDeleteComment}
+            onTagClick={(tag)=>(tag)}
             />
             :
             <h5>Loading...</h5>}

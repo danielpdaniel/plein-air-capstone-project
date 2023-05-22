@@ -2,8 +2,10 @@ import { useContext, useEffect, useState } from "react"
 import StudyCard from "./StudyCard"
 import { UserContext } from "./context/user"
 import EditStudyForm from "./EditStudyForm"
+import { useParams } from "react-router-dom"
 
 function Search(){
+
     const [tagValue, setTagValue] = useState("")
     const [tagEntry, setTagEntry] = useState("")
     const [studies, setStudies] = useState("")
@@ -11,6 +13,8 @@ function Search(){
     const [studyEdit, setStudyEdit] = useState("")
 
     const {user, setUser} = useContext(UserContext)
+
+
 
     function handleSearchSubmit(e){
         e.preventDefault()

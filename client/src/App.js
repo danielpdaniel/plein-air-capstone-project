@@ -34,12 +34,12 @@ function App() {
     const formData = new FormData()
     formData.append("random_test_data_sent_with_patch", "crobbit")
     formData.append("avatar", imageFile)
-    const userPatchBody = {
-      avatar: (imageFile),
-      username: "hotdoggity",
-      patty: "pattayyyyy",
-      formData: formData
-    }
+    // const userPatchBody = {
+    //   avatar: (imageFile),
+    //   username: "hotdoggity",
+    //   patty: "pattayyyyy",
+    //   formData: formData
+    // }
   
     fetch("/users/1", {
       method: "PATCH",
