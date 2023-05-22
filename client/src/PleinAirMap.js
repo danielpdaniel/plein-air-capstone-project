@@ -61,7 +61,8 @@ function PleinAirMap(){
                 attached_images: study.attached_images,
                 caption: study.caption,
                 tags: study.tags,
-                created_at: study.created_at
+                created_at: study.created_at,
+                author_username: user.username
             }
         }
 
