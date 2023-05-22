@@ -1,11 +1,13 @@
 import { useContext, useState } from "react"
 import { UserContext } from "./context/user"
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 
 function CommentWindow({ comments, studyId, onNewComment, onDeleteComment }){
     const [newComment, setNewComment] = useState("")
     const [errors, setErrors] = useState("")
     const {user} = useContext(UserContext)
+
+    const navigate = useNavigate()
 
     function handlePostComment(e){
         e.preventDefault()
@@ -15,26 +17,29 @@ function CommentWindow({ comments, studyId, onNewComment, onDeleteComment }){
             study_id: studyId,
             comment_text: newComment
         }
-
-        fetch("/comments",{
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(postBody)
-        })
-        .then(r => {
-            if(r.ok){
-                r.json().then(data => {
-                    onNewComment(data);
-                    setErrors("")
-                    setNewComment("")
-                })
-            }
-            else{
-                r.json().then(data=>setErrors(data.errors))
-            }
-        })
+        if(user){
+            fetch("/comments",{
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(postBody)
+            })
+            .then(r => {
+                if(r.ok){
+                    r.json().then(data => {
+                        onNewComment(data);
+                        setErrors("")
+                        setNewComment("")
+                    })
+                }
+                else{
+                    r.json().then(data=>setErrors(data.errors))
+                }
+            })
+        }else{
+            navigate("/login")
+        }
     }
 
     function handleDeleteComment(comment){
