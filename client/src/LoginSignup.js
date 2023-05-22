@@ -45,7 +45,8 @@ function LoginSignup(){
         const newUser = {
             username: username,
             password: password,
-            about: ""
+            about: "",
+            circular_avatar_status: true
         }
         fetch("/users", {
             method: "POST",

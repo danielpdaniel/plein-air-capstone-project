@@ -58,7 +58,7 @@ function App() {
           <Route path="/my_profile" element={<MyProfile/>}/>
           <Route path="/notifications" element={<Notifications/>}/>
           {/* <Route path="/my_profile/tags/:tag_id/studies" element={<MyProfile/>}/> */}
-          <Route path="/users/:id" element={<UserProfile/>}/>
+          <Route exact path="/users/:id" element={<UserProfile/>}/>
           <Route path="/map" element={<PleinAirMap/>}/>
           <Route path="/studies/:id" element={<Study/>}/>
           <Route path="/search" element={<Search/>}/>
