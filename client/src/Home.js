@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom"
 function Home(){
 
     const {user, setUser} = useContext(UserContext)
-console.log(user)
+
     // function handleNewStudyState(data){
     //     updatedUser
     // }

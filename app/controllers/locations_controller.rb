@@ -9,10 +9,10 @@ skip_before_action :authorize, only: [:index, :tag_filter]
         render json: locations, status: :ok, include: ['tags', 'study.tags', 'comments', 'study.comments']
     end
 
-    def create
-        location = Location.create!(location_params)
-        render json: location, status: :created
-    end
+    # def create
+    #     location = Location.create!(location_params)
+    #     render json: location, status: :created
+    # end
 
     def tag_filter
         # byebug

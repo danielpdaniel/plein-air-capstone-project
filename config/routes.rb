@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show, :create, :update] 
   resources :studies, only: [:create, :index, :show, :update, :destroy]
-  resources :locations, only: [:index, :create]
+  resources :locations, only: [:index]
   resources :comments, only: [:create, :destroy]
   # resources :notifications, only: [:update]
   get "/notifications", to: "notifications#mark_all_as_read"
