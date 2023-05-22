@@ -72,10 +72,13 @@ function CommentWindow({ comments, studyId, onNewComment, onDeleteComment }){
             ) : null}
 
             {errors ? errors.map(error => <p key={error}>{error}</p>) : null}
+            {user ? 
             <form onSubmit={(e)=>handlePostComment(e)}>
                 <input type="text" placeholder="add new comment..." value={newComment} onChange={(e)=>setNewComment(e.target.value)}/>
                 <input type="submit" value="Post"/>
             </form>
+            :
+            <p>Login to start posting comments! :D</p>}
         </div>
     )
 }
