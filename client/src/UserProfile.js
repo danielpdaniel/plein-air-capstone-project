@@ -11,6 +11,7 @@ function UserProfile(){
     const navigate = useNavigate()
 
     useEffect(()=>{
+        console.log("foo")
         if(params.id == user.id){
             navigate('/my_profile')
             // setPageUser(user)
@@ -31,7 +32,7 @@ function UserProfile(){
                     })
                 }
             }
-    }, [])
+    }, [params])
 
     function handleNewComment(comment){
         const updatedStudies = []

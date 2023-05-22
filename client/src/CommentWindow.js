@@ -1,6 +1,6 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { UserContext } from "./context/user"
-import { Link, useNavigate } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 
 function CommentWindow({ comments, studyId, onNewComment, onDeleteComment }){
     const [newComment, setNewComment] = useState("")
@@ -64,7 +64,7 @@ function CommentWindow({ comments, studyId, onNewComment, onDeleteComment }){
             {/* {comments ? comments.map(comment => console.log(comment)) : <p>no comments!</p>} */}
             {comments ? comments.map(comment => 
                 <div key={comment.id + comment.comment_text} className="comment">
-                    <a href={`/users/${comment.user_id}`}>{comment.author_username}:</a>
+                    <NavLink to={`/users/${comment.user_id}`}>{comment.author_username}:</NavLink>
                     {comment.user_id === user.id ? <button className="commentDeleteBtn" onClick={()=>handleDeleteComment(comment)}>🗑️</button>: null}
 
                     <p>{comment.comment_text}</p>

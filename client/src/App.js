@@ -54,11 +54,14 @@ function App() {
     <UserProvider>
       <NavBar/>
         <Routes>
+          {/* <Route path="/test/1" element={<div><h2>test!</h2><NavLink to="/test/2">Test</NavLink></div>}/>
+          <Route path="/test/2" element={<div><h2>test 2~~</h2><NavLink to="/test/1">Test</NavLink></div>}/> */}
+
           <Route path="/login" element={<LoginSignup/>}/>
           <Route path="/my_profile" element={<MyProfile/>}/>
           <Route path="/notifications" element={<Notifications/>}/>
           {/* <Route path="/my_profile/tags/:tag_id/studies" element={<MyProfile/>}/> */}
-          <Route exact path="/users/:id" element={<UserProfile/>}/>
+          <Route path="/users/:id" element={<UserProfile/>}/>
           <Route path="/map" element={<PleinAirMap/>}/>
           <Route path="/studies/:id" element={<Study/>}/>
           <Route path="/search" element={<Search/>}/>
