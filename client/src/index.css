@@ -36,8 +36,6 @@ body {
 }
 
 .NavBar a.active {
-  /* background-color: red; */
-  /* text-decoration: underline */
   border-bottom: 10px solid var(--tertiaryColor)
 }
 
@@ -94,17 +92,7 @@ body {
   transition: var(--transition)
 }
 
-/* .studyCard img {
-  padding: 2px;
-} */
-
 .mapStudyCard {
-  /* background-color: var(--mainColor);
-  padding: 5%;
-  padding-top: 3%;
-  margin: 5%;
-  border: 2%;
-  border-radius: 7px; */
   max-height: 200px;
   max-width: 200px;
 }
@@ -124,7 +112,6 @@ body {
 
 .studyEditFormImage:hover {
   opacity: .5;
-  /* border-inline-color: red; */
   background-color: red;
   max-width: 200px;
   max-height: 200px;
@@ -143,7 +130,6 @@ body {
   transform: translate(-50%, -50%);
   font-size: 100px;
   color:rgb(255, 255, 255);
-  font-style: ;
 }
 
 .studyEditTags {
@@ -160,18 +146,12 @@ body {
   height: 85vh;
 }
 
-/* .studyInfoWindow {
-  max-width: 100;
-  background-color: red
-} */
-
 .commentWindow {
   background-color: var(--tertiaryColor);
   padding-left: 2%;
   padding-right: 2%;
   border-radius: 7px;
   overflow: auto;
-  /* transition: var(--transition) */
 }
 
 .comment {
@@ -230,16 +210,20 @@ body {
 }
 
 #editProfileBtn {
-  /* border: none; */
-  /* display: block; */
-  /* position:absolute; */
-  /* float:right */
+  background-color: var(--tertiaryColor);
+  border: none;
+  transition: var(--transition);
+  margin-bottom: 10px;
+}
+
+#editProfileBtn:hover {
+  background-color: var(--accentColor);
+  border: none;
 }
 
 .logoutButton {
   min-height: 40px;
   background-color: var(--tertiaryColor);
-  /* border-color: var(--tertiaryColor); */
   border: none;
   transition: var(--transition)
 }

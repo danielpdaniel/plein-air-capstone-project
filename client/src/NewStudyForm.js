@@ -11,27 +11,10 @@ function NewStudyForm({ latLng, onNewMapStudyState }){
     const { user, setUser } = useContext(UserContext)
     const [errors, setErrors] = useState("")
 
-
-    function handleFileChange(e){
-        const loadedFiles = []
-
-        for(const file of e.target.files){
-            loadedFiles.push(file)
-        }
-
-        setFiles(loadedFiles)
-    }
-
     function handleNewStudySubmit(e){
         e.preventDefault()
         const formData = new FormData()
 
-        // formData.append("images", files[0])
-        // for(const file of files){
-        //     formData.append("images", file)
-        // }
-        // formData.append("images[]", files[0])
-        // formData.append("images[]", files[1])
         for(const file of files){
             formData.append("images[]", file)
         }
@@ -94,7 +77,6 @@ return(
             <input name="imageSubmit" type="file" accept="image/*" multiple={true} onChange={(e)=>setFiles(e.target.files)}/>
             <br></br>
             <textarea value={caption} onChange={(e) =>setCaption(e.target.value)} placeholder="Add a description to your post!"/>
-            {/* <input type="submit"/> */}
         </form>
         {tags ? tags.map(tag => <button key={tag} className="studyEditTags" onClick={()=>handleRemoveTag(tag)}>{tag}</button>) : null}
         <form onSubmit={(e) => handleAddTag(e)}>

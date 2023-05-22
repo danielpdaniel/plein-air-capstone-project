@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import StudyCard from "./StudyCard"
-import CommentWindow from "./CommentWindow"
 import { UserContext } from "./context/user"
 
 function Study(){
@@ -49,10 +48,6 @@ function Study(){
         updatedStudy.comments = updatedComments
         setStudy(updatedStudy)
     }
-
-    // function handleTagClick(tag){
-       
-    // }
     
     return (
         <div className="singleStudy">

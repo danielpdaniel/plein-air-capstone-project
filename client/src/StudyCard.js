@@ -19,11 +19,6 @@ function StudyCard({ study, onDeleteStudy, setStudyEdit, studyClassName, onTagCl
         .then(r=>{
             if(r.ok){
                 onDeleteStudy(study.id)
-                // const updatedUser = {...user}
-                // const updatedStudies = user.studies.filter(thisStudy => study.id !== thisStudy.id)
-                // updatedUser.studies = updatedStudies
-                // console.log(updatedUser)
-                // setUser(updatedUser)
             }
         })
     }

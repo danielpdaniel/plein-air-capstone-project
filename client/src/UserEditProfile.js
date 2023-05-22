@@ -72,15 +72,6 @@ function UserEditProfile({pageUser, studies, studyEdit, handleStudyEdit, handleD
 
                 {errors ? errors.map(error => <p>{error}</p>) : null}
 
-
-                {/* {tagEntry ? 
-            <button className="studyEditTags" onClick={()=>setTagEntry("")}>{tagEntry}  X</button> 
-            : 
-            <form onSubmit={(e)=>{e.preventDefault(); setTagEntry(tagFilter); setTagFilter("")}}>
-                <input type="text" value={tagFilter} onChange={(e)=> setTagFilter(e.target.value)} placeholder="seach tag here..." />
-                <input type="submit" value="search tag"/>
-            </form>} */}
-
                     <br></br>
 
                 <div className="userStudies">

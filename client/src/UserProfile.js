@@ -11,11 +11,8 @@ function UserProfile(){
     const navigate = useNavigate()
 
     useEffect(()=>{
-        console.log("foo")
         if(params.id == user.id){
             navigate('/my_profile')
-            // setPageUser(user)
-            // setStudies(user.studies)
         }else{
             if(params.tag_id){
                 console.log(params.tag_id)

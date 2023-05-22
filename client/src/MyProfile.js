@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { useState, useEffect, useContext } from "react"
 import { UserContext } from "./context/user"
 import Profile from"./Profile"
@@ -11,9 +11,6 @@ function MyProfile(){
     const [studies, setStudies] = useState("")
     const [studyEdit, setStudyEdit] = useState("")
     const [editProfileStatus, setEditProfileStatus] = useState(false)
-
-    const [formUsername, setFormUsername] = useState(pageUser.username)
-    const navigate = useNavigate()
     
     useEffect(()=>{
         if(user){

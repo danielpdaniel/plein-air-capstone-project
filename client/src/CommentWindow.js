@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import { UserContext } from "./context/user"
 import { NavLink, useNavigate } from "react-router-dom"
 
@@ -61,7 +61,6 @@ function CommentWindow({ comments, studyId, onNewComment, onDeleteComment }){
     return(
         <div className="commentWindow">
             <h4>Comments</h4>
-            {/* {comments ? comments.map(comment => console.log(comment)) : <p>no comments!</p>} */}
             {comments ? comments.map(comment => 
                 <div key={comment.id + comment.comment_text} className="comment">
                     <NavLink to={`/users/${comment.user_id}`}>{comment.author_username}:</NavLink>

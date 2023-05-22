@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react"
 import StudyCard from "./StudyCard"
 import { UserContext } from "./context/user"
 import EditStudyForm from "./EditStudyForm"
-import { useParams } from "react-router-dom"
 
 function Search(){
 

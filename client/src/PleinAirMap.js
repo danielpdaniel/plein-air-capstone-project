@@ -3,7 +3,6 @@ import { useState, useEffect, useMemo, useContext } from "react";
 import NewStudyForm from "./NewStudyForm";
 import StudyCard from "./StudyCard";
 import { UserContext } from "./context/user";
-import { useParams } from "react-router-dom";
 import EditStudyForm from "./EditStudyForm";
 
 function PleinAirMap(){
@@ -18,11 +17,6 @@ function PleinAirMap(){
 
     const [studyEdit, setStudyEdit] = useState("")
 
-    // const params = useParams()
-    // console.log(params)
-
-    // const { user, setUser } = useContext(UserContext)
-
     const center = useMemo(() => ({lat: 15, lng: 0}), [])
     
     const { isLoaded } = useLoadScript({
@@ -31,14 +25,12 @@ function PleinAirMap(){
 
     useEffect(()=>{
         if(isLoaded){
-            // if(!params.tag_name){
             fetch("/locations")
             .then(r => {
                 if(r.ok){
                     r.json().then(data => setMarkers(data))
                 }
             })}
-        // }
     }, [isLoaded])
 
 
@@ -65,13 +57,10 @@ function PleinAirMap(){
                 author_username: user.username
             }
         }
-
-        // const updatedUser = user
-        // updatedUser.studies = [study, ...user.studies]
         
         setMarkers([...markers, newMarker])
         setLatLng("")
-        // setUser(updatedUser)
+  
     }
 
     function handleDeleteStudyState(studyId){
@@ -85,26 +74,9 @@ function PleinAirMap(){
         const updatedUser = {...user}
         updatedUser.studies = updatedStudies
   
-        // setStudies(updatedStudies)
         setUser(updatedUser)
 
     }
-
-    // function handleTagFilter(tagEntry){
-    //     console.log(tagEntry)
-    //     fetch(`/locations/${tagEntry}`)
-    //     .then(r =>{
-    //         if(r.ok){
-    //             r.json().then(data => {
-    //                 // const updatedMarkers = data.filter(study => study.location_id)
-    //                 setMarkers(data)
-    //                 // setMarkers(updatedMarkers)
-    //                 setLatLng("")
-    //                 setSelectedMarker("")
-    //             })
-    //         }
-    //     })
-    // }
 
     useEffect(()=>{
 
@@ -112,9 +84,7 @@ function PleinAirMap(){
         .then(r =>{
             if(r.ok){
                 r.json().then(data => {
-                    // const updatedMarkers = data.filter(study => study.location_id)
                     setMarkers(data)
-                    // setMarkers(updatedMarkers)
                     setLatLng("")
                     setSelectedMarker("")
                 })
@@ -123,7 +93,6 @@ function PleinAirMap(){
     }, [tagEntry])
 
     function handleStudyEdit(editedStudy){
-        // const updatedMarkers = []
         const updatedMarkers = markers.map(marker =>{
             if(marker.study.id === editedStudy.id){
                 marker.study = editedStudy
@@ -142,12 +111,10 @@ function PleinAirMap(){
                 return study
             }
         })
-        // setMarkers(updatedStudies)
         setUser(updatedUser)
     }
 
     function handleNewComment(comment){
-        // marker.study.comments
         if(comment.study_author_id === user.id){
             const updatedStudies = []
             user.studies.map(study =>{
@@ -232,12 +199,6 @@ function PleinAirMap(){
                 position={{lat: marker.latitude, lng: marker.longitude}} 
                 className="locationMarker" 
                 onClick={()=>handleMarkerClick(marker)}>
-                    {/* {<InfoWindow 
-                    // position={{lat: marker.latitude + .03, lng: marker.longitude}}
-                    position={selectedMarker.position}
-                    >
-                        <div>hiii</div>
-                    </InfoWindow>} */}
                 </Marker>) 
                     : null}
                 {selectedMarker ? 

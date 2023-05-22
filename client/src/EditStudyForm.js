@@ -74,18 +74,6 @@ function EditStudyForm({study, setStudyEdit, onStudyEdit, editFormClassName}){
     function handleAddTag(e){
         e.preventDefault()
 
-        // tags.forEach(tag =>{
-        //    if(tag.tag_name === currentTag){
-        //     console.log(tag.tag_name, currentTag)
-        //     setCurrentTag("")
-        //     return currentTag
-        //    }else{
-        //     setNewTags([...newTags, currentTag])
-        //     setTags([...tags, {tag_name: currentTag}])
-        //     setCurrentTag("")
-        //    }
-        // })
-
         const tagNames = tags.map(tag => tag.tag_name)
 
         if(!tagNames.includes(currentTag)){
@@ -96,10 +84,6 @@ function EditStudyForm({study, setStudyEdit, onStudyEdit, editFormClassName}){
             setCurrentTag("")
         }
     }
-    // console.log(newTags)
-    // console.log(caption)
-    // console.log("images to delete:", imgsToPurge)
-    // console.log("images still attached:", images)
     
     return (
         <div className={editFormClassName}>
@@ -115,7 +99,6 @@ function EditStudyForm({study, setStudyEdit, onStudyEdit, editFormClassName}){
                 <input type="file" accept="image/*" multiple={true} onChange={(e)=>setFiles(e.target.files)}/>
 
                 <textarea value={caption} onChange={(e)=>setCaption(e.target.value)}/>
-                {/* <input type="submit" value="Save Changes"/> */}
                 <div>
                     {tags ? tags.map(tag => <button key={tag.tag_name} className="studyEditTags" onClick={()=>handleTagClick(tag)}>{tag.tag_name}  X</button>) : null}
                 </div>
