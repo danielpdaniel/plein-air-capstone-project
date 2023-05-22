@@ -75,8 +75,18 @@ function PleinAirMap(){
 
     function handleDeleteStudyState(studyId){
         setSelectedMarker("")
+
         const updatedMarkers = markers.filter(marker => marker.study.id !== studyId)
         setMarkers(updatedMarkers)
+
+        const updatedStudies = user.studies.filter(study => study.id !== studyId)
+
+        const updatedUser = {...user}
+        updatedUser.studies = updatedStudies
+  
+        // setStudies(updatedStudies)
+        setUser(updatedUser)
+
     }
 
     // function handleTagFilter(tagEntry){
