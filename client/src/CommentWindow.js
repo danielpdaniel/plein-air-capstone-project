@@ -64,7 +64,7 @@ function CommentWindow({ comments, studyId, onNewComment, onDeleteComment }){
             {/* {comments ? comments.map(comment => console.log(comment)) : <p>no comments!</p>} */}
             {comments ? comments.map(comment => 
                 <div key={comment.id + comment.comment_text} className="comment">
-                    <Link to={`/users/${comment.user_id}`}>{comment.author_username}:</Link>
+                    <a href={`/users/${comment.user_id}`}>{comment.author_username}:</a>
                     {comment.user_id === user.id ? <button className="commentDeleteBtn" onClick={()=>handleDeleteComment(comment)}>🗑️</button>: null}
 
                     <p>{comment.comment_text}</p>
