@@ -82,6 +82,12 @@ function NewStudyForm({ latLng, onNewMapStudyState }){
         setTags(updatedTags)
         setCurrentTag("")
     }
+
+    function handleRemoveTag(tag){
+        const updatedTags = tags.filter(thisTag => thisTag !== tag)
+        setTags(updatedTags)
+    }
+
 return(
     <div className="newStudyForm">
         <form onSubmit={(e)=>handleNewStudySubmit(e)}>
@@ -90,7 +96,7 @@ return(
             <textarea value={caption} onChange={(e) =>setCaption(e.target.value)} placeholder="Add a description to your post!"/>
             {/* <input type="submit"/> */}
         </form>
-        {tags ? <p>{tags.map(tag => `#${tag}, `)}</p> : null}
+        {tags ? tags.map(tag => <button key={tag} className="studyEditTags" onClick={()=>handleRemoveTag(tag)}>{tag}</button>) : null}
         <form onSubmit={(e) => handleAddTag(e)}>
             <input type="text" value={currentTag} onChange={(e)=>setCurrentTag(e.target.value)} placeholder="add tags to your post!"/>
         </form>
