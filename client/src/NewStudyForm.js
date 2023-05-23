@@ -41,7 +41,6 @@ function NewStudyForm({ latLng, onNewMapStudyState }){
                 r.json().then(data=>{
                     if(onNewMapStudyState){
                         onNewMapStudyState(data)
-                        console.log(data)
                 }
                 const updatedUser = {...user}
                 updatedUser.studies = [data, ...user.studies]
