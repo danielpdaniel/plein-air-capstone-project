@@ -136,6 +136,8 @@ body {
 .studyEditTags {
   background-color: var(--tertiaryColor);
   border: none;
+  margin: 2px;
+  min-height: 30px
 }
 
 .studyEditTags:hover {
@@ -242,5 +244,39 @@ body {
   padding-left: 5px;
   padding-right: 5px;
   border-radius: 7px;
+}
+
+input {
+  min-height: 30px;
+}
+
+button {
+  min-height: 30px;
+  border: none;
+  border-radius: 7px;
+  margin: 2px;
+  background-color: var(--tertiaryColor);
+  transition: var(--transition)
+}
+
+button:hover{
+  background-color: var(--mainColor)
+}
+
+#commentSubmitBtn {
+  min-height: 30px;
+  border: none;
+  border-radius: 7px;
+  margin: 2px;
+  background-color: var(--secondaryColor);
+  transition: var(--transition)
+}
+
+#commentSubmitBtn:hover {
+  background-color: var(--mainColor)
+}
+
+textarea {
+  min-height: 50px;
 }
 

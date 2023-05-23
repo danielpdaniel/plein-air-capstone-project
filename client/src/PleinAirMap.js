@@ -179,7 +179,7 @@ function PleinAirMap(){
             : 
             <form onSubmit={(e)=>{e.preventDefault(); setTagEntry(tagFilter)}}>
                 <input type="text" value={tagFilter} onChange={(e)=> setTagFilter(e.target.value)} placeholder="seach tag here..." />
-                <input type="submit" value="search tag"/>
+                <button type="submit">Search Tag</button>
             </form>}
 
             {isLoaded ? 

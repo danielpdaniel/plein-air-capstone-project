@@ -106,7 +106,7 @@ function Search(){
             :
             <form onSubmit={(e)=>handleSearchSubmit(e)}>
                 <input type="text" value={tagValue} onChange={e => setTagValue(e.target.value)} placeholder="search tag..."/>
-                <input type="submit"/>
+                <button type="submit">Submit</button>
             </form>}
             {errors ? errors.map(error => <p key={error}>{error}</p>) : null}
             <br></br>

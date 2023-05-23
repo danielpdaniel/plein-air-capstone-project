@@ -67,7 +67,7 @@ function UserEditProfile({pageUser, studies, studyEdit, handleStudyEdit, handleD
                     <br></br>
                     <textarea name="about" value={about} onChange={(e)=>setAbout(e.target.value)}/>
                     <br></br>
-                    <input type="submit" value="Submit"/>
+                    <button type="submit">Submit</button>
                 </form>
 
                 {errors ? errors.map(error => <p key={error}>{error}</p>) : null}

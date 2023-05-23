@@ -44,7 +44,7 @@ function Profile({pageUser, studies, studyEdit, handleStudyEdit, handleDeleteStu
             : 
             <form onSubmit={(e)=>{e.preventDefault(); setTagEntry(tagFilter); setTagFilter("")}}>
                 <input type="text" value={tagFilter} onChange={(e)=> setTagFilter(e.target.value)} placeholder="seach tag here..." />
-                <input type="submit" value="search tag"/>
+                <button type="submit">Submit</button>
             </form>}
 
                     {studies ? studies.map(study => study.id === studyEdit ?

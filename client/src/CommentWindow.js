@@ -74,7 +74,7 @@ function CommentWindow({ comments, studyId, onNewComment, onDeleteComment }){
             {user ? 
             <form onSubmit={(e)=>handlePostComment(e)}>
                 <input type="text" placeholder="add new comment..." value={newComment} onChange={(e)=>setNewComment(e.target.value)}/>
-                <input type="submit" value="Post"/>
+                <button type="submit" id="commentSubmitBtn">Post Comment</button>
             </form>
             :
             <p>Login/Signup to start posting comments! :D</p>}
