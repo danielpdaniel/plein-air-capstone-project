@@ -73,7 +73,13 @@ class StudiesController < ApplicationController
 
     def destroy
         study = @user.studies.find_by(id: study_params[:id])
-
+       
+        study.tags.each do |tag|
+            if tag.studies.count <= 1
+                byebug
+                tag.destroy!
+            end
+        end
         study&.destroy!
 
         render json: [], status: :no_content
