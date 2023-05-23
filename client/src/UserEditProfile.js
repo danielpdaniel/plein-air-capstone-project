@@ -70,7 +70,7 @@ function UserEditProfile({pageUser, studies, studyEdit, handleStudyEdit, handleD
                     <input type="submit" value="Submit"/>
                 </form>
 
-                {errors ? errors.map(error => <p>{error}</p>) : null}
+                {errors ? errors.map(error => <p key={error}>{error}</p>) : null}
 
                     <br></br>
 

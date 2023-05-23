@@ -13,6 +13,7 @@ class User < ApplicationRecord
 
     validates :username, presence: true, uniqueness: true
     validates :circular_avatar_status,inclusion: [true, false]
+    validates :about, length: {maximum: 560}
 
     def avatar_url
         rails_blob_path(self.avatar)
