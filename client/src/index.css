@@ -21,7 +21,7 @@ code {
 }
 
 body {
-  background-color: var(--mainColor);
+  background-color: var(--accentColor);
 }
 
 
@@ -49,7 +49,7 @@ body {
   width: 70%;
   display: block;
   float: left;
-  background-color: var(--secondaryColor);
+  background-color: var(--mainColor);
   border-radius: 7px;
   padding: 2%;
   margin: 2%;
@@ -83,7 +83,7 @@ body {
 }
 
 .studyCard {
-  background-color: var(--mainColor);
+  background-color: var(--secondaryColor);
   padding: 5%;
   padding-top: 3%;
   margin: 5%;
@@ -236,6 +236,10 @@ body {
 
 .studyLink {
   color: var(--tertiaryColor);
-  float: right
+  float: right;
+  background-color: var(--accentColor);
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 7px;
 }
 
