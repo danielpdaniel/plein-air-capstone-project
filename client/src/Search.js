@@ -75,7 +75,7 @@ function Search(){
         })
 
         const updatedUser = {...user}
-        updatedUser.studies = updatedStudies
+        updatedUser.studies = updatedStudies.filter(study => study.user_id == user.id)
         setStudies(updatedStudies)
         setUser(updatedUser)
     }
