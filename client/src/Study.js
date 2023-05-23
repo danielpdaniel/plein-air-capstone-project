@@ -31,6 +31,8 @@ function Study(){
                 updatedUser.studies = user.studies.filter(study => study.id !== studyId)
                 setUser(updatedUser)
                 navigate('/my_profile')
+            }else{
+                r.json().then(data=>console.log(data))
             }
         })
     }
